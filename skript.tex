@@ -32,6 +32,8 @@
 \newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
 \newcommand{\trace}{\operatorname{Tr}}
 \newcommand{\oo}{\infty}
+\newcommand{\Forall}{\quad\forall\,}
+\renewcommand{\d}[1]{\,d#1\,}
 \usepackage{braket}
 \usepackage{centernot}
 
@@ -175,6 +177,7 @@ Zufallsvariable mit Wahrscheinlichkeit } Q_N(Y) \]
     Makrozustand: $T,V,P,... \quad  \implies \rho_0 oder \rho_g$?\\
 \end{description}
 \section{Quantenmechanik}
+
 \emph{Schwabl Kapitel 1.4,1.5.2}
 $N $ Teilchen, Mikrozustand $\Ket{\Psi} \in \mathcal{H} \simeq \mathcal{L}_2(\R^{3N})$
 \begin{align*}
@@ -251,6 +254,9 @@ p_n \in \R \end{matrix}
       \sum_{n}^{} f( p_n) \Ket{n}\Bra{n} \\
       e^{\hat{A}}= \sum_{n=0}^{ \oo } \frac{1}{n!}\hat{A}^n
     \end{align*}
+    Die Entropie ist also die Summe der Diagonalemente der Dichtematrix in
+    diagonalisierter Form. Dies ist wohldefiniert, da jede Dichtematrix
+    diagonalisiert werden kann.
     Extrema mit Nebenbedingung $\sum_{n}^{} p_n = 1$
     \begin{itemize}
       \item Minimum $S=0$ f\"ur einen reinen Zustand ($p_{n_0}=1, p_n =0
@@ -273,10 +279,11 @@ p_n \in \R \end{matrix}
     (\hat{\rho}_B \ln{ \hat{\rho}_B}) = S_A + S_B
   \end{align*}
   Nebenbedingung
+
   \[ S \le S_A + S_B \] (z.B. verschr\"ankte Systeme)
 \item[Beispiel] System von $N$ Spins $S$ ($\vec{S}^2 =  S(S+1)$). \\
   Hilbert-Raum f\"ur einen Spin $= \mathcal{H}_1 = \C^{2S+1}$.
-  Gesamter Hilbert-Raum \[ \mathcal{H} = \bigoplus_{i=1}^{N}\cal{H}_1\] 
+  Gesamter Hilbert-Raum \[ \mathcal{H} = \bigotimes_{i=1}^{N} \mathcal{H}_i \] 
   \[ \operatorname{dim} \mathcal{H} = (2S+1)^N = M \] 
   \begin{itemize}
     \item Minimum $S=0$ z.B. f\"ur $\Ket{\Psi} = \Ket{ \uparrow, \uparrow, \uparrow, \ldots, \uparrow}$.
@@ -343,7 +350,7 @@ System mit $N(\to \inf{})$ Freiheitsgraden im Gleichgewicht.
 \subsection*{Mikrokanonisches Ensemble}
 Es beschreibt ein isoliertes System.
 \begin{description}
-  \item[Freie thermodynamische Variablen] 
+  \item[Freie thermodynamische Variablen] $ $ 
     \begin{itemize}
       \item Teilchenzahl $N$
       \item Volumen $V$
@@ -360,7 +367,7 @@ Es beschreibt ein isoliertes System.
 \subsection*{Kanonisches Ensemble}
 Beschreibt ein geschlossenes System.
 \begin{description}
-  \item[Freie thermodynamische Variablen] 
+  \item[Freie thermodynamische Variablen] $ $
     \begin{itemize}
       \item Temperatur $T$
       \item $N, V, M$
@@ -382,7 +389,7 @@ Beschreibt ein geschlossenes System.
 \subsection*{Gro\ss{}kanonisches Ensemble}
 Beschreibt ein offenes System
 \begin{description}
-  \item[Freie Thermodynamische Variablen] 
+  \item[Freie Thermodynamische Variablen]  $ $
     \begin{itemize}
       \item Chemisches Potential $\mu$
       \item $T, V, \ldots$
@@ -414,4 +421,238 @@ Zu jeder intensiven Variable gibt es eine Extensive Variable(Observable).
 
 
 
+ \section*{Mikrokanonisches Ensemble}
+ Wir betrachten ein isoliertes System. Zum beispiel ein Gas in einem Beh\"alter
+ welcher isoliert ist. Energie und Teilchenzahl sind fest. Genauso das Volumen.
+ Eine \"Ahnliche Situation w\"are auch ein magnetisches Material. Die isolation
+ w\"are hier ein Material welches keine magnetischen Felder durchl\"asst.
+ Typisch f\"ur das isolierte System ist, dass die Energie eine kontrollierbare
+ Variable ist.
+
+ Es gibt also eine Freie thermodynamische Variable $E$. Die erlaubten 
+ Mikrozust\"ande sind die Eigenzust\"ande des Hamilton-Operators $H$ zur
+ Energie $E$.
+ Das Ziel ist nun die mikrozust\"ande zu beschreiben und die makroskopischen
+ Variablen zu berechnen. Man braucht dazu den statistischen Operator.
+ \begin{description}
+   \item[Diskretes Eigenspektrum] 
+     \begin{align*}
+       \hat{\rho} = \sum_{n}^{} p_n \Ket{n}\Bra{n} \quad : \quad \mathcal{H} \to 
+       \mathcal{H} && p_n =0 \quad\forall\, n \text{ mit } E_n \neq E \\
+       \hat{\rho}= \sum_{n=1}^{w(E)} p_n \Ket{n}\Bra{n} &&
+       w(E) = \text{ Entartung der Eigenergie } E
+     \end{align*}
+     Wir verwenden das Postulat der maximierung der Entropie:
+     % \begin{align*}
+     %   S(E)= -k_B \sum_{n=1}^{w(E)} p_n \ln{p_n}, && 
+     %   \sum_{n=1}^{w(E)} p_n = 1 
+     % \end{align*}
+     \begin{align*}
+       0  &= \pd{S}{p_n} - \lambda \pd{}{p_n} 
+       \left( \sum_{n=1}^{w(E)} p_m -1 \right)  \\
+       & = -k_B \left( \ln{p_n} +1 \right) - \lambda \Forall 1 ,\dotsc, w(E) \\
+     \end{align*}
+
+     \begin{align*}
+       \text{ Extrema f\"ur }      
+       & \implies p_n = e^{-\frac{\lambda}{k_B} - 1} \implies p_n = \frac{1}{w(E)} \\
+       & \implies S(E) = k_B \ln{(w(E))} \text{ ist auch ein Maximum }
+     \end{align*}
+
+   \item[Dichteoperator im Gleichgewicht]
+     \begin{align*}
+       \hat{\rho}_G = \sum_{n=1}^{w(E)} \frac{1}{w(E)} \Ket{n}\Bra{n} =
+       \frac{1}{w(E)} P_E = \frac{1}{w(E)} \delta(H-E) & \\
+     \end{align*}
+     \begin{align*}
+       \trace \hat{\rho}_G = 1 && \trace P_E = w(E) \\
+     \end{align*}
+
+   \item[Kontinuierliches Spektrum]
+     \begin{flalign*}
+       \hat{\rho} &= \int_{}^{} d\lambda\, \Ket{\lambda}\Bra{\lambda} p(\lambda) \\
+       N(E) &= \text{ Anzahl der Zust\"ande mit einer Eigenenergie } \le E
+     \end{flalign*}
+     Hinweis: F\"ur ein diskretes System von Eigenzust\"anden
+     f\"ur ein kontinuerliches Spektrum kann man die Anzahl der Eigenzust\"ande 
+     kleiner Als $w$ definieren.
+     \begin{align*}
+       w(E) &= \frac{dN}{dE} = \text{ Zustandsdichte } \\ & \implies w(E) \Delta E
+       = \text{ Anzahl der Eigenzust\"ande in } \left[ E, E+ \Delta E \right] \\
+       S(E) &= k_B \ln{(w(E) \Delta E)} \\
+       \hat{\rho} &= \frac{1}{w(E)} \delta(H-E) 
+     \end{align*}
+ \end{description}
+ \subsection*{Thermodynamische Variablen}
+ Man macht eine Statistische Mittelung
+ \begin{align*}
+   \Braket{\hat{\cal{O}}} = \trace (\hat{\rho}_G \hat{\cal{O}})
+ \end{align*}
+ \begin{description}
+   \item[Beispiele] 
+     \begin{align*}
+      \text{Innere Energie: } U= \Braket{H} = E \\
+      \text{Magnetisierung: } M_z = \Braket{S_z} \\
+     \end{align*}
+   \item[Thermodynamischer Limes] ($N \to \infty$)
+   \item[Definition:] Temperatur
+     \begin{align*}
+       \frac{1}{T} = \left( \pd{S}{E} \right)_x
+     \end{align*}
+   \item[Definition] Konjugierte Variablen \\
+     Beispiele: 
+     \begin{align*}
+     x = \begin{bmatrix} M \iff  H \\ N \iff  M \\ V \iff P \end{bmatrix} y
+     \end{align*}
+     \begin{align*}
+       S(E,X), && y= \pm  T \left( \pd{S}{X} \right)_E
+     \end{align*}
+   \item[Statistische Physik] $ $ \\
+     \begin{align*}
+       \text{Observable } \hat{x}, \quad \text{ extensiv }, && [\hat{x}, \hat{H}]
+       \xrightarrow{ N \gg 1} N^0, n^{-1} \\
+       \implies \Braket{\hat{x}} = x && S(E,X) = k_B \ln{ w(E,X)} \\
+     \end{align*}
+ \end{description}
+\subsection*{Beispiel: System von nicht-wechselwirkenden Spins}
+\begin{align*}
+  N \text{ Spins } s=1, && H = \sum_{i=1}^{ N } H_i = J \sum_{i=1}^{N} S_{iz}^z
+  \quad (J>0) \\
+\end{align*}
+
+Eigenzust\"ande: 
+
+\begin{align*}
+  \text{1 Teilchen } & \begin{cases}
+    H_i \Ket{M_j} = J S_{j z}^z \Ket{m_j} = J \hbar^2 m_j^2 \\
+    S_{zj} \Ket{m_j} = \hbar m_j \Ket{m_j} &  m _j = -1,0,1 \\
+  \end{cases} \\
+  \text{$N$ Teilchen } & \begin{cases}
+    \text{Dim } \mathcal{H} = 3^N \\ %REALLY? \\
+    \Ket{ \left\{ m_j \right\} }= \Ket{m_j} \otimes \Ket{m_j} \otimes  \ldots 
+      \otimes  \Ket{m_N} \\
+      E(\left\{ M_j \right\})= J \sum_{j=1}^{N}m_j^2 \\
+      S_z \Ket{ \left\{ m_j \right\} }= {\sum_{j}^{} m_j } & M=\sum_{j}^{}
+      m_j
+      \Ket{ \left\{ m_j \right\} }
+  \end{cases} \\
+  & H\Ket{ \left\{ m_j \right\} } = E (\left\{ m_j \right\}) \Ket{ \left\{ m_j \right\} }
+\end{align*}
+
+\begin{description}
+  \item[Problem]  Entartung $w(E,M)$ \\
+    \begin{align*}
+      N_+ & = \text{ Anzahl der Spins mit } m_j = +1 \text{ in } \left\{ m_j \right\}\\
+      N_0 & = \text{ Anzahl der Spins mit } m_j = +0 \text{ in } \left\{ m_j \right\}\\
+      N_- & = \text{ Anzahl der Spins mit } m_j = -1 \text{ in } \left\{ m_j \right\}\\
+    \end{align*}
+
+    \begin{align*}
+      \implies \begin{cases}
+        E = J (N_+ + N_-) \\
+        M = N_+ - N_- \\
+        N = N_+ +N_- + N_0 \\
+      \end{cases}
+      \implies \begin{cases}
+        N_+ = \frac{R+M}{L} =  \frac{r+m}{ L}N \\
+        N_- = \frac{R-M}{L} = \frac{r - m}{ L} N\\
+        N_0 = N-R = (1- r ) N \\
+      \end{cases}
+    \end{align*}
+
+    \begin{align*}
+      \text{Energie pro Spin ist } r= \frac{R}{N}= \frac{E}{NJ} \quad \in [0, 1] \\
+      \text{Magnetisierung pro Spin } m = \frac{M}{N} \quad \in [-1, 1]
+    \end{align*}
+
+    Problem: $N_+$ unterscheidbare Zust\"ande $m_j= +1$ auf $N$ Spins verteilen.
+
+    \begin{align*}
+    & \implies \begin{pmatrix} N \\ N_+ \end{pmatrix} = \frac{N!}{N_+!(N-N_+)!}
+      \text{ M\"oglichkeiten }  \\
+      \end{align*}
+
+      Danach: $N_-$ unterscheidbare Zust\"ande auf $N-N_+$ Spins mit
+      $m_j = -1$ verteilen.
+      \begin{align*}
+      \implies \begin{pmatrix} N-N_+ \\ N_- \end{pmatrix} \text{ Moeglichkeiten} 
+      \end{align*}
+
+      Also insgesamt:
+      \begin{align*}
+       w(E,M) & = w(N_+, N_-) \\
+      & = 
+      \begin{pmatrix} N \\ N_+ 
+      \end{pmatrix}  
+      \begin{pmatrix} N-N_+ \\ N_- 
+      \end{pmatrix} \\ & = \frac{N!}{N_+! N_-! N_0!} 
+      \end{align*}
+
+      Damit folgt die Entropie:
+      \begin{align*}
+        \begin{split}
+         S(E,M) & = S(N_+, N_-) \\ &= k_B \ln{}\left( 
+        \frac{N!}{N_+! N_-! N_0! }\right) 
+      \end{split}
+    \end{align*}
+  Annahme: $N, N_+, N_0, N_- \gg 1$ aber
+    
+    \begin{align*}
+      & \frac{N_+}{N}, \frac{N_-}{N}, \frac{N_0}{N} \text{ fest und endlich } \\
+      \iff & m,n \text{ fest und endlich} \\
+      \iff & M,E \text{ sind extensiv } (M,E \propto N)
+    \end{align*}
+    Stirling Formel \begin{align*}
+      & \ln{N!} \approx N \ln{N} - N \\
+      \implies & S(E, M) = k_B N f(r, m) \\
+      f(r, m ) & = - \left[ \frac{r+m}{2} \ln{(r+m)} + \frac{r - m}{2}
+    \ln{\frac{(r - m)}{2}} + (1-r) \ln{(1 - r)} \right]
+    \end{align*}
+  \item[Temperatur]
+    \begin{align*}
+      \frac{1}{T} = \left( \pd{S}{E}  \right)_M = \frac{k_B}{J} 
+      \ln{\left( \frac{2 (1-r)}{ \sqrt{r^2 - m^2}} \right)}
+    \end{align*}
+  \item[Ohne Magnetisierung] $M=0$ genau dann, wenn $m=0$.
+    \begin{align*}
+      S(E) = - k N [ r \ln{\frac{r}{2}} + (1-r) \ln{(1-r)}] \\
+    \end{align*}
+    %
+    \begin{align*}
+      \frac{1}{T} = \frac{k_B}{ J } \ln{\left( \frac{2 ( 1-r)}{r} \right) }
+       \begin{cases}
+         > 0 & \text{ falls } 0 < r < \frac{2}{3} \\
+         < 0 & \text{ falls }\frac{2}{3} < r < 1 \\
+      \end{cases}
+    \end{align*}
+    \begin{align*}
+      \implies  r (T) &= \frac{2}{e^{\beta J }+2 }, \quad  \beta= \frac{1}{k_B T} \\
+                E(T)  &= NJ \frac{2}{e^{\beta J}} \frac{2}{e^{\beta J} + 2} \\
+                S(T)  &= k N \left[ \frac{2}{e^{\beta J} + 2} \ln{(e^{\beta J} + 2)}
+    - \frac{1}{e^{-\beta J} + 2} \ln{ \left( 1+ 2 e^{-\beta J} \right) }\right]
+    \end{align*}
+  \item[Diskussion] $ $  \\
+    Tiefe Temperaturen \begin{align*}
+      k_B T \ll J \iff \beta J \longrightarrow \infty \quad \implies \begin{cases}
+        E \longrightarrow 0 \\ S \longrightarrow 0
+      \end{cases}
+    \end{align*}
+    Nebenbedingung f\"ur $J < 0$: 
+    \begin{align*}
+      \implies  \begin{cases}
+        E = N J \\
+        S = k_B N \ln{(z)}
+      \end{cases}
+    \end{align*}
+
+    Hohe Temperatur $k_B T \gg J$
+
+    \begin{align*}
+      \iff \beta J \longrightarrow  0 \implies 
+      \begin{cases}
+        E = \frac{2}{3} N J \\
+        S = \frac{1}{3} k_B N \ln{(3)}
+      \end{cases}
+    \end{align*}
+\end{description}
 \end{document}
