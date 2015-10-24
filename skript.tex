@@ -254,8 +254,8 @@ p_n \in \R \end{matrix}
       \sum_{n}^{} f( p_n) \Ket{n}\Bra{n} \\
       e^{\hat{A}}= \sum_{n=0}^{ \oo } \frac{1}{n!}\hat{A}^n
     \end{align*}
-    Die Entropie ist also die Summe der Diagonalemente der Dichtematrix in
-    diagonalisierter Form. Dies ist wohldefiniert, da jede Dichtematrix
+    Die Entropie ist also \"uber die Diagonalemente der Dichtematrix in
+    diagonalisierter Form berechenbar. Dies ist wohldefiniert, da jede Dichtematrix
     diagonalisiert werden kann.
     Extrema mit Nebenbedingung $\sum_{n}^{} p_n = 1$
     \begin{itemize}
@@ -273,9 +273,10 @@ p_n \in \R \end{matrix}
     \implies \left[ \hat{\rho}_A, \hat{\rho}_B  \right]= 0
   \end{align*}
   \begin{align*}
-    S & = -k_B \operatorname{Sp} ( \hat{\rho} \ln{\hat{\rho}}) = k_B \operatorname{Sp}
-    \left[ \hat{\rho}_A \hat{\rho_B} (\hat{\rho_A} = \ln{\hat{\rho}_B}) \right] \\
-    & = -k_B \operatorname{Sp} (\hat{\rho}_A \ln{ \hat{\rho}_A}) - k_B \operatorname{Sp}
+    S & = -k_B \trace( \hat{\rho} \ln{\hat{\rho}})  \\
+      & =  -k_B \trace \left[ (\hat{\rho}_A \otimes \hat{\rho_B}) 
+  \ln{(\hat{\rho}_A \otimes \hat{\rho}_B)}  \right]  \\
+  & = -k_B \trace (\hat{\rho}_A \ln{ \hat{\rho}_A}) - k_B \trace
     (\hat{\rho}_B \ln{ \hat{\rho}_B}) = S_A + S_B
   \end{align*}
   Nebenbedingung
