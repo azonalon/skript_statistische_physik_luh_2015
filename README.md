@@ -1,2 +1,3 @@
 # StaPhy 2015
-bitte sucht und korrigiert eventuelle fehler :)
+Bitte sucht und korrigiert die zahlreichen Fehler! :)
+Ich versuche das Skript nach jeder Vorlesung aktuell zu halten.
