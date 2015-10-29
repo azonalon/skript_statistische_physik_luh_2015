@@ -3,7 +3,7 @@
 \usepackage[english, german]{babel}
 \renewcommand{\baselinestretch}{1.05}
 \usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
-\usepackage{graphicx}
+\usepackage[]{mathtools}
 \topmargin0.0cm
 \headheight0.0cm
 \headsep0.0cm
@@ -30,12 +30,14 @@
 \newcommand{\diam}{\mathrm{diam}}
 \newcommand{\dd}[2]{\frac{d{#1}}{d{#2}}}
 \newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
-\newcommand{\trace}{\operatorname{Tr}}
+\newcommand{\trace}{\operatorname{tr}}
 \newcommand{\oo}{\infty}
 \newcommand{\Forall}{\quad\forall\,}
 \renewcommand{\d}[1]{\,d#1\,}
 \usepackage{braket}
 \usepackage{centernot}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
 
 % \renewcommand{\labelitemi}{$\blacktriangleright$}
 % \renewcommand{\labelitemii}{$\vartriangleright$}
@@ -87,7 +89,7 @@
     \begin{itemize}
       \item Klassische Physik \[ \bar{A} = \int_{}^{} d^3r n d^3p A(\vec{r}, \vec{p}),
         \quad P(\vec{r}, \vec{p}) \text{ Wahrscheinlichkeitsdichte } P \] 
-      \item Quantenmechanik: \[ \bar{B}= \operatorname{Sp}(\hat{B} \hat{P})
+      \item Quantenmechanik: \[ \bar{B}= \trace(\hat{B} \hat{P})
           \text{ Dichteoperator } \hat{P} \]   
     \end{itemize}
   \item Statistische Physik
@@ -185,14 +187,14 @@ $N $ Teilchen, Mikrozustand $\Ket{\Psi} \in \mathcal{H} \simeq \mathcal{L}_2(\R^
   \text{Anfangsbedingung } \Ket{\Psi_0} \to \Ket{\Psi(t)} \quad \text{(eindeutig)} \\
   \text{Erwartungswert } A(t)= \Braket{\Psi(t) | \hat{A} | \Psi(t)} =\Braket{\hat{A}} \\
 \end{align*}
-Ziel: \[ \text{Statistische Mittelung } \quad \Braket{A} = \operatorname{Sp}(\hat{A}\hat{\rho}_G), \quad \hat{\rho=?} \] 
+Ziel: \[ \text{Statistische Mittelung } \quad \Braket{A} = \trace(\hat{A}\hat{\rho}_G), \quad \hat{\rho=?} \] 
 \subsubsection*{Definition}
 Statistische Operator, Dichteoperator, Dichtematrix,...
 \begin{align*}
   \hat{\rho} & : \mathcal{H} \to  \mathcal{H}, \text{ linear } \\
   \hat{\rho} & = \hat{\rho}^+ \\
   \text{positiv-semidefinit } & \Braket{\varphi | \hat{\rho}| \varphi} \ge 0 \,\forall\,\Ket{\varphi} \in \mathcal{ H} \\
-  \operatorname{Sp} \hat{\rho } & =1  &
+  \trace \hat{\rho } & =1  &
   \text{Spektrale Zerlegung } & \begin{split}
   \hat{\rho} &=  \sum_{n}^{} p_n \Ket{n}\Bra{n} \\ &= \int_{}^{} d \lambda \Ket{\lambda}\Bra{\lambda} w(\lambda) 
   \end{split}
@@ -241,7 +243,7 @@ p_n \in \R \end{matrix}
 \subsection*{Entropie und Ensemble}
 \begin{description}
   \item[Definition] Entropie (Quantenstatistik) \\
-    \[ S =-k_B \operatorname{Sp}(\hat{\rho} \ln{\hat{\rho}}) \quad k_B = k = 
+    \[ S =-k_B \trace(\hat{\rho} \ln{\hat{\rho}}) \quad k_B = k = 
       \text{ Boltzmann-Konstante }
     \approx \SI{1,38e-23}{\joule\per\kelvin} \] 
   \item[Eigenschaften] 
@@ -250,20 +252,22 @@ p_n \in \R \end{matrix}
       S(\left\{ p_n \right\}) = -k_B \sum_{n}^{} p_n \ln{p_n}
     \end{align*}
     Hinweise: \begin{align*}
-      \operatorname{Sp} \hat{A} = \sum_{n}^{}\Braket{n | \hat{A}|n} && f(\hat{\rho})= 
+      \trace \hat{A} = \sum_{n}^{} \Braket{n | \hat{A}|n} && f(\hat{\rho})= 
       \sum_{n}^{} f( p_n) \Ket{n}\Bra{n} \\
       e^{\hat{A}}= \sum_{n=0}^{ \oo } \frac{1}{n!}\hat{A}^n
     \end{align*}
+
     Die Entropie ist also \"uber die Diagonalemente der Dichtematrix in
-    diagonalisierter Form berechenbar. Dies ist wohldefiniert, da jede Dichtematrix
-    diagonalisiert werden kann.
+    diagonalisierter Form berechenbar. Dies ist wohldefiniert, da jede
+    Dichtematrix diagonalisiert werden kann.
+
     Extrema mit Nebenbedingung $\sum_{n}^{} p_n = 1$
     \begin{itemize}
       \item Minimum $S=0$ f\"ur einen reinen Zustand ($p_{n_0}=1, p_n =0
         \quad\forall\, n \neq n_0$)
       \item Maximum $S= k_B \ln{M}$ f\"ur $p_n = \frac{1}{M} \quad\forall\, 1,...,M$.
     \end{itemize}
-    Die entropie ist maximal f\"ur Unkenntnis \"uber den Zustand des Systems
+    Die Entropie ist maximal f\"ur Unkenntnis \"uber den Zustand des Systems
     (Auch ma\ss{} f\"ur Unordnung).
   \item[Extensivit\"at] \[ \mathcal{H}= \mathcal{H}_A \otimes \mathcal{H}_B,
   \quad \hat{\rho} = \hat{\rho}_A \otimes  \hat{\rho}_B \] 
@@ -295,7 +299,7 @@ p_n \in \R \end{matrix}
   \begin{align*}
     0= \frac{d \rho }{dt} \iff \left[ H, \hat{\rho} \right]=0 \implies 
     \rho = \sum_{m}^{} p_n \Ket{E_n} \Bra{E_n} \\
-    \implies E = \Braket{\hat{H}} = \operatorname{Sp} (\hat{\rho} \hat{H})
+    \implies E = \Braket{\hat{H}} = \trace (\hat{\rho} \hat{H})
     = \sum_{n}^{} p_n E_n
   \end{align*}
   \begin{align*}
@@ -313,17 +317,22 @@ p_n \in \R \end{matrix}
     \end{align*}
 \end{description}
 \subsection*{Zentrales Postulat der statistischen Physik}
-System mit $N(\to \inf{})$ Freiheitsgraden im Gleichgewicht.
+System mit $N\to \infty$ Freiheitsgraden im Gleichgewicht.
 \begin{itemize}
   \item $S$ ist maximal f\"ur einen gegebenen Makrozustand. Das erlaubt uns
     eine eindeutige bestimmung des statistischen Operators $\hat{\rho}$.
   \item Statistische Mittelungen der Observablen erf\"ullen die Makroskopischen
     Gesetze der Thermodynamik.
+    %
     \begin{align*}
-      S = -k_B \operatorname{Sp} \hat{\rho}_B = - k_B \Braket{\ln{\hat{\rho}_G}} \\
-      \Braket{\hat{\cal{O}}}= \operatorname{Sp} (\hat{\rho}_G \mathcal{O}) &&
+      S = -k_B \trace \hat{\rho}_B = - k_B \Braket{\ln{\hat{\rho}_G}} \\
+    \end{align*}
+    %    
+    \begin{align*}
+      \Braket{\hat{\cal{O}}}= \trace (\hat{\rho}_G \mathcal{O}) &&
       U = \Braket{\hat{H}}
     \end{align*}
+
 \end{itemize}
 \begin{description}
   \item[Definition] Entropie (Thermodynamik) \\
@@ -377,15 +386,14 @@ Beschreibt ein geschlossenes System.
   \item [Maximum der Entropie] 
     F\"ur feste $T, N, V, \ldots$
     \begin{align*}
-      \hat{\rho} = \frac{1}{z} e^{- \beta \hat{H} } \hat{P}_N \ldots && 
+      \hat{\rho} = \frac{1}{Z} e^{- \beta \hat{H} } \hat{P}_N \ldots && 
       \beta = \frac{1}{k_B T}
     \end{align*}
   \item[Zustandsumme]
     \begin{align*}
-      z= \operatorname{Sp} e^{- \beta \hat{H}}
+      Z= \trace e^{- \beta \hat{H}}
     \end{align*}
 \end{description}
-
 
 \subsection*{Gro\ss{}kanonisches Ensemble}
 Beschreibt ein offenes System
@@ -401,25 +409,30 @@ Beschreibt ein offenes System
       \hat{\rho}_G = \frac{1}{Z_{GK}} e^{-\beta(\hat{H}- \mu \hat{N})} P
     \end{align*}
   \item[Gro\ss{}kanonische Zustandssumme] $Z_{GK} 
-    \operatorname{Sp} e^{-\beta(\hat{H}- \mu \hat{N})} $
+    \trace e^{-\beta(\hat{H}- \mu \hat{N})} $
 \end{description}
 \subsection*{Viele weitere Ensembles}
 Zu jeder intensiven Variable gibt es eine Extensive Variable(Observable).
- \begin{align*}
-   \underset{\text{Intensive Variable}}{ \text{(\"au\ss{}eres Feld)}} &<->& 
-   \underset{Extensive Variable}{\text{Observable}}
-   y && x \\
-   \hat{\rho}_G ~ e^{- \beta y \hat{x}} && \hat{\rho}_G ~ 
-   P_x ~ \delta (\hat{x} -x ) \\
-   \text{Beispiele}
-   M && N \\
-   P && V \\
-   H && M \\
-   \text{(Magnetfeld)} && \text{(Magnetisierung)} \\
- \end{align*}
- 
 
-
+\begin{center}
+  \begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,column sep=6em,
+      column 1/.style={anchor=base east},
+      column 2/.style={anchor=base west}
+    ] 
+    {
+      \underset{\text{Intensive Variable}}{\text{\"Au\ss{}eres Feld}} & 
+      \underset{\text{Extensive Variable}}{\text{Observable}} \\
+      y & x \\
+      \hat{\rho}_G ~ e^{- \beta y \hat{x}} & \hat{\rho}_G ~ 
+      P_x ~ \delta (\hat{x} -x ) \\
+      \text{Beispiele} \\
+      M & N \\
+      P & V \\
+      H & M \\
+    \text{Magnetfeld} & \text{Magnetisierung} \\};
+  \end{tikzpicture}
+\end{center}
 
 
  \section*{Mikrokanonisches Ensemble}
@@ -496,21 +509,27 @@ Zu jeder intensiven Variable gibt es eine Extensive Variable(Observable).
       \text{Magnetisierung: } M_z = \Braket{S_z} \\
      \end{align*}
    \item[Thermodynamischer Limes] ($N \to \infty$)
-   \item[Definition:] Temperatur
+   \item[Definition] Temperatur
      \begin{align*}
        \frac{1}{T} = \left( \pd{S}{E} \right)_x
      \end{align*}
    \item[Definition] Konjugierte Variablen \\
      Beispiele: 
      \begin{align*}
-     x = \begin{bmatrix} M \iff  H \\ N \iff  M \\ V \iff P \end{bmatrix} y
+       x = \begin{Bmatrix} 
+         M \xleftrightarrow{\hspace{1cm}}  H \\ 
+         N \xleftrightarrow{\hspace{1cm}}  M \\
+         V \xleftrightarrow{\hspace{1cm}} P 
+     \end{Bmatrix} y
      \end{align*}
+     %
      \begin{align*}
-       S(E,X), && y= \pm  T \left( \pd{S}{X} \right)_E
+       S(E,X) && y = \pm  T \left( \pd{S}{X} \right)_E
      \end{align*}
+     %
    \item[Statistische Physik] $ $ \\
      \begin{align*}
-       \text{Observable } \hat{x}, \quad \text{ extensiv }, && [\hat{x}, \hat{H}]
+       \text{Extensive Observable } \hat{x}, \quad && [\hat{x}, \hat{H}]
        \xrightarrow{ N \gg 1} N^0, n^{-1} \\
        \implies \Braket{\hat{x}} = x && S(E,X) = k_B \ln{ w(E,X)} \\
      \end{align*}
@@ -656,4 +675,395 @@ Eigenzust\"ande:
       \end{cases}
     \end{align*}
 \end{description}
+\subsection*{Kanonisches Ensemble}
+\emph{Schwabl Kapitel 2.6} \\
+Schwabl nimmt an, dass man das gesamte System mikrokanonisch behandeln kann.
+$\hat{\rho} \propto \delta (\hat{H} -E)$. Das innere Teilsystem 2 ist
+viel kleiner als das \"au\ss{}ere Teilsystem 1. Also ist auch die \"anderung
+der Energie des Systems 1 $\Delta E_1 \gg \Delta E_2$. Man benutzt dann
+das Prinzip der maximierung der Entropie $S$ woraus folgt, dass
+%
+\begin{align*}
+  \hat{\rho}_2 = e^{- \hat{H}_2 / (k_B T_2) }
+\end{align*}
+%
+Quantenmechanik Anmerkung:
+%
+\begin{align*}
+  \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{ H}_2 && \text{ Basis } 
+  \left\{ \Ket{n_1} \otimes \Ket{n_2} \right\} \text{ von } H
+\end{align*}
+%
+\begin{align*}
+  \trace \hat{A} = \sum_{n}^{} \Braket{n | \hat{ A} | n} = 
+  \sum_{n_1}^{} \sum_{n_2}^{} \Braket{n_1 n_2 | \hat{A} | n_1 n_2} 
+\end{align*}
+%
+%
+\begin{align*}
+  \hat{A}_1 & = \trace \hat{A} = \sum_{n_2}^{} \Braket{n_2 | \hat{A} | n_2} \\
+            & = \sum_{n_2}^{} \sum_{n_1}^{} \sum_{n_1'}^{} 
+  \Braket{ n_1 n_2 | \hat{A} | n_1' n_2} \Ket{n_1} \Bra{n_1'}
+\end{align*}
+%
+
+%
+
+%
+\begin{align*}
+  \hat{\rho}_1 = \trace \hat{\rho} \implies S_1 (E_1) = 
+  \frac{1}{T_1} = \left( \pd{S_1}{E_1} \right) = \frac{1}{T} .
+\end{align*}
+%
+
+Wir betrachten ein geschlossenes System im Gleichgewicht mit W\"armebad der 
+Temperatur $T$. Was ist der statistische Operator $\hat{\rho}$ ?
+
+\begin{description}
+  \item[Definition]  Freie Entropie (Thermodynamik, makroskopisch)
+    %
+    \begin{align*}
+      F(T) = U(S(T)) - T S(T)
+    \end{align*}
+    Legendre-Transformation
+    %
+    \begin{align*}
+      \frac{1}{T} = \left( \pd{S}{E} \right)_X \iff T_X =
+      \left( \pd{E}{S} \right)_X \\
+      \implies S = - \left( \pd{F}{T} \right)_X
+    \end{align*}
+    %
+  \item[Postulat] Im thermischen Gleichgewicht ist die Entropie maximal. 
+    Dies gilt genau dann wenn die freie Energie minimal ist.
+    %
+  \item[Definition] Funktional der freien Energie In der 
+    mikroskopischen statistischen Physik.
+    % 0
+    \begin{align*}
+      F[\hat{\rho}] & = E[\hat{\rho}] - T S [\hat{\rho}] \\
+                    & \text{mit } E [\hat{\rho}] = \Braket{\hat{ \mathcal{H}}}
+      = \trace (\hat{\rho} \hat{ \mathcal{H}})
+    \end{align*}
+    %
+  \item[Minimierung von ] $F[\hat{\rho}]$ \\
+    Variationsrechnung $\delta F= 0 \quad\forall\, \delta \hat{\rho}$
+    \begin{enumerate}
+      \item %
+      \begin{align*}
+        \delta F = F \left[ \hat{\rho} + \delta \hat{ \rho} \right] -
+        F \left[ \hat{\rho} \right] = \trace [H \delta \hat{\rho}] 
+        + k_B T \trace (\delta \hat{\rho} \ln{\hat{\rho}}) + k_B T \trace
+        \delta \hat{\rho} = 
+        \trace [ ( H+ k_B T \ln{ \hat{\rho}}) \delta \hat{\rho}] \\
+      \end{align*}
+      Wir verwenden, dass man kompakte operatoren in der Spur vertauschen kann.
+      %
+      \begin{align*}
+        \trace (\hat{A} \hat{B}) = \trace (\hat{B} \hat{A})  \\
+        \trace \hat{\rho} = 1 \implies \trace \delta \hat{\rho} = 0
+      \end{align*}
+      %
+    \item
+      %
+      \begin{align*}
+        \delta F = 0 \quad\forall\, \delta \hat{\rho} \implies 
+        H + k_B \ln{\hat{\rho}} = c \iff
+        \hat{\rho} = e^{ \frac{\hat{H}}{k_B T} } e^{ \frac{c}{ k_B T}} \\
+      \end{align*}
+      %
+      Die folgenden drei Formeln sollte man sich merken:
+      \begin{align*}
+        \implies \hat{\rho} = \frac{1}{z} e^{-\beta \hat{H}} && \beta = \frac{1}{k_B T} \\
+      \end{align*}
+      %
+      \emph{Kanonische Zustandsumme}
+      \begin{align*}
+         Z = \trace e^{-\beta \hat{H}} 
+      \end{align*}
+      %
+      Minimum von $[\rho] \equiv $ Freie Energie.
+      %
+      \begin{align*}
+        F = -k_B T \ln{Z} 
+      \end{align*}
+      %
+      Bemerkung: $\hat{\rho} = e^{-\beta \hat{H}} P_N$
+    \end{enumerate}
+    Weitere thermodynamische Variablen %
+    \begin{align*}
+      x = \trace (\hat{\rho} \hat{x}) \text{ z.B. } M,N
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \text{Thermodynamik } y = \pm \left( \pd{F}{X}  \right)_T, 
+      \text{ z.B } P = - \left( \pd{F}{V} \right)_T, B = 
+      \left( \pd{F}{M} \right)_T
+    \end{align*}
+    %
+\end{description}
+\subsection*{Statistische Bedeutung der W\"arme}
+%
+\begin{align*}
+  dE & = d \trace \left( \hat{\rho} \hat{H} \right) = 
+  \trace\left( d \hat{\rho} \hat{H} \right) + 
+  \trace \left( \hat{\rho} d \hat{H} \right)  \\
+
+  dS & = -k_B d \trace \left( \hat{\rho} \ln{ \hat{\rho}} \right) = 
+  - k_B \trace \left( d \hat{\rho} \ln{ \hat{\rho}} \right) - k_B \trace d \hat{\rho} \\
+   & \underset{\hat{\rho} = \frac{1}{z } e^{- \beta \hat{ H}}}{=} 
+  \frac{1}{T} \trace (d\rho \hat{H}) \\
+\implies & dE = T dS + \trace \left( \hat{\rho} d \hat{H} \right).
+\end{align*}
+\emph{1. Hauptsatz der Thermodynamik} 
+%
+\begin{align*}
+  dV = \delta Q + \delta A
+\end{align*}
+%
+\begin{itemize}
+  \item Reversibler Prozess
+    %
+    \begin{align*}
+      \delta Q & = T dS = \trace \left( d \hat{\rho} \hat{H} \right) \\
+      \delta A & = \trace \left( \hat{\rho} d \hat{H} \right)
+      \implies & \text{ \"Anderung der W\"arme $\equiv$ 
+    \"Anderung der Wahrscheinlichkeit der Mikrozust\"ande}
+    \end{align*}
+    %
+\end{itemize}
+\subsection*{Energiefluktuationen}
+Wahrscheinlichkeit f\"ur Mikrozustand mit Energie $E$.
+Diskretes Spektrum 
+%
+\begin{align*}
+  P(E) = 
+  \begin{cases}
+    \frac{1}{Z} e ^{-\beta E} & \text{ Falls Eigenenergie $E$ existiert} \\
+    0                         & \text{ Falls Eigenenergie $E$ nicht existiert} \\
+  \end{cases}
+  \end{align*}
+%
+Kontinuerliches Spektrum 
+%
+\begin{align*}
+  P(E) & = W(E) \Delta E \\
+  W(E) & = w(E) \frac{1}{Z} e^{-\beta E} \\
+\end{align*}
+%
+Definition einiger Gr\"o\ss{}en
+\begin{itemize}
+  \item Mittelwert 
+    %
+    \begin{align*}
+      \bar{E} = \int_{}^{} \d{E} w(E) E = \Braket{\hat{H}} = U
+    \end{align*}
+    Nebenbedingung
+    %
+    \begin{align*}
+      \Braket{H} = -\pd{}{\beta} \ln{Z} 
+    \end{align*}
+  \item Schwankungsquadrat 
+    %
+    \begin{align*}
+      \Delta E ^2 = \int_{}^{} \d{E} W(E) \left( E- \bar{E} \right) ^2 
+      = \Braket{\hat{H}^2} - \Braket{\hat{H}} ^2
+    \end{align*}
+    %
+    Nebenbedingung
+    %
+    \begin{align*}
+      \Delta E^2 = - \pd{\bar{E}}{\beta} = - \pd{\Braket{\hat{H}}}{\beta}
+    \end{align*}
+    %
+  \item W\"armekapazit\"at 
+    %
+    \begin{align*}
+      C_x = \left( \frac{dU}{dT} \right)_x = \frac{1}{k_B T^2} \Delta E^2 &&
+      \beta = \frac{1}{k_B T}
+    \end{align*}
+    %
+    3. Hauptsatz
+    %
+    \begin{align*}
+      \lim_{T \to  0} C_x = 0 \implies \lim_{T\to  0 } \Delta E^2 = 0 
+    \end{align*}
+    %
+\end{itemize}
+\subsection*{Relation mit dem mikrokanonischen Ensemble}
+Experiment: $U$ und $C_x$ sind extensiv. Das bedeutete mathematisch, dass
+$U$ und $C_x$ proportional zur Teilchenzahl $N$ sind. Das bedeutet auch, dass
+der Mittelwert $\bar{E}$ und das Schwankungsquadrat $\Delta E$ proportional 
+zur Teilchenzahl sind. Das bedeutet f\"ur die relative Breite:
+%
+\begin{align*}
+  \frac{\Delta E}{\bar{E}} \propto \frac{1}{\sqrt{N}} 
+  \xrightarrow{\text{Thermodynamischer Limes}} 0
+\end{align*}
+%
+% zeichnung
+%
+%
+\begin{align*}
+  P(\bar{E}) & = W(\bar{E}) \Delta E \xrightarrow{n\to\infty} 1 \\
+  \text{ oder } & W(E) \to \delta(E - \bar{E})
+\end{align*}
+%
+\"Aquivalenz der mikrokanonischen und kanonischen Ensembles im
+thrmodynamischen Limes $( \frac{\Delta E}{N} \to 0)$.
+
+\subsection*{Beispiel: Spin System}
+%
+\begin{align*}
+  \hat{H} = J \sum_{i=1}^{N} S_{iz}^z - B \sum_{i=1}^{N} S_{iz} 
+  = \sum_{i=1}^{N} H_i
+\end{align*}
+%
+%
+\begin{align*}
+  \hat{\rho} = \frac{1}{z} e^{-\beta \hat{H}}  &&
+  \left[ H_j, H_l \right] = 0 \quad\forall\, j,l = 1,\dotsc,N
+\end{align*}
+%
+%
+\begin{align*}
+  Z = \trace_\mathcal{H} e^{-\beta \hat{H}} = \trace_{\mathcal{H}_1} e ^{-\beta \hat{H}_1} \trace
+  e^{-\beta \hat{H}_2} \ldots \trace_{\mathcal{H}_N} e^{-\beta \hat{H}_N}
+\end{align*}
+%
+%
+\begin{align*}
+  Z_1 = \trace_{\mathcal{H}_1} e^{-\beta \hat{H}_1} = \sum_{m_1=1,0,1}^{}
+  \Braket{m_1 | e^{-\beta \hat{H}_1} | m_1} \\ \hat{H}_1 \Ket{m_1} = 
+  \left( J m_1^2 - \beta m_1 \right) \Ket{m_1}
+\end{align*}
+%
+%
+\begin{align*}
+  \implies & Z_1 = 1 + e^{-\beta (J+B)} + e^{-\beta (J-B)} \\
+  \implies & Z = \left( 1 + e^{-\beta (J+B)} + e^{-\beta(J-B)} \right)^N
+  & = \left( 1+2 e^{-\beta J} \cosh(\beta B) \right)^N
+\end{align*}
+%
+%
+\begin{align*}
+  Z = \left( 1 + Z e ^{-\beta J} \cosh(\beta B) \right)^N 
+\end{align*}
+\emph{Freie Energie}
+%
+\begin{align*}
+  F(T, X) = - k_B T \ln{Z (T, X)} && X = V, M \\
+\end{align*}
+\emph{Freie Enthalpie} 
+%
+\begin{align*}
+  G (T, Y) = -k_B T \ln{Z(T, X)} && y = P, B
+\end{align*}
+\emph{Legendre Transformation}
+%
+\begin{align*}
+  G(T, B) = F (T, M(T, B)) - M(T,B) B
+\end{align*}
+%
+\begin{align*}
+  B = \left( \pd{F}{M} \right)_T && M = - \left( \pd{G}{B} \right)_T
+\end{align*}
+%
+%
+\begin{align*}
+  \implies G(T,B) = -k_B T N \ln{\left( 1+ 2 e^{- \beta J} \cosh{\beta B} \right)}
+\end{align*}
+%
+
+\begin{description}
+  \item[Magnetisierung] 
+    %
+    \begin{align*}
+      M & = \Braket{S_z} = \frac{1}{Z} \trace (e^{-\beta \hat{H}} \hat{S}_z) \\
+        & = \frac{1}{\beta} \pd{\ln{ Z}}{\beta} \\
+        & = N \frac{2 e^{-\beta J} \sinh(\beta B)}{1 + 2 e^{-\beta J} \cosh
+    (\beta B)}
+    \end{align*}
+    anmerkung:
+    %
+    \begin{align*}
+      Z = \trace e^{-\beta H} && H = J \sum_{i}^{} \hat{S}_{iz}^z - B \sum_{i}^{}
+      S_{iz}
+    \end{align*}
+    %
+    \begin{itemize}
+      \item Tiefe Temperatur $k T \ll J, \abs{B}$
+        \begin{itemize}
+          \item Falls $\abs{B} < J$ so geht $M \to 0$ \\
+          \item Falls $\abs{B} < J$ so geht $M \to \tanh(\beta B) \to N \sign(B)$
+            Im Grundzustand $ \Ket{m_1 = \sign B}$.
+        \end{itemize}
+      \item Hohe Temperatur $k T \gg J, \abs{B}$ \\
+        %
+        \begin{align*}
+          M = N \frac{2}{3} \frac{B}{k_B T} && \text{ \emph{Curie-Gesetz} }
+        \end{align*}
+        %
+        
+    \end{itemize}
+\end{description}
+\subsection*{Gro\ss{}kanonisches Ensemble}
+\emph{Schwabl Kapitel 2.7} \\
+Wir haben einen offenen Beh\"alter, in dem sich ein Untersystem befindet.
+Man kontrolliert nicht die Teilchenzahl und die Energie, sondern nur die TEmperatur
+und das chemische Potential.
+Es handelt sich also um ein offenses System im Gleichgewicht mit
+\begin{itemize}
+  \item Einem W\"armebad bei Temperatur $T$.
+  \item Einem Teilchenreservoir mit chemischem Potential $\mu$.
+\end{itemize}
+\subsection*{Beispiel: Wasserspiegel}
+% insert graphics here
+\subsection*{Gro\ss{}kanonisches Potential (Thermodynamik)}
+%
+\begin{align*}
+  \Phi(T, \mu) = U\left( S (T, \mu), N(T, \mu) \right) - 
+  S(T, \mu) T - N(T, \mu) \mu
+\end{align*}
+%
+%
+\begin{align*}
+  T = \left( \pd{U}{S} \right)_{X, N} && \mu = \left( \pd{ U}{N} \right)_{X, T} \\
+  S = - \left( \pd{F}{T} \right)_{X, \mu} && N = -\left( \pd{\Phi}{\mu} \right)_{X, T} \\
+\end{align*}
+%
+\begin{description}
+  \item[Postulat] Thermodynamisches Gleichgewicht besteht genau dann, wenn
+    die Entropie $S$ maximal ist. Oder \"Aquivalent, das gro\ss{}kanonische
+    Potential $\Phi$ maximal ist.
+  \item[Definition] Funktional des gro\ss{}kanonischen Potentials
+    (Statistische Physik)
+    %
+    \begin{align*}
+      \Phi[\hat{\rho}] = E \left[ \hat{\rho} \right] - T S [\hat{\rho}]
+      - \mu N[ \hat{\rho}]
+    \end{align*}
+    %
+    wobei %
+    \begin{align*}
+      N [\hat{\rho}] = \trace (\hat{\rho} \hat{N})
+    \end{align*}
+    %
+    Wir minimieren nun $\Phi[\hat{\rho}]$ unter $\hat{\rho}$ mit
+    $ \trace \hat{\rho} = 1$. Daraus folgt der statistische Operator.
+    %
+    \begin{align*}
+      \text{Statistischer Operator} \hat{\rho} = \frac{1}{Z} 
+      e^{- \beta (\hat{H} - \mu \hat{N})} \\
+      \text{Zustandsumme } Z = \trace e^{-\beta (\hat{H} - \mu \hat{N})}  \\
+      \text{Gro\ss{}kanonisches Potential} 
+      \Phi (T, \mu) = -k_B T \ln{Z} 
+    \end{align*}
+    %
+    
+    
+   
+\end{description}
+<++>
+
 \end{document}
