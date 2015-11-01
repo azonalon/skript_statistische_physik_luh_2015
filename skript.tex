@@ -60,8 +60,9 @@
 % \usepackage{MnSymbol}
 \begin{document}
 \section{Einf\"uhrung}
+\emph{Schwabl Kapitel 1.1} \\
 \begin{description}
-  \item Makroskopische systeme aus $N \ll $ Teilchen.
+  \item Makroskopische Systeme aus $N \gg 1$ Teilchen.
   \item Mikrozustand und mikroskopische Gesetze
     \begin{itemize}
       \item Klassische Physik: 
@@ -75,40 +76,41 @@
   \item Makrozustand und Makroskopische Gesetze
     \begin{itemize}
       \item Temperatur $T$, Volumen $V$, Druck $P$, ...
-      \item $P V=nk_BT, \quad V=RI$
+      \item $P V=nk_BT, \quad U=RI$
     \end{itemize}
   \item Mikroskopische Gesetze $\implies $ makroskopische Gesetze.
   \item Makrozustand $\iff $ Zeitmittelung
     \begin{itemize}
-      \item Klassische Physik: \[ \bar{A}(t)= \frac{1}{\Delta t} \int_{t}^{\Delta t +t} dt
-        A(\vec{r}(t),\vec{p}(t))\] 
-      \item Quantenmechanik: \[ \bar{B} = \frac{1}{\Delta t} \int_{t}^{\Delta t+t} dt
-        \Braket{\Psi(t) | \hat{B} | \Psi (t)}\] 
+      \item Klassische Physik: \[ \bar{A}(t)= \frac{1}{\Delta t} \int_{t}^{\Delta t +t}
+        dt'\, A(\vec{r}(t'),\vec{p}(t'))\] 
+      \item Quantenmechanik: \[ \bar{B}(t) = \frac{1}{\Delta t} \int_{t}^{\Delta t+t}
+        dt' \Braket{\Psi(t) | \hat{B} | \Psi (t)}\] 
     \end{itemize}
   \item Mikroskopische Zeitskala $\ll\, \Delta t \, \ll$ makroskopische Zeitskala
   \item Statistische Mittelung
     \begin{itemize}
-      \item Klassische Physik \[ \bar{A} = \int_{}^{} d^3r n d^3p A(\vec{r}, \vec{p}),
-        \quad P(\vec{r}, \vec{p}) \text{ Wahrscheinlichkeitsdichte } P \] 
-      \item Quantenmechanik: \[ \bar{B}= \trace(\hat{B} \hat{P})
-          \text{ Dichteoperator } \hat{P} \]   
+      \item Klassische Physik \[ \bar{A} = \int_{}^{} d^3r\, d^3p\,
+        A(\vec{r}, \vec{p}) P(\vec{r}, \vec{p}), \quad
+        \text{ Wahrscheinlichkeitsdichte } P(\vec{r}, \vec{p}) \] 
+      \item Quantenmechanik: \[ \bar{B}= \trace(\hat{B} \hat{\rho})
+          \text{ Dichteoperator } \hat{\rho} \]   
     \end{itemize}
   \item Statistische Physik
     \begin{itemize}
-      \item Bestimmung von $P$ und $\hat{P}$
+      \item Bestimmung von $P$ und $\hat{\rho}$
       \item Berechnung der Ensemblemittelung
       \item Anwendung auf physikalische Probleme
     \end{itemize}
   \item Reduktionismus \[ \text{System } = \left\{ \text{Einzelteile} \right\} \] 
     %TODO: make this a flow diagram
   \item Elementarteilchenphysik $\to $ Festk\"orperphysik, Chemie $\to $
-    Biologie $\to $ Medien $\to $ Psychologie $\to $ Soziologie
+    Biologie $\to $ Medizin $\to $ Psychologie $\to $ Soziologie
   \item ``\emph{More is different}'' P.W. Anderson
     %TODO: add pictures of snowflakes
     
 \end{description}
 \section{Wahrscheinlichkeitstheorie}
-\emph{Schwabl Kapitel 1.2, 15.1} \\
+\emph{Schwabl Kapitel 1.2, 1.5.1} \\
 \begin{description}
   \item [Einige Definitionen]
 
@@ -119,7 +121,7 @@
     $N$ identische Versuche, $N_x = \text{ Anzahl der Werte } x \implies \frac{N_x}{N}$
 
   \item[Empirische Wahrscheinlichkeit]
-    $P_x = \lim_{N \to \inf } \frac{N_x}{N}$.
+    $P_x = \lim\limits_{N \to \infty } \frac{N_x}{N}$.
     \[ \sum_{x}{} P_x = 1 , \quad 1 \ge P_x \ge 0 \quad \] 
 
   \item[Wahrscheinlichkeitsdichte] 
@@ -139,10 +141,10 @@
 \subsection{Zentraler Grenzwertsatz}
 Es gibt $N$ unabh\"angige aber identische Zufallsvariablen $x_i, \, i=1 , \dotsc , N$.
 \[ P(x_1,\dotsc,x_N)= P(x_1) P(x_2) \ldots P(x_N)  \]
-Au\ss{}erdem existieren $\Braket{x},\Delta$ von  $P(x)$.
+Au\ss{}erdem existieren $\Braket{x},\Delta x$ von  $P(x)$.
 \[ \text{Mittelwert } Y= \frac{1}{N}\sum_{i=1}^{N}x_i  \text{ ist eine
 Zufallsvariable mit Wahrscheinlichkeit } Q_N(Y) \] 
-\[ Q_N(Y) \xrightarrow{N\to \inf}\frac{1}{\sqrt{2 \pi} \sigma}
+\[ Q_N(Y) \xrightarrow{N\to \infty}\frac{1}{\sqrt{2 \pi} \sigma}
 \exp{(-\frac{(Y-a)^2}{2 \sigma^2})}\] 
 \[ a=\Braket{x}, \quad \sigma= \frac{\Delta x}{ \sqrt{N}} \] 
 
@@ -156,44 +158,48 @@ Zufallsvariable mit Wahrscheinlichkeit } Q_N(Y) \]
 \section{Klassische Physik}
 \begin{description}
   \item[N Teilchen ] Mikrozustand $(q,P) \in  \text{ Phasenraum } \simeq \R^{6n}$
-  \item[Kanonische Gleichungen] \[ \dot{q}_j = \pd{H}{P_j} \quad \pd{H}{\dot{q}_j}, \quad j=1,...,3N \] 
-  \item[Anfangsbedingung] \[ (q_0, P_0)= (q_0(t_0), P(t_0)) \implies \text{ Bahn } (q(t | q_0, P_0), P(t| q_0 P_0)) \] 
+  \item[Kanonische Gleichungen] \[ \dot{q}_j = \pd{H}{P_j} \quad \dot{P}_j = \pd{H}
+    {\dot{q}_j}, \quad j=1,...,3N \] 
+  \item[Anfangsbedingung] \[ (q_0, P_0)= (q_0(t_0), P(t_0)) \implies \text{ Bahn }
+    (q(t | q_0, P_0), P(t| q_0, P_0)) \] 
   \item[Kanonische Transformation ] \[ (q(t), P(t)) \iff (q(t'), P(t')) \] 
-  \item[Ziel] \[ \bar{A}= \int_{}^{} d^{3N}q d^{3N}p A(q,P) P_G(q,P) \] 
-    Gleichgewichtsverteilung $\rho_G(q,P)= $?
-  \item[Unscharfe Angangsbedingung] \[ P(q,P,t_0)= \rho_0 (q,P) \] 
-    Scharfe Anfangsbedingung: $\rho_0(q,P) = \delta(q-q_0) \delta (P-P_0)$.
+  \item[Ziel] \[ \bar{A}= \int_{}^{} d^{3N}q\, d^{3N}p\, A(q,P) P_G(q,P) \] 
+    Gleichgewichtsverteilung $P_G(q,P)= $?
+  \item[Unscharfe Angangsbedingung] \[ P(q,P,t_0)= P_0 (q,P) \] 
+    Scharfe Anfangsbedingung: $P_0(q,P) = \delta(q-q_0) \delta (P-P_0)$.
     Differentialgleichung f\"ur $P(q,P,t)$: Liouville-Gleichung.
-    \[ P(t)= \rho(q,P,t)d^{3N}q d^{3N}p=P(t') = \rho(q,P,t')d^{3N}q' d^{3N}p' \] 
-  \item[Liouville-Satz] \[ d^{3N}q d^{3N}p = d^{3N}q' d^{3N}p' \quad \left[ \text{ Jacobi-Matrix } \frac{d^{3N}q' d^{3N}p'}{d^{3N}q d^{3N}p}= 1 \right] \] 
-    \[ \implies \rho(q(t), P(t), t)= \rho (q(t'), P(t'), t'), \quad \text{ Erhalungsgroesse } \frac{dP}{dt}=0 \] 
-  \item[Kettenregel] \[ \frac{d \rho(q(t), P(t),t)}{dt}= \pd{\rho}{t} + \left\{ H,P \right\} \] 
-  \item[Liouville-Gleichung] \[ \pd{\rho}{t}= \left\{ P,H \right\} \] 
-    Bedingungen f\"ur $\rho_G(q,P)$
+    \[ P(t)= P(q,P,t)\, d^{3N}q\, d^{3N}p=P(t') = P(q,P,t')\, d^{3N}q'\, d^{3N}p' \] 
+  \item[Liouville-Satz] \[ d^{3N}q\, d^{3N}p = d^{3N}q'\, d^{3N}p' \quad \left[
+    \text{ Jacobi-Matrix } \frac{d^{3N}q'\, d^{3N}p'}{d^{3N}q\, d^{3N}p}= 1 \right] \] 
+    \[ \implies P(q(t), P(t), t)= P(q(t'), P(t'), t'), \quad
+    \text{ Erhalungsgr\"o\ss{}e } \frac{dP}{dt}=0 \] 
+  \item[Kettenregel] \[ \frac{d P(q(t), P(t),t)}{dt}= \pd{P}{t} + \left\{ H,P \right\} \] 
+  \item[Liouville-Gleichung] \[ \pd{P}{t}= \left\{ P,H \right\} \] 
+    Bedingungen f\"ur $P_G(q,P)$ (im Gleichgewicht)
     \begin{itemize}
       \item $\left\{ P_G, H \right\}=0$
       \item $P_G \ge 0$
-      \item $\int_{}^{}d^{3N}q d^{3N}p \rho_G (q,P)=1$.
+      \item $\int_{}^{}d^{3N}q\, d^{3N}p\, P_G (q,P)=1$.
     \end{itemize}
-    Superpositionsprinzip: L\"osungen $P_1,P_2 \implies \rho=a_1 \rho_1+ a_2 \rho_2 $
+    Superpositionsprinzip: L\"osungen $P_1,P_2 \implies P=a_1 P_1+ a_2 P_2 $
     mit $a_1,a_2 \ge 0, \quad a_1+a_2 =1$. \\
-    Makrozustand: $T,V,P,... \quad  \implies \rho_0 oder \rho_g$?\\
+    Makrozustand: $T,V,P,... \quad  \implies P_0 \text{ oder } P_g$?\\
 \end{description}
 \section{Quantenmechanik}
 
-\emph{Schwabl Kapitel 1.4,1.5.2}
+\emph{Schwabl Kapitel 1.4,1.5.2}\\
 $N $ Teilchen, Mikrozustand $\Ket{\Psi} \in \mathcal{H} \simeq \mathcal{L}_2(\R^{3N})$
 \begin{align*}
   i \hbar \frac{d}{dt} \Ket{\Psi(t)} = H \Ket{\Psi(t)} \\
   \text{Anfangsbedingung } \Ket{\Psi_0} \to \Ket{\Psi(t)} \quad \text{(eindeutig)} \\
-  \text{Erwartungswert } A(t)= \Braket{\Psi(t) | \hat{A} | \Psi(t)} =\Braket{\hat{A}} \\
+  \text{Erwartungswert } A(t)= \Braket{\Psi(t) | \hat{A} | \Psi(t)} =\Braket{\hat{A}}\\
 \end{align*}
-Ziel: \[ \text{Statistische Mittelung } \quad \Braket{A} = \trace(\hat{A}\hat{\rho}_G), \quad \hat{\rho=?} \] 
+Ziel: \[ \text{Statistische Mittelung } \quad \Braket{\hat{A}} = \trace(\hat{A}\hat{\rho}_G), \quad \hat{\rho}_G=? \] 
 \subsubsection*{Definition}
-Statistische Operator, Dichteoperator, Dichtematrix,...
+Statistischer Operator, Dichteoperator, Dichtematrix, ...
 \begin{align*}
   \hat{\rho} & : \mathcal{H} \to  \mathcal{H}, \text{ linear } \\
-  \hat{\rho} & = \hat{\rho}^+ \\
+  \hat{\rho} & = \hat{\rho}^+\dagger \\
   \text{positiv-semidefinit } & \Braket{\varphi | \hat{\rho}| \varphi} \ge 0 \,\forall\,\Ket{\varphi} \in \mathcal{ H} \\
   \trace \hat{\rho } & =1  &
   \text{Spektrale Zerlegung } & \begin{split}
@@ -209,19 +215,19 @@ p_n \in \R \end{matrix}
   \Braket{\hat{A}}= \sum_{n}^{}p_n \Braket{n|\hat{A}|n}.
 \end{align*}
 \begin{description}
-  \item[Reiner Zustand]: \[ p_{n_0}, p_n =0 \,\forall\, n \neq n_0, \quad  \hat{\rho}= \Ket{n_0}\Bra{n_0} \implies \hat{\rho}^2=\hat{\rho} \]  
+  \item[Reiner Zustand]: \[ p_{n_0}=1,\, p_n =0 \,\forall\, n \neq n_0, \quad  \hat{\rho}= \Ket{n_0}\Bra{n_0} \implies \hat{\rho}^2=\hat{\rho} \]  
   \item[Gemisch]: $p_n \neq 0 $ f\"ur 2 oder mehr $n$.
     \begin{itemize}
       \item Verschr\"ankte Zust\"ande
       \item Statistisches Gemisch
     \end{itemize}
   \item[Spektrale Zerlegung] \begin{align*}
-    \hat{A} = \sum_{\alpha}^{}a_ \alpha \Ket{\alpha}\Bra{\alpha} \\
-    \Braket{A}= \sum_{n}^{}p_n \sum_{\alpha}^{}a_ \alpha \abs{\Braket{\alpha}| n}^2
+    \hat{A} &= \sum_{\alpha}^{}a_ \alpha \Ket{\alpha}\Bra{\alpha} \\
+    \Braket{A}&= \sum_{n}^{}p_n \sum_{\alpha}^{}a_ \alpha \abs{\Braket{n|\alpha}}^2
     = \sum_{n}^{}\sum_{\alpha}^{} \underset{\text{Stat. Zufall}}{p_n} \underset{\text{Q.M. Zufall}}{\abs{\Braket{n|\alpha}}^2} a_ \alpha
   \end{align*}
   % TODO: Fig 4
-  \[ \text{Gemisch: 2 Quellen: } I_1, \theta_1, \quad I_2 \theta_2 \implies 
+  \[ \text{Gemisch: 2 Quellen: } I_1, \theta_1, \quad I_2, \theta_2 \implies 
   I'= I_1 ( \cos{\theta_1})^2 + I_2 (\cos{\theta_2})^2 \] 
   \[ p_1 = \frac{I_1}{I_1 + I_2}, \quad p_2 = \frac{I_2}{I_1 + I_2} \] 
 \end{description}
@@ -230,18 +236,20 @@ p_n \in \R \end{matrix}
 \begin{itemize}
   \item Anfangsbedingung $\hat{\rho}_0 \to  \hat{\rho}(t)$
   \item Gleichgewicht: \[ \frac{d \hat{\rho}}{dt}=0 \implies  \left[ H, \hat{\rho} \right]=0  \] 
-  \item Superpositionsprinzip $\rho= a_1 \rho_1 + a_2 \rho_2 \text{ mit } a_1, a_2 \ge 0,
-    \text{ und } a_1+a_2 =1 $
-  \item Im Gleichgewicht: \[ \hat{\rho}_G = \sum_{n}^{} p_m \Ket{E_n}\Bra{E_n} \text{ mit }
-      H \Ket{E_n}\Bra{E_n} = \int_{}^{} dE\, w(E)\Ket{E}\Bra{E} \quad \text{ mit }
+  \item Superpositionsprinzip $\rho= a_1 \rho_1 + a_2 \rho_2 \text{ mit }
+    a_1, a_2 \ge 0, \text{ und } a_1+a_2 =1 $
+  \item Im Gleichgewicht: \[ \hat{\rho}_G = \sum_{n}^{} p_n \Ket{E_n}\Bra{E_n}
+    = \int_{}^{} dE\, w(E)\Ket{E}\Bra{E} \quad \text{ mit }
     H \Ket{E}= E \Ket{E}\] 
-    \[ p_n = \frac{1}{Z_n} \text{ f\"ur } E_n = E_0, \quad Z_n= \text{ Entartung des Niveaus } E_0 \] 
+  \item Isoliertes System: \[ p_n = \frac{1}{Z_n} \text{ f\"ur } E_n = E_0,
+    \quad Z_n= \text{ Entartung des Niveaus } E_0 \] 
     % TODO: Fig 5
-    \[ p_n = \frac{1}{Z} e^{-\beta E_n} \text{ mit } 
+  \item Geschlossenes System: \[ p_n = \frac{1}{Z} e^{-\beta E_n} \text{ mit } 
     \beta= \frac{1}{k_B T}, \quad Z=\sum_{n}^{} e^{-\beta E_n} \] 
 \end{itemize}
 
 \subsection*{Entropie und Ensemble}
+\emph{Schwabl Kapitel 2.1-2.5}\\
 \begin{description}
   \item[Definition] Entropie (Quantenstatistik) \\
     \[ S =-k_B \trace(\hat{\rho} \ln{\hat{\rho}}) \quad k_B = k = 
