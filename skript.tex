@@ -13,11 +13,24 @@
 \footskip1.0cm
 \setlength\parindent{0pt}
 \theoremstyle{plain}
-\newtheorem*{theorem}{Theorem}
 \newtheorem*{beispiel}{Beispiel}
 \newtheorem*{lemma}{Lemma}
+\newtheorem*{postulat}{Postulat}
 \newtheorem*{satz}{Satz}
 \newtheorem*{definition}{Definition}
+
+\newtheoremstyle{mytheoremstyle} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {\itshape}                   % Body font
+    {}                           % Indent amount
+    {\bfseries}                   % Theorem head font
+    {}                          % Punctuation after theorem head
+    {.0em}                       % Space after theorem head
+    {\thmnote{#3}#1}  % Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{mytheoremstyle}
+\newtheorem*{theorem*}{}
+
 \renewcommand*{\proofname}{Beweis}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -91,11 +104,11 @@
       \item Klassische Physik \[ \bar{A} = \int_{}^{} d^3r n d^3p A(\vec{r}, \vec{p}),
         \quad P(\vec{r}, \vec{p}) \text{ Wahrscheinlichkeitsdichte } P \] 
       \item Quantenmechanik: \[ \bar{B}= \trace(\hat{B} \hat{P})
-          \text{ Dichteoperator } \hat{P} \]   
+          \text{ Dichteoperator } \hat{\rho} \]   
     \end{itemize}
   \item Statistische Physik
     \begin{itemize}
-      \item Bestimmung von $P$ und $\hat{P}$
+      \item Bestimmung von $P$ und $\hat{\rho}$
       \item Berechnung der Ensemblemittelung
       \item Anwendung auf physikalische Probleme
     \end{itemize}
@@ -458,10 +471,10 @@ Zu jeder intensiven Variable gibt es eine Extensive Variable(Observable).
        w(E) = \text{ Entartung der Eigenergie } E
      \end{align*}
      Wir verwenden das Postulat der maximierung der Entropie:
-     % \begin{align*}
-     %   S(E)= -k_B \sum_{n=1}^{w(E)} p_n \ln{p_n}, && 
-     %   \sum_{n=1}^{w(E)} p_n = 1 
-     % \end{align*}
+     \begin{align*}
+       S(E)= -k_B \sum_{n=1}^{w(E)} p_n \ln{p_n}, && 
+       \sum_{n=1}^{w(E)} p_n = 1 
+     \end{align*}
      \begin{align*}
        0  &= \pd{S}{p_n} - \lambda \pd{}{p_n} 
        \left( \sum_{n=1}^{w(E)} p_m -1 \right)  \\
@@ -702,7 +715,7 @@ Quantenmechanik Anmerkung:
 %
 %
 \begin{align*}
-  \hat{A}_1 & = \trace \hat{A} = \sum_{n_2}^{} \Braket{n_2 | \hat{A} | n_2} \\
+  \hat{A}_1 & = \trace_{\mathcal{H}_1} \hat{A} = \sum_{n_2}^{} \Braket{n_2 | \hat{A} | n_2} \\
             & = \sum_{n_2}^{} \sum_{n_1}^{} \sum_{n_1'}^{} 
   \Braket{ n_1 n_2 | \hat{A} | n_1' n_2} \Ket{n_1} \Bra{n_1'}
 \end{align*}
@@ -712,7 +725,7 @@ Quantenmechanik Anmerkung:
 
 %
 \begin{align*}
-  \hat{\rho}_1 = \trace \hat{\rho} \implies S_1 (E_1) = 
+  \hat{\rho}_1 = \trace_{\mathcal{H}_1} \hat{\rho} \implies S_1 (E_1) = 
   \frac{1}{T_1} = \left( \pd{S_1}{E_1} \right) = \frac{1}{T} .
 \end{align*}
 %
@@ -751,11 +764,10 @@ Temperatur $T$. Was ist der statistische Operator $\hat{\rho}$ ?
     \begin{enumerate}
       \item %
       \begin{align*}
-        \delta F = F \left[ \hat{\rho} + \delta \hat{ \rho} \right] -
-        F \left[ \hat{\rho} \right] = \trace [H \delta \hat{\rho}] 
+          \delta F & = F \left( \hat{\rho} + \delta \hat{ \rho} \right) -
+          F \left( \hat{\rho} \right) \\ & = \trace (H \delta \hat{\rho}) 
         + k_B T \trace (\delta \hat{\rho} \ln{\hat{\rho}}) + k_B T \trace
-        \delta \hat{\rho} = 
-        \trace [ ( H+ k_B T \ln{ \hat{\rho}}) \delta \hat{\rho}] \\
+        \delta \hat{\rho} \\ & = \trace ( ( H+ k_B T \ln{ \hat{\rho}}) \delta \hat{\rho}) \\
       \end{align*}
       Wir verwenden, dass man kompakte operatoren in der Spur vertauschen kann.
       %
@@ -774,7 +786,7 @@ Temperatur $T$. Was ist der statistische Operator $\hat{\rho}$ ?
       %
       Die folgenden drei Formeln sollte man sich merken:
       \begin{align*}
-        \implies \hat{\rho} = \frac{1}{z} e^{-\beta \hat{H}} && \beta = \frac{1}{k_B T} \\
+        \implies \hat{\rho} = \frac{1}{Z} e^{-\beta \hat{H}} && \beta = \frac{1}{k_B T} \\
       \end{align*}
       %
       \emph{Kanonische Zustandsumme}
@@ -782,13 +794,13 @@ Temperatur $T$. Was ist der statistische Operator $\hat{\rho}$ ?
          Z = \trace e^{-\beta \hat{H}} 
       \end{align*}
       %
-      Minimum von $[\rho] \equiv $ Freie Energie.
+      Minimum von $F[\hat{\rho}] \equiv $ Freie Energie.
       %
       \begin{align*}
         F = -k_B T \ln{Z} 
       \end{align*}
       %
-      Bemerkung: $\hat{\rho} = e^{-\beta \hat{H}} P_N$
+      Bemerkung: $\hat{\rho} = e^{-\beta \hat{H}} P_N$ %TODO
     \end{enumerate}
     Weitere thermodynamische Variablen %
     \begin{align*}
@@ -998,11 +1010,14 @@ thrmodynamischen Limes $( \frac{\Delta E}{N} \to 0)$.
           \item Falls $\abs{B} < J$ so geht $M \to \tanh(\beta B) \to N \sign(B)$
             Im Grundzustand $ \Ket{m_1 = \sign B}$.
         \end{itemize}
-      \item Hohe Temperatur $k T \gg J, \abs{B}$ \\
+    \item Hohe Temperatur $k T \gg J, \abs{B}$ \\
         %
-        \begin{align*}
-          M = N \frac{2}{3} \frac{B}{k_B T} && \text{ \emph{Curie-Gesetz} }
-        \end{align*}
+        \begin{theorem*}[ Curie-Gesetz ]
+            \begin{align*}
+                M = N \frac{2}{3} \frac{B}{k_B T}
+            \end{align*}
+        \end{theorem*}
+
         %
         
     \end{itemize}
@@ -1017,110 +1032,115 @@ Es handelt sich also um ein offenses System im Gleichgewicht mit
   \item Einem W\"armebad bei Temperatur $T$.
   \item Einem Teilchenreservoir mit chemischem Potential $\mu$.
 \end{itemize}
-\subsection*{Beispiel: Wasserspiegel}
+\begin{beispiel} Wasserspiegel
+    
+\end{beispiel}
+
 % insert graphics here
-\subsection*{Gro\ss{}kanonisches Potential (Thermodynamik)}
+\begin{definition} Gro\ss{}kanonisches Potential der Thermodynamik
+    %
+    \begin{align*}
+      \Phi(T, \mu) = U\left( S (T, \mu), N(T, \mu) \right) - 
+      T S(T, \mu)  - \mu N(T, \mu) 
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      T = \left( \pd{U}{S} \right)_{X, N} && \mu = \left( \pd{ U}{N} \right)_{X, T} \\
+      S = - \left( \pd{F}{T} \right)_{X, \mu} && N = -\left( \pd{\Phi}{\mu} \right)_{X, T} \\
+    \end{align*}
+\end{definition}
+
 %
-\begin{align*}
-  \Phi(T, \mu) = U\left( S (T, \mu), N(T, \mu) \right) - 
-  S(T, \mu) T - N(T, \mu) \mu
-\end{align*}
-%
-%
-\begin{align*}
-  T = \left( \pd{U}{S} \right)_{X, N} && \mu = \left( \pd{ U}{N} \right)_{X, T} \\
-  S = - \left( \pd{F}{T} \right)_{X, \mu} && N = -\left( \pd{\Phi}{\mu} \right)_{X, T} \\
-\end{align*}
-%
-\begin{description}
-  \item[Postulat] Thermodynamisches Gleichgewicht besteht genau dann, wenn
+\begin{postulat}
+    Thermodynamisches Gleichgewicht besteht genau dann, wenn
     die Entropie $S$ maximal ist. Oder \"Aquivalent, das gro\ss{}kanonische
-    Potential $\Phi$ maximal ist.
-  \item[Definition] Funktional des gro\ss{}kanonischen Potentials
+    Potential $\Phi$ minimal ist.
+\end{postulat}
+
+\begin{definition}
+    Funktional des gro\ss{}kanonischen Potentials
     (Statistische Physik)
     %
     \begin{align*}
-      \Phi[\hat{\rho}] = E \left[ \hat{\rho} \right] - T S [\hat{\rho}]
-      - \mu N[ \hat{\rho}]
+        \Phi[\hat{\rho}] = E \left[ \hat{\rho} \right] - T S [\hat{\rho}]
+        - \mu N[ \hat{\rho}]
     \end{align*}
     %
     wobei %
     \begin{align*}
-      N [\hat{\rho}] = \trace (\hat{\rho} \hat{N})
+        N [\hat{\rho}] = \trace (\hat{\rho} \hat{N})
     \end{align*}
     %
-    Wir minimieren nun $\Phi[\hat{\rho}]$ unter $\hat{\rho}$ mit
-    $ \trace \hat{\rho} = 1$. Daraus folgt der statistische Operator.
+\end{definition}
+        
+Wir minimieren nun $\Phi[\hat{\rho}]$ unter $\hat{\rho}$ mit
+$ \trace \hat{\rho} = 1$. Daraus folgt der statistische Operator.
+%
+\begin{align*}
+    \text{Statistischer Operator} && & \hat{\rho} = \frac{1}{Z} 
+    e^{- \beta (\hat{H} - \mu \hat{N})} \\
+    \text{Zustandsumme } && & Z = \trace e^{-\beta (\hat{H} - \mu \hat{N})}  \\
+    \text{Gro\ss{}kanonisches Potential}  && &
+    \Phi (T, \mu) = -k_B T \ln{Z} 
+\end{align*}
     %
-    \begin{align*}
-      \text{Statistischer Operator} && & \hat{\rho} = \frac{1}{Z} 
-      e^{- \beta (\hat{H} - \mu \hat{N})} \\
-      \text{Zustandsumme } && & Z = \trace e^{-\beta (\hat{H} - \mu \hat{N})}  \\
-      \text{Gro\ss{}kanonisches Potential}  && &
-      \Phi (T, \mu) = -k_B T \ln{Z} 
-    \end{align*}
-    %
-\end{description}
 \subsection*{Kanonisch und Gro\ss{}kanonisch}
+
 \begin{itemize}
   \item Kanonisch 
-    \begin{itemize}
-      \item Hilbert-Raum f\"ur $N$-Teilchen $\mathcal{H}_N$.
-      \item Hamilton-Operator $H_N: \mathcal{H}_N \to \mathcal{H}_N$.
-      \item Statistischer Operator $\hat{\rho}_{K, N} = \frac{1}{Z_k(N)} 
-        e^{-\beta \hat{H}_N} : \mathcal{H}_N \to \mathcal{H}_N$
-      \item Zustandsumme $Z_K(N) = \trace_{\mathcal{H}_N} e ^{-\beta \hat{H}_N}$
-    \end{itemize}
-  \item Gro\ss{}kanonisch:
-    \begin{itemize}
-      \item Hilbert-Raum f\"ur beliebige Teilchenzahl $\mathcal{H}$.
-        %
-        \begin{align*}
-          \mathcal{H} = \bigoplus_{N=0}{\infty} \mathcal{H}_N
-        \end{align*}
-        %
-        \begin{align*}
-           \text{Projektor } &&&  \hat{\rho}_N : \mathcal{H} \to \mathcal{H}_N \\
+    \begin{align*}
+        & \text{Hilbert-Raum f\"ur N-Teilchen} && \mathcal{H}_N. \\
+        & \text{Hamilton-Operator } && H_N:\mathcal{H}_N \to \mathcal{H}_N. \\
+        & \text{Statistischer Operator} && \hat{\rho}_{K, N} = \frac{1}{Z_K(N)}  
+        e^{-\beta \hat{H}_N} : \mathcal{H}_N \to \mathcal{H}_N \\
+               & \text{Zustandsumme } && Z_K(N)= \trace_{\mathcal{H}_N} e ^{-\beta \hat{H}_N} \\
+    \end{align*}
+
+  \item Gro\ss{}kanonisch
+      \begin{align*}
+          & \text{Hilbert-Raum f\"ur beliebige Teilchenzahl}  &&
+          \mathcal{H} = \bigoplus_{N=0}^{\infty} \mathcal{H}_N \\
+          & \text{Projektor } &&  \hat{P}_N : \mathcal{H} \to \mathcal{H}_N \\
           %
-           \text{Hamilton-Operator } &&&  \mathcal{H}: \mathcal{H} \to \mathcal{H},
-          \mathcal{H}_N = \hat{\rho}_N \hat{H} \hat{\rho}_N \\
+          & \text{Hamilton-Operator } &&  \hat{H}: \mathcal{H} \to \mathcal{H}, \quad
+          \hat{H}_N = \hat{P}_N \hat{H} \hat{P}_N \\
           %
-           \text{Statistischer-Operator } &&&
+          & \text{Statistischer-Operator } &&
           \hat{\rho}_{GK} = \frac{1}{Z_{\text{GK}}} e^{-\beta (\hat{H} - 
           \mu \hat{N})}: \mathcal{H}\to \mathcal{H} \\
           %
-           \text{Teilchenzahl-Operator } &&&  \hat{N} = \sum_{N=0}^{\infty} N
-          \hat{\rho}_N \text{ oder } \hat{N} \Ket{\Psi} = N \Ket{\Psi}
+          & \text{Teilchenzahl-Operator } &&  \hat{N} = \sum_{N=0}^{\infty} N
+          \hat{P}_N \text{ oder } \hat{N} \Ket{\Psi} = N \Ket{\Psi}
           \quad\forall\, \Ket{\Psi} \in \mathcal{H}_N \\
           %
-           \text{Zustandsumme } &&&  Z_{\text{GK}} = \trace_{\mathcal{H}} 
+          & \text{Zustandsumme } &&  Z_{\text{GK}} = \trace_{\mathcal{H}} 
           e^{- \beta (\hat{H} - \mu \hat{N})}
-        \end{align*}
-        %
-        %
-        \begin{align*}
-          \hat{\rho}_{N, K}& = \hat{\rho}_N \hat{\rho}_{\text{GK}} \hat{\rho}_N
+      \end{align*}
+      %
+      %
+      \begin{align*}
+          \hat{\rho}_{N, K}& = \hat{P}_N \hat{\rho}_{\text{GK}} \hat{P}_N
           e^{- \beta \mu N} \frac{Z_{\text{GK}}}{Z_{K,N}} \\
           %
           \hat{\rho}_{\text{GK}} & = \frac{1}{Z_{\text{GK}}} \sum_{N=0}^{\infty}
           Z_K (N) \hat{\rho}_{K, N} e^{\beta \mu N} \\
-          Z_{\text{GK}} (\mu)  & = \sum_{N = 0}^{ \infty} e^{\beta \mu N} Z_k(N) \\
-          Z_{\text{GK}} (\mu)  & = \trace_{\mathcal{H}} \left( e^{-\beta(\hat{H} - \mu \hat{N})}  \right) \\
-      & = \sum_{N=0}^{ \infty} \trace_{\mathcal{H}_N} \\
-            \left( e^{-\beta(\hat{H} - \mu \hat{N})} \right) 
-            & = \sum_{N=0}^{\infty} 
-            \underbrace{\trace_{\mathcal{H}} \left( e^{-\beta \hat{H}_N} \right) e^{\beta \mu N}}_{Z_K(N)}
-        \end{align*}
-        %
-    \end{itemize}
-  \item Gro\ss{}kanonisch
+          Z_{\text{GK}} (\mu)  & = \sum_{N = 0}^{ \infty} e^{\beta \mu N} Z_k(N) 
+          = \trace_{\mathcal{H}} \left( e^{-\beta(\hat{H} - \mu \hat{N})}  \right) \\
+          & = \sum_{N=0}^{ \infty} \trace_{\mathcal{H}_N} 
+          \left( e^{-\beta(\hat{H} - \mu \hat{N})} \right)  \\
+          & = \sum_{N=0}^{\infty} 
+          \underbrace{\trace_{\mathcal{H}} \left( e^{-\beta \hat{H}_N} \right) e^{\beta \mu N}}_{Z_K(N)}
+      \end{align*}
+      %
 \end{itemize}
 \subsection*{Fluktuation der Teilchenzahl}
 %
+ Wahrscheinlichkeit daf\"ur, dass das System sich in einem Mikrozustand mit 
+ $N$ Teilchen befindet.
 \begin{align*}
-  P(N) & = \text{ Wahrscheinlichkeit daf\"ur, dass das System sich in einem 
-  Mikrozustand mit $N$ Teilchen befindet} \\
-  &  = \Braket{\hat{P}_N} = \Braket{\delta (\hat{N} - N)} 
+    P(N)  & = 
+     \Braket{\hat{P}_N} = \Braket{\delta (\hat{N} - N)} 
   = \frac{1}{Z_{\text{GK}}} \trace_{\mathcal{H}} = \hat{P}_N
   e ^{-\beta (\hat{H} - \mu \hat{N})} \\ & = 
   \frac{Z_K(N)}{Z_{\text{GK}}} e^{\beta M N}
@@ -1181,6 +1201,7 @@ Es handelt sich also um ein offenses System im Gleichgewicht mit
     $F(T, N) = -k_B T \ln{Z_K}$ & $\Phi = -k_B T \ln{Z_{\text{GK}}}$ \\
     \hline 
   \end{tabular}
+  \caption{\"Ubersicht der Ensembles der statistischen Physik}
 \end{table}
 %
 
