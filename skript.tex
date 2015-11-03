@@ -1213,4 +1213,226 @@ $ \trace \hat{\rho} = 1$. Daraus folgt der statistische Operator.
 \end{table}
 %
 
+\section*{Klassische Statistische Physik}
+\emph{Schwabl Kapitel 2, Nolting Band 6 Kapitel 1}
+Das Problem besteht aus Mikrozust\"anden eines Systems von $N$-Teilchen.
+%
+\begin{description}
+  \item[Problem]
+    \begin{align*}
+      \text{Mikrozust\"ande } && (q,p) \in \R^{6\N} \\
+      \text{Zeitmittelung} && A_z = \frac{1}{T_z} \int_{0}^{T_z} \d{t} A(q(t),p(t)) \\
+      \text{Ensemblemittelung} && A_E = \int_{}^{} \d{q}\d{p} A(q,p) \rho(q,p) \\
+    \end{align*}
+  \item[Ergodenhypothese] %
+    \begin{align*}
+      A_E = \lim_{T_z\to  \infty} \lim_{N\to  \infty} A_Z
+    \end{align*}
+    %
+\end{description}
+Klassische Physik und das Postulat der statistischen Physik bestimmen 
+$\rho(q,p)$ nicht. Deshalb benutzt man die Quantentheorie und das Postulat
+der klassichen statistischen Physik. Auf diese Art und Weise erh\"alt man
+die Quantenstatistik. Diese ergibt im klassischen Grenzfall wieder die
+klassische Statistische Physik. 
+\begin{description}
+  \item[Klassicher Grenzfall] 
+    Beispiel: Fermi-Gas mit Fermi-Temperatur $T_F$ \\
+      %
+      \begin{align*}
+        T < T_F:& \quad \text{ Fermi-Dirac-Verteilung } f(\varepsilon)
+        = \frac{1}{1 + e^{\beta(\varepsilon - \mu)}} \\
+        T \gg T_F: & \quad \text{ Maxwell-Boltzmann-Verteilung} f(\varepsilon)
+        = c e^{-\beta \varepsilon}
+      \end{align*}
+      %
+      Elektronen im Metall: $T_F \approx \SI{10e3 }{\kelvin} \text{ bis } \SI{10e4}{\kelvin}$
+      %
+      \begin{align*}
+        H_e^3 \quad: \quad T_F \approx \SI{3}{\kelvin}
+      \end{align*}
+      % 
+      % TODO: Picture of quantum oscillators
+\end{description}
+
+\begin{description}
+  \item[Mikrokanonisches Ensemble]  $(q, p ) \in \R^{6 N}$
+    %
+    \begin{align*}
+      \rho(q, p) = \frac{1}{w(E)} \delta\left( H(q,p) - E \right)
+      \frac{1}{N!} \frac{1}{h^{3N}} \\
+      w(E, N) = \frac{1}{N!} \frac{1}{h^{3 N}} \int_{}^{} \d{q}\d{p}
+      \delta(H(q,p)-E) \\
+      \text{Entropie } S(E, N) = k_B \ln{w(E,N)} \\
+    \end{align*}
+    $w(t) \Delta E$ entspricht dem Phasenraumvolumen der Mikrozust\"ande mit
+    Energie $m[E, E + \Delta E]$.
+    % TODO: Picture of phase space
+  \item[Kanonisches Ensemble] 
+    %
+    \begin{align*}
+      \mu (q,p) = \frac{1}{Z_K} e^{-\beta H(q,p)} \frac{1}{N!} \frac{1}{h^{3N}} \\
+      Z_K = \frac{1}{N!} \frac{1}{h^{3N}} \int_{}^{} \d{q} \d{p} e^{-\beta H(q,p)}
+    \end{align*}
+    Die freie Energie Schreibt sich als
+    %
+    \begin{align*}
+      F(T, N) = -k_B T \ln{Z_K(T,N)}
+    \end{align*}
+    %
+  \item[Gro\ss{}kanonisches Ensemble] 
+    %
+    %
+    \begin{align*}
+      Z_{\text{GK}} (T, \mu) & = \sum_{N=0}^{\infty} e^{\beta \mu} Z_K (T, N) \\
+      & \implies \Phi(T, \mu) = -k_B T \ln{Z_{\text{GK}}(T,\mu)} \\
+      \\
+      \rho(q,p) & = \frac{1}{Z_{\text{GK}}} \sum_{N=0}^{\infty} e^{-\beta\left( 
+      H_N(q_N,p_N) - \mu N\right)} \frac{1}{N h^{3N}} \delta(q-q_N) \delta(p-p_N)
+    \end{align*}
+    %
+\end{description}
+\begin{itemize}
+  \item %
+    \begin{align*}
+      0 = \left\{ H,P \right\} = \left\{ H, H \right\} \dd{p}{H}
+    \end{align*}
+    %
+  \item Entropie 
+    %
+    \begin{align*}
+      S & \neq - k_B \int_{}^{} \d{q} \d{p} \rho(q,p) \ln{\rho(q,p)} \\
+        & = -k_B \int_{}^{} \d{q} \d{p} \rho(q,p) \ln{\left( 
+  \rho(q,p) N! h^{3N}\right)}
+    \end{align*}
+    %
+  \item Mit $Z$ Zwangsbedingung wird $6N$ zu $6N - 2Z$ und $3N$ zu $3N - Z$.
+  \item Vorfaktor $h^{-3N}$
+  \item Erwartungswert 
+    %
+    \begin{align*}
+      \Braket{A} \propto \frac{h^{3N}}{h^{3N}} = 1
+    \end{align*}
+    %
+  \item Die Entropie $S$ und die Freie Energie $F$ sind von der Form
+    %
+    \begin{align*}
+      S(h) = S + c N \ln{h} \\
+      F(h) = F + c' N \ln{h}
+    \end{align*}
+    Also schlussfolgerung sind diese Werte nicht experimentell messbar.
+    %
+    Bemerkung: die Konstante $c'$ wiederspricht dem 3. Hauptsatz der
+    Thermodynamik, aber das ist wegen des klassischen Limits kein Problem.
+\end{itemize}
+
+\begin{description}
+  \item[Vorfakor $N!$] 
+    In der Quantentheorie gibt es austauschsymmetrie zwischen identischen
+    Teilchen.
+    \begin{itemize}
+      \item Erwartungswert
+        %
+        \begin{align*}
+          \Braket{A} \propto \frac{N!}{N!} = 1
+        \end{align*}
+        %
+      \item $S, F, \Phi \propto N$, also sind sie extensive Gr\"o\ss{}en.
+    \end{itemize}
+  \item[Gibbs-Paradoxon]
+    Wir haben zwei urspr\"unglich getrennte Systeme die addiert werden.
+    % TODO: Picture of system
+    Es gibt ein Gleichgewicht, also 
+    %
+    \begin{align*}
+      T_1 = T_2 && P_1 = P_2
+    \end{align*}
+    %
+    F\"ur eine Mischung von 2 Gasen 
+    %
+    \begin{align*}
+      N! \to N_1! N_2!
+    \end{align*}
+    %
+    Mit $N$ unterscheidbare Teilchen.
+  \item [Beispiel] Klassisches ideales Gas. \\
+    $N$ Teilchen im Volumen $V$.
+    \begin{align*}
+      H(\vec{r}, \vec{P}) = \sum_{i=1}^{ N} \frac{\vec{P}_1 ^2}{ 2m}
+      + \sum_{j = 1}^{ N} v(\vec{r}_j) \\
+      V(\vec{r}) = 
+      \begin{cases}
+        0 & \text{f\"ur } \vec{r} \in V \\
+        \infty & \text{f\"ur } \vec{r} \not\in V \\
+      \end{cases}
+    \end{align*}
+%
+    \item[Mikrokanonisches Ensemble]
+      %
+      \begin{align*}
+        \Omega(E) = \frac{1}{N!} \frac{1}{h^{3N}} \int_{}^{} \d{^{3N} r}
+        \int_{}^{} \d{^{3N} p} \quad \Theta(E - H(\vec{r}, \vec{P}))
+      \end{align*}
+      Wobei
+      %
+      \begin{align*}
+        \Theta(x) = \begin{cases}
+          1 & x>1 \\
+          0 & x <0 \\
+        \end{cases}
+      \end{align*}
+      Die Heaviside Theta Funktion ist.
+      %
+      Die Integrale stellen ein Phasenraumvolumen der Energie $< E $ dar.
+      Wir werden nun diese Gr\"o\ss{}e berechnen. In diesem Integral k\"onnen
+      wir anstatt \"uber $R^{3N}$ nur \"uber das Volumen integrieren.
+      %
+      \begin{align*}
+        \Omega(E) & = \frac{1}{N!} \frac{1}{h^{3N}} \underbrace{\int_{V^N}^{} \d{^{3N} r}}_{V^N}
+        \int_{\R^{3N}}^{} \d{^{3N} p} \Theta(E-\sum_{i=1}^{N} \frac{\vec{P}_1}{2M}) \\
+        & = \frac{V^N}{ N! h^{3N}} C_{3N} R ^{3N}
+      \end{align*}
+      %
+      mit %
+      \begin{align*}
+        R = \sqrt{2 m E} && C_{3N} = \frac{\pi^\frac{3N}{2}}{(\frac{3N}{2})!}
+      \end{align*}
+      %
+      Damit folgt
+      %
+      \begin{align*}
+        \Omega(E) = \frac{V^N}{N! h^{3N}} \frac{\pi^\frac{3N}{2}}{(\frac{3N}{2})!}
+        (2mE)^\frac{3N}{2}
+      \end{align*}
+      und 
+      %
+      \begin{align*}
+        w(E) = \frac{d\Omega}{dE} = \frac{V^N}{N! h^{3N}} \frac{\pi^{3 n / 2}}{
+        (\frac{3N}{2} - 1)!} (2 m )^{3 N / 2} E ^{ 3 N /2 - 1} \\
+        S = - k_B \ln{w(E)} = k_B N \left[ \ln{V} - \ln{h^3} - \ln{N}
+        + 1 + \frac{3}{2} \ln{(\pi) } + \frac{3}{2} \ln{(2m)} + \frac{3}{2} \ln{E}
+      - \frac{3}{2} \ln{(\frac{3}{2} N)} + \frac{3}{2}\right]
+      \end{align*}
+      %
+      Wobei die Stirling Formel benutzt wurde f\"ur
+      %
+      \begin{align*}
+        N \gg 1 \quad \left(\frac{E}{N}, \frac{V}{N} \text{ endlich}\right)
+      \end{align*}
+      %
+      %
+      \begin{align*}
+        S(E, N, V) = k_B N \left\{  \ln{ \left[ 
+              \frac{V}{N} \left( \frac{E}{N} \right)^{3 / 2} \left( 
+        \frac{4 \pi m }{ h^2 3}\right)^{3 / 2} \right] } + \frac{5}{2} \right\}
+      \end{align*}
+      %
+      <++>
+      %
+      <++>
+\end{description}
+
+
+
+
 \end{document}
