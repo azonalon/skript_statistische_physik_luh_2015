@@ -47,6 +47,7 @@
 \newcommand{\oo}{\infty}
 \newcommand{\sign}{\operatorname{sign}}
 \newcommand{\Forall}{\quad\forall\,}
+\newcommand{\GK}{\text{GK}}
 \renewcommand{\d}[1]{\,d#1\,}
 \usepackage{braket}
 \usepackage{centernot}
@@ -1236,7 +1237,7 @@ der klassichen statistischen Physik. Auf diese Art und Weise erh\"alt man
 die Quantenstatistik. Diese ergibt im klassischen Grenzfall wieder die
 klassische Statistische Physik. 
 \begin{description}
-  \item[Klassicher Grenzfall] 
+  \item[Klassischer Grenzfall] 
     Beispiel: Fermi-Gas mit Fermi-Temperatur $T_F$ \\
       %
       \begin{align*}
@@ -1271,7 +1272,7 @@ klassische Statistische Physik.
   \item[Kanonisches Ensemble] 
     %
     \begin{align*}
-      \mu (q,p) = \frac{1}{Z_K} e^{-\beta H(q,p)} \frac{1}{N!} \frac{1}{h^{3N}} \\
+      \rho(q,p) = \frac{1}{Z_K} e^{-\beta H(q,p)} \frac{1}{N!} \frac{1}{h^{3N}} \\
       Z_K = \frac{1}{N!} \frac{1}{h^{3N}} \int_{}^{} \d{q} \d{p} e^{-\beta H(q,p)}
     \end{align*}
     Die freie Energie Schreibt sich als
@@ -1306,7 +1307,7 @@ klassische Statistische Physik.
   \rho(q,p) N! h^{3N}\right)}
     \end{align*}
     %
-  \item Mit $Z$ Zwangsbedingung wird $6N$ zu $6N - 2Z$ und $3N$ zu $3N - Z$.
+  \item Mit $Z$ Zwangsbedingungen wird $6N$ zu $6N - 2Z$ und $3N$ zu $3N - Z$.
   \item Vorfaktor $h^{-3N}$
   \item Erwartungswert 
     %
@@ -1320,7 +1321,7 @@ klassische Statistische Physik.
       S(h) = S + c N \ln{h} \\
       F(h) = F + c' N \ln{h}
     \end{align*}
-    Also schlussfolgerung sind diese Werte nicht experimentell messbar.
+    Als Schlussfolgerung sind diese Werte nicht experimentell messbar.
     %
     Bemerkung: die Konstante $c'$ wiederspricht dem 3. Hauptsatz der
     Thermodynamik, aber das ist wegen des klassischen Limits kein Problem.
@@ -1356,10 +1357,10 @@ klassische Statistische Physik.
     %
     Mit $N$ unterscheidbare Teilchen.
   \item [Beispiel] Klassisches ideales Gas. \\
-    $N$ Teilchen im Volumen $V$.
+    $N$ Teilchen im Potential $V$.
     \begin{align*}
-      H(\vec{r}, \vec{P}) = \sum_{i=1}^{ N} \frac{\vec{P}_1 ^2}{ 2m}
-      + \sum_{j = 1}^{ N} v(\vec{r}_j) \\
+      H(\vec{r}, \vec{p}) = \sum_{i=1}^{ N} \frac{\vec{P}_i ^2}{ 2m}
+      + \sum_{j = 1}^{ N} V(\vec{r}_j) \\
       V(\vec{r}) = 
       \begin{cases}
         0 & \text{f\"ur } \vec{r} \in V \\
@@ -1371,7 +1372,7 @@ klassische Statistische Physik.
       %
       \begin{align*}
         \Omega(E) = \frac{1}{N!} \frac{1}{h^{3N}} \int_{}^{} \d{^{3N} r}
-        \int_{}^{} \d{^{3N} p} \quad \Theta(E - H(\vec{r}, \vec{P}))
+        \int_{}^{} \d{^{3N} p} \quad \Theta(E - H(\vec{r}, \vec{p}))
       \end{align*}
       Wobei
       %
@@ -1427,12 +1428,282 @@ klassische Statistische Physik.
         \frac{4 \pi m }{ h^2 3}\right)^{3 / 2} \right] } + \frac{5}{2} \right\}
       \end{align*}
       %
-      <++>
+      
       %
-      <++>
 \end{description}
+\subsubsection*{Ideales klassisches Gas im kanonisches Ensemble}
 
+%
+\begin{align*}
+  Z_K = \frac{1}{N!\frac{}1}{h^{3n}} \int_{\R^{3n}}^{} \d{^{3N}r}
+  \int_{\R^{3N}}^{} \d{^{3N}r} e^{-\beta H (\vec{r}, \vec{p})} 
+\end{align*}
+%
+%
+\begin{align*}
+  H(\vec{r}, \vec{p}) & = \sum_{i=1}^{ N} \frac{\vec{r}_i^2}{2m} +
+  \sum_{i=1}^{N} V(\vec{r}_1) && V(\vec{r}) = \begin{cases}
+  0 & \vec{r} \in V \\
+  \infty & \vec{r} \not \in V
+  \end{cases} 
+  \\ & = \sum_{i=1}^{N} H(\vec{r}_i, \vec{r}_2)
+\end{align*}
+%
+Also folgt %
+\begin{align*}
+  Z_k = \frac{1}{N!} \frac{1}{h^{3N}} \underbrace{\left(  \int_{\R^{3N}}^{}
+  \d{^{3N} r} e^{-\beta \sum_{i=1}^{N} V(\vec{r}_i)} \right)
+}_{= \left( \int_{}^{} \d{^3r}  \cdot 1 \right)^N}  \underbrace{\left( \int_{\R^{3N}}^{} \d{^{3N}p} e^{-\beta \sum_{i=1}^{N} \frac{\vec{p}_i^2}{2m}} \right)
+}_{= \left( \int_{\R}^{} \d{p} e^{-\beta \frac{p^2}{2m}} \right)^{3N}}
+\end{align*}
+%
+%
+\begin{align*}
+  Z_K = \frac{1}{N!} \frac{1}{h^{3N}} V^N \left( \sqrt{2 \pi} \sqrt{m k T} \right)^{3N} \\
+  F(T, N, V) = -k_B T \ln{Z_K} = -k_B T N
+  \left\{ \ln{ \left[ \frac{V}{N} (\frac{2 \pi m k_B T}{h^2})^\frac{3}{2} \right]
+  + 1} \right\} \\ 
+\end{align*}
+%
+Wobei die Stirling-Formel benutzt wurde f\"ur $N \gg 1$.
+%
+\begin{align*}
+  S(T, N, V) & = - \left( \pd{F}{T} \right)_{N,V} \\
+             & = k N f(T, V, N) + \frac{3}{2} k_B N
+\end{align*}
+%
+Die Nebenbedingung lautet, dass
+%
+\begin{align*}
+  \lim_{T\to  0 } S(T) \neq 0
+\end{align*}
+%
+F\"ur die Innere Energie gilt
+%
+\begin{align}
+  U(T, V, N) = F + TS = \frac{3}{2} N k_B T
+  \label{eq:A}
+\end{align}
+%
+Der Druck ist 
+%
+\begin{align}
+  P & = - \left( \pd{F}{V} \right)_{T, N} = k_B T N \frac{1}{V} \\
+    & \iff PV = N k_B T
+  \label{eq:B}
+\end{align}
+%
+A und B sind Zustandsgleichungen des idealen Gases.
+%
+\begin{align*}
+  C_V = ( \pd{U}{T} ) = \frac{3}{2} N k_B && \text{Gleichverteilungssatz}
+\end{align*}
+%
+\subsubsection*{Maxwell-Geschwindigkeitsverteilung}
+%
+\begin{align*}
+  dN = m(\vec{v}) \d{^3 v}
+\end{align*}
+%
+Dies Entspricht der Anzahl der Teilchen mit Geschwindigkeiten 
+in einem Volumen $ \d{^3v }$um $\vec{v}$.
+$m(\vec{v})$ ist die Geschwindigkeitsverteilung.
+%
+\begin{align*}
+  n(\vec{v}) & = \Braket{ \sum_{i=1}^{ N } \delta(\vec{v} - \vec{v}_i)} 
+              = \frac{1}{Z_K} \frac{1}{N'} \frac{1}{h^{3N}} 
+  \int_{\R^{3N}}^{} \d{^{3N}r}\int_{\R^{3N}}^{} \d{^{3N} p }
+  \sum_{i=1}^{N} \delta(\vec{v} - \vec{v}_i) e^{-\beta H (\vec{r}, \vec{p})} \\
+  & = \frac{1}{Z_k} \frac{1}{N!} \frac{1}{h^{3N}} V^N 
+  \left( 
+    \sum_{i=1}^{N} \int_{\R^{3N}}^{} \d{^{3N}v}
+    \delta (\vec{v} - \vec{v}_i) e^{-\beta \sum_{i=1}^{N} }
+    \right) \\
+  & = \frac{1}{Z_k} \frac{1}{N!} \frac{1}{h^{3N}} V^N
+  \left(   \sum_{i=1}^{N} e^{-\beta \frac{m}{2} \vec{v}^2}
+    \left( \sqrt{2 \pi} \sqrt{\frac{kT}{M}} \right)^{3(N-1)}
+    \delta (\vec{v} - \vec{v}_i) e ^{-\beta \sum_{i=1}^{N}} \right) \\
+     & \implies N(\vec{v})  = \left( \frac{m}{2 \pi k T} \right) ^{3/2}
+      e^{-\beta \frac{m}{2} \vec{v}^2}
+      \d{^3 v}  = \sum_{i=1}^{N} v^2 \d{v}
+  \frac{m}{2} \vec{v}_i^2 
+\end{align*}
+%
+Wir schreiben f\"ur die Delta-Funktion $\delta(\vec{r}) = \delta(x) \delta(y)
+\delta(z)$.
 
+\subsubsection*{Gro\ss{}kanonisches Ensemble}
+%
+\begin{align*}
+  Z_{\GK} & = \sum_{n=0}^{\infty} Z_k (N) e^{ \beta M N} = 
+  \sum_{N=0}^{\infty} \frac{V^N}{N!} \left( \frac{2 \pi m k_B T}{h^2} \right) 
+  ^{3 \frac{N}{2}} e^{\beta \mu N} \\
+& = \exp\left[ V e^{b \mu} \left(  \frac{2 \pi m k_B T}{ h^2} \right)^{\frac{3}{2}} \right].
+\end{align*}
+%
+%
+\begin{align*}
+  \Phi_{\GK} (T, \mu, V) = -k_B T \ln{Z_\GK} = -k_B T V e^{\beta \mu}
+  \left( \frac{2 \pi m k_B T}{ h^2} \right)^{\frac{3}{2}}
+\end{align*}
+%
+Thermodynamik
+%
+\begin{align*}
+  N(T, \mu, V) = - \left( \pd{\Phi}{\mu} \right)_{T,V} = 
+  - \beta \Phi \\
+  P(T, \mu, V) = - \left( \pd{F}{V} \right)_{T, \mu} = 
+  - \frac{\Phi}{V} \\
+  \implies PV = N k_B T 
+\end{align*}
+%
+Die Teilchenzahlfluktuationen werden klein. In unserem Fall k\"onnen
+wir die mittlere Teilchenzahl berechnen, das haben wir schon gemacht.
+Aber auch das Schwankungsquadrat.
+\subsubsection*{Flukuationen der Teilchenzahl}
+%
+\begin{align*}
+  \bar{N} &  = \sum_{N = 1}^{ \infty} P(N) N  = \Braket{N} = 
+  N(T, \mu, V) = -\beta \Phi \\
+  \Delta N^2 = &  \sum_{N=0}^{ \infty} P(N) \left( N- \bar{N} \right)^2 
+  & =  \Braket{(\hat{N} - \bar{N})^2} = k T \pd{\Braket{\hat{N}}}{\mu} \\ &  = 
+  k_B T \pd{N}{\mu}
+\end{align*}
+%
+Die Relativen Fluktuationen sind von der Ordnung 
+%
+\begin{align*}
+  \frac{\Delta{}N}{\bar{N}} \propto \frac{1}{\sqrt{N}} 
+  \xrightarrow{\text{Thermodynamischer Limes}} 0  \\
+  \text{ oder } P(N) \xrightarrow{ } \to \delta(N - \bar{N})
+\end{align*}
+%
+% TODO: Zeichnung kanonisch vs gro\ss{}kanonisch.
+\subsection*{Thermodynamik I}
+Therie der W\"arme. Sie ist eine rein Makroskopische Theorie. Das bedeutet die
+Theorie ist selbst dann g\"ultig, wenn die Materie nicht aus Atome best\"unde.
+Das ist zuerst einmal eine pha\"anomenologische Theorie, das bedeutet sie ist
+basiert auf beobachtungen. Man hat sp\"ater auch versucht sie mathematisch
+kompakt zu beschreiben. Es geht hier um Systeme im Gleichgewicht und deren
+Quasi-Statische-Transformation. Was genau das bedeutet werden wir genauer auch
+in der n\"achsten Vorlesung diskutieren. Die Theorie der Systeme die sich
+schnell \"andern ist nicht die Theorie der thermodynamik, sondern eine andere.
+Wir beginnen mit den Grundlagen, den 4 Haupts\"atzen, oder auch die 3
+Haupts\"atze der Thermodynamik mit dem ``nullten'' Hauptsatz.  Beginnen wir mit
+den Grundbegriffen.  
+\begin{description} \item[Thermodynamische Variablen] Temperatur, Druck Voumen,
+      Magnetisierung und so weiter. Es gibt in dieser Theorie zwei gr\"o\ss{}en,
+      welche man variieren kann, die Temperatur und die Entropie. Wichtig
+      ist auch der begriff:
+    \item[Thermodynamischer Zustand (Makrozustand)]
+      Er ist eine charackterisierung des Makroskopischen Systems durch 
+      thermodynamische Variablen. Zum Beispiel
+      Temperatur, Druck f\"ur ein ideales Gas.
+    \item[Zustandsgleichungen] 
+      %
+      \begin{align*}
+        PV = N k_B T &&
+        M = \frac{\Theta}{T} B
+      \end{align*}
+      %
+      Wir haben damit au\ss{}erdem
+    \item[Zustandsfunktionen] 
+      %
+      \begin{align*}
+        \rho(T, P) = \frac{N}{V} = \frac{P}{k_B T}
+      \end{align*}
+      %
+      Sie k\"onnen sehen, dass wir hier 4 Variablen haben, die Gleichungen
+      eliminieren 2 Davon. Wir brauchen also noch eine Gleichung.
+      
+    \item[Keine Zustandsgr\"o\ss{}en] Dazu z\"ahlen 
+      die W\"arme und Arbeit
+      %
+      \begin{align*}
+        \delta{Q}
+      \end{align*}
+      %
+    \item[Zustandsgr\"o\ss{}en] Volumen $V$, Innere Energie $U$
+      werden zu $dV$ und $dU$.
+      Physikalisch gesehen beschreiben die Zustandsgr\"o\ss{}en den 
+      echten Zustand. In einem Gleichgewichtszustand sind die anderen gr\"o\ss{}en
+      fest gegeben.
+\end{description} 
+
+% TODO: Zeichnung extensive und intensive variablen
+In einem Gedankenexperiment haben wir zwei systeme mit einer undurchl\"assigen
+Wand. Es gibt dann Variablen der Folgenden Form
+\begin{itemize}
+  \item Extensive Variablen
+    %
+    \begin{align*}
+      X_{AB} = X_A + X_B && \iff &&  X \propto N, V, 
+    \end{align*}
+    %
+    Zum Beispiel f\"ur $X = V, N, M, U, F$.
+  \item Intensive Variablen
+    %
+    \begin{align*}
+      X_{AB} = X_A = X_B &&  \iff && X \propto N^0, V^0
+    \end{align*}
+    %
+    zum Beispiel f\"ur $X = T, P , B$.
+\end{itemize}
+Die obigen Gleichungen gelten im Gleichgewicht. Wenn man nicht im
+Gleichgewicht ist, so kann es sein dass einer der VAriablen nicht mehr
+extensiv ist. Wir fangen nun mit dem nullten Hauptsatz an.
+
+\subsubsection*{Der nullte Hauptsatz}
+Es gibt f\"ur jeden Hauptsatz formulierungen, welche \"aquivalent sind.
+ Wir brauchen f\"ur die Temperatur ein zus\"atzliches
+Postulat, da wir die Temperatur nicht nur aus den mikroskopischen Postulaten ableiten k\"onnen.
+\begin{enumerate}[I)]
+  \item Die Temperatur ist eine messbare charakteristische Eigenschaft
+    eines thermodynamischen Systems.
+  \item Im thermodynamischen Gleichgewicht ohne zeitliche \"anderung.
+    Wir k\"onnen dann eine Notation einf\"uhren 
+    $A \overset{T}{\simeq} B$
+
+    \begin{satz}
+      %
+      \begin{align*}
+        A \overset{T}{\simeq} B \text{ und } B \overset{T}{\simeq} c \implies
+        A \overset{T}{\simeq} c
+      \end{align*}
+      %
+    \end{satz}
+    Der beweis bleibt dem Leser als Hausaufgabe \"uberlassen.
+    % TODO: bild von system mit wand            
+    Mathematisch gesehen ist $\overset{T}{\simeq}$ eine \"Aquivalenzrelation
+    %
+    \begin{align*}
+      \text{reflexiv } A \overset{T}{\simeq} A \\
+      \text{symmetrisch } A \overset{T}{\simeq} B \iff B \overset{T}{\simeq} A\\
+      \text{transitiv } \text{ 0. Hauptsatz}
+    \end{align*}
+    %
+    \begin{itemize}
+      \item Die \"Aquivalenzklassen sind alle thermodynamischen Systeme,
+        die miteinander im thermodynamischen Gleichgewicht stehen.
+
+      \item Thermometer
+        \begin{itemize}
+          \item Referenz System mit messbarer Eigenschaft $\Theta$,
+            die verschieden f\"ur jede Klasse ist.
+        \end{itemize}
+      \item Empirische Temperatur $\Theta$
+      \item Schlussfolgerung: Alle Systeme in einer Klasse haben die 
+        gleiche Temperatur $\Theta$. Zwei Systeme in vershiedenen Klassen
+        haben immer zwei verschiedene Temperaturen. Sie m\"ussen die 
+        Temperatur als eine Zahl mit index verstehen, die charakterisiert
+        welche Systeme im Gleichgewicht sind.
+        % TODO: Zweichnung einer kartoffel mit verschiedenen thetas darin
+    \end{itemize}
+\end{enumerate} 
+Man kann dasselbe auch mit der Masse eines K\"orpers vergleichen.
+$A \overset{M}{\simeq} B$.  Wir werden sehen, dass man die empirische Temperatur durch
+eine Absolute Temperratur ersetzen kann. Aber das muss man schritt f\"ur
+Schritt konstruieren.
 
 
 \end{document}
