@@ -1218,6 +1218,8 @@ $ \trace \hat{\rho} = 1$. Daraus folgt der statistische Operator.
 \emph{Schwabl Kapitel 2, Nolting Band 6 Kapitel 1}
 Das Problem besteht aus Mikrozust\"anden eines Systems von $N$-Teilchen.
 %
+
+
 \begin{description}
   \item[Problem]
     \begin{align*}
@@ -1704,6 +1706,260 @@ Man kann dasselbe auch mit der Masse eines K\"orpers vergleichen.
 $A \overset{M}{\simeq} B$.  Wir werden sehen, dass man die empirische Temperatur durch
 eine Absolute Temperratur ersetzen kann. Aber das muss man schritt f\"ur
 Schritt konstruieren.
+
+
+\subsection*{Thermodynamik II}
+\emph{Schwabl Kapitel 3; Nolting Band 4 Teil 2}
+Wir wollen zuerst \"Anderung der Energie eines makroskopischen Systems diskutieren.
+Es gibt im wesentlichen 3 Arten von Energien in der analytischen Mechanik.
+\begin{itemize}
+  \item Mechanische Energie (Arbeit)
+    %
+    \begin{align*}
+      \delta W & = - P \d{V} \text{ (Gas Expansion)} \\
+               & = - \vec{B} \d{\vec{M}}
+    \end{align*}
+    Das Vorzeichen von $P$ ist eine Konvention. Wenn ds System Arbeit leistet,
+    dann ist die Energie negativ.
+    %
+    % TODO: Picture of system with potential energy.
+    Es gibt keine Einheitliche bezeichnung der Energie. Man kann also 
+    $W$ oder $E$ schreiben.
+    %
+    
+  \item  Chemische Energie. Dies ist die Energie die man gewinnt oder verliert
+    wenn man die Anzahl der Teilchen \"andert.
+    %
+    \begin{align*}
+      \delta C = \sum_{j}^{} \mu_j \d{N}_j
+    \end{align*}
+    %
+    Wenn $ \d{N}_1 > 0$ dann wird Materie hinzugef\"uhrt.
+    % TODO: Example Picture of system
+  \item W\"arme. In der Thermodynamik benutzt man die mikrostruktur der Systeme
+    nicht, deshalb die folgende Definition: Die W\"arme ist die Energie\"anderung
+    unter \"anderung der Temperatur
+    %
+    \begin{align*}
+      \d{T} > 0 \to \delta Q > 0 \\
+      \d{T} < 0 \to \delta Q < 0 \\
+    \end{align*}
+    %
+\end{itemize}
+\begin{description}
+  \item[1. Hauptsatz] Es gibt eine Zustandsgr\"o\ss{}e $U$ (Innere Energie).
+    %
+    \begin{align*}
+      \d{U} = \delta Q + \delta W + \delta C
+    \end{align*}
+    %
+    Die Bedeutung ist, dass W\"arme eine Form der Energie darstellt, und
+    dass die Energieerhaltung gilt.
+\end{description}
+Eine kurze wiederholung \"uber mathematische Konzepte bez\"uglich der 
+Differentiale.
+\subsubsection*{Mathematische Grundlagen}
+Wir betrachten eine Funktion mit mehreren Variablen
+%
+\begin{align*}
+  f: \R^n \to \R, && \text{ Totales Differential } df (\text{ Differentialform}) \\
+                  && \d{f} = \sum_{j=1}^{n} \pd{f}{x_j} \d{x_j} \quad 
+  \d{f}(\vec{x})\vec{v}  = \vec{\Delta} f(\vec{x}) \cdot \vec{v}
+\end{align*}
+%
+\begin{definition}
+  Eine Differentialform $w$ ist geschlossen, wenn
+  %
+  \begin{align*}
+    \oint_{\gamma}^{} w = 0 \quad\forall\, \text{ geschlossene Integrationswege } \gamma
+  \end{align*}
+  %
+\begin{theorem*}
+  Eine Differentialform ist geschlossen, genau dann wenn alle Integrale
+  \"uber eien Weg eindeutig sind.
+  %
+  \begin{align*}
+    w \text{ geschlossen } \iff \int_{A}^{B} \omega \text{ ist eindeutig f\"ur
+    alle Wege zwischen $A$ und $B$} \\
+    \iff \omega \text{ ist exakt (auch totale Differentialform)} \\
+    \iff \text{ Es existiert eine Stammfunktion $f$ mit $ \d{f} = \omega$}
+  \end{align*}
+  %
+\end{theorem*}
+  Umgekehrt, wenn eine Form nicht geschlossen ist, dann h\"angt das Integral vom Weg ab.
+  Da bedeutet f\"ur uns in der Thermodynamik:
+  Es gibt Gr\"o\ss{}en, welche Zustandsgr\"o\ss{}en sind
+  %
+  \begin{align*}
+    \d{V}, \d{S}, \d{v}
+  \end{align*}
+  %
+  Sie sind Exakte differentialformen und $U, S, V$ sind Zustandsgr\"o\ss{}en.
+  Allerdings sind
+  %
+  \begin{align*}
+    \delta Q, \delta W, \delta C
+  \end{align*}
+  %
+  nicht geschlossen.
+\end{definition}
+\begin{beispiel}
+  Wir betrachten ein System, in dem die thermodynamischen VAriablen 
+  Temperatur und Volumen sind.
+  % TODO: Picture of this system.
+  %
+  \begin{align*}
+      U = U(T,V) \\
+      \int_{\gamma_1}^{} \d{U} = \int_{\gamma_2}^{} \d{V} = 
+      \int_{A}^{B} \d{U} = U(B)-U(A)\\
+      Q \neq Q(T, V) \\
+      \int_{\gamma_1}^{} \delta Q \neq \int_{\gamma_2}^{} \delta Q
+  \end{align*}
+  %
+\end{beispiel}
+Anmerkung: \\
+Konvservative Kraft
+%
+\begin{align*}
+  \int_{\gamma}^{} \vec{F} \d{\vec{r}} = \int_{A}^{B} \vec{F} \cdot \d{\vec{r}}
+\end{align*}
+%
+Dies bedeutet, es existiert eine Potentielle Energie $V(\vec{r})$ und
+%
+\begin{align*}
+  \vec{F} = - \vec{\Delta} V(\vec{r}) 
+\end{align*}
+%
+Wir haben jetzt die M\"oglichkeit, eine erste theoretische Maschine zu definieren,
+die Carnotsche-Maschine. Wir werden die Maschine zuerst abstrakt einf\"uhren, 
+und dann ein Beispiel f\"ur die Arbeit der Maschine f\"ur ein ideales Gas sehen.
+\begin{description}
+  \item[Carnot-Maschine] 
+    Sie ist eine theoreitsche Maschine, deren Arbeitssubstanz
+    ein Thermodynamisches System ist. Es gibt zwei W\"armeb\"ader mit Temperaturen
+    $\Theta_{1,2}, \Theta_{3,4}$. Die Maschine durchl\"auft einen Kreisprozess mit
+    4 reversiblen thermodynamischen Transformationen.
+    %
+    % TODO: graph of cyclic process
+    %
+    Reversibel bedeutet, dass das System Quasistatisch ist. Man nimmt also 
+    immer thermodynamisches Gleichgewicht an, trotzdem \"andert sich der Zustand des Systems
+    langsam.
+    Das System ist Umkehrbar, falls $\delta Q = T \d{S}$.
+    % TODO: Graph
+    \begin{enumerate}[I)]
+      \item $1\to2$ 
+        
+        Isotherme Absorption der W\"armemenge $Q_{1,2} > 0$ aus dem warmen
+        W\"armebad. Dies ist Isotherm, also das W\"armebad hat immer diesselbe Temperatur.
+
+      \item $2\to3$
+        
+        Adiabatische Abk\"uhlung von $\Theta_{1,2}$ zu $\Theta_{3,4}$.
+        Das bedeutet, dass arbeit geleistet wird $W_{2,3} < 0$.
+
+      \item $3\to4$
+
+        Isotherme Abgabe der W\"armemenge $Q_{3,4} < 0$ an das kalte W\"armebad.
+
+      \item $4\to1$
+
+        Adiabatische Erw\"armung von $\Theta_{3,4}$. Es wird arbeit
+        am System geleistet $W_{4,1} > 0$.
+    \end{enumerate}
+    Wir haben es hier mit einem Kreisprozess zu tun. Das bedeutet wenn man die totale
+    \"Anderung der Energie \"ubre einem Zyklus betrachtet, so sollte sich nichts
+    \"andern.
+    %
+    \begin{align*}
+      0 = \oint_{}^{} \d{U}  && \d{U} = \delta W + \delta Q \\
+      \Delta W = \oint_{}^{} \delta W = - \oint_{}^{} \delta Q
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \Delta W = \int_{1}^{2} \delta W + \int_{2}^{3} \delta W + 
+      \int_{3}^{4} \delta W + \int_{4}^{1} \delta W = W_{1,2} +W_{2,3} +W_{3,4} +W_{4,1}  \\
+      \Delta Q = Q_{1,2} + Q_{2,3} + Q_{3,4} + Q_{4,1}
+    \end{align*}
+    %
+    $Q_{2,3}$ und $Q_{4,1}$ kann man hierbei vergessen. Die geleistete Arbeit
+    ist  $\Delta W < 0$. Wir k\"onnen somit einen Wirkungsgrad definieren:
+    %
+    \begin{align*}
+      \eta = \frac{-\Delta W}{Q_{1,2}} = \frac{Q_{1,2} + Q_{3,4}}{Q_{1,2}}
+      = 1 + \frac{Q_{3,4}}{Q_{1,2}} \le 1
+    \end{align*}
+    %
+  \item[Ideales Gas als Arbeitssubstanz]
+    \begin{enumerate}[I)]
+      \item Isotherme Expansion
+        % TODO: Picture of Bath
+      \item Adiabatische Expansion
+        % TODO: picture of isolated bath
+      \item Isotherme Kompression. Wir wollen, dass das System Energie abgibt.
+        % TODO: picture of bath
+      \item Adiabatische Kompression
+        % TODO: Picture of isolated bath
+    \end{enumerate} 
+    Zustandsgleichungen des idealen Gases. Wir benutzen die empirische Temperatur $\theta$.
+    %
+    \begin{align*}
+      P V = n k_B f(\theta) \\
+      V = \frac{3}{2} N k_B f(\theta) \\
+    \end{align*}
+    %
+    Wir haben als Variablen Druck und Volumen. Man kann also ein PV-Diagramm
+    erstellen, um einen Zyklus zu visualisieren. Eine isotherme Transformation
+    f\"uhrt zu einem konstanten $\theta$ und damit auch zu konstanten
+    $ \d{U} $ sowie $\delta W = -\delta Q$.
+    %
+    \begin{align*}
+      Q_{1,2} = \int_{1}^{2} \delta Q =  - \int_{1}^{2} \delta W = 
+      \int_{1}^{2} P \d{V} = \int_{1}^{2} \frac{N k_B f (\theta_{1,2})}{V}
+      \d{ V} = N k_B f(\theta_{1,2}) \ln{\left( \frac{V_2}{V_1} \right)} \\
+      Q_{3,4} = N k_B f(\theta_{3,4}) = \ln{\left( \frac{V_1}{V_2} \right)}
+    \end{align*}
+    %
+    Eine Adiabatische Transformation ist gleichbedeutend mit
+    %
+    \begin{align*}
+      \d{U} = \delta W \\
+      \implies \frac{3}{2 } N k_B \d{f} = - P \d{V} = - N k_B f(\theta) 
+      \frac{1}{V} \d{V}
+      \implies \frac{3}{2} \dd{f}{f} = - \frac{\d{V}}{V} \\
+      \implies f^{\frac{3}{2}}(\theta) \cdot V = \text{ Konstant }
+    \end{align*}
+    %
+    Dies bedeutet
+    %
+    \begin{align*}
+      f(\theta_{1,2}) V_2 = f(\theta_{3,4}) V_3 \\
+      f(\theta_{3,4}) V_4 = f(\theta_{1,2}) V_1 
+    \end{align*}
+    %
+    Daraus folgt
+    %
+    \begin{align*}
+      \frac{V_2}{V_1} = \frac{V_3}{V_4}
+    \end{align*}
+    %
+    Wir k\"onnen nun den Wirkungsgrad ausschreiben
+    %
+    \begin{align*}
+      \eta = 1 + \frac{Q_{3,4}}{Q_{1,2}} = 1 + \frac{N k_B f(\theta_{3,4}) \ln{\left( \frac{V_4}{V_3} \right)}}{
+      N k_B f(\theta_{1,2}) \ln{\left( \frac{V_2}{V_1} \right)}} = 1 -
+      \frac{f(\theta_{3,4}}{f(\theta_{1,2})}
+    \end{align*}
+    %
+    Man kann damit eine absolute Temperaturskala definieren \"uber
+    %
+    \begin{align*}
+      \eta = 1 - \frac{T_{3,4}}{T_{1,2}} && \eta = 1 - \frac{T}{T_0}
+    \end{align*}
+    %
+    
+\end{description}
 
 
 \end{document}
