@@ -27,7 +27,7 @@
     {\bfseries}                   % Theorem head font
     {}                          % Punctuation after theorem head
     {.0em}                       % Space after theorem head
-    {\thmnote{#3}#1}  % Theorem head spec (can be left empty, meaning ‘normal’)
+    {\thmnote{#3}#1 \\}  % Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{mytheoremstyle}
 \newtheorem*{theorem*}{}
 
@@ -1219,7 +1219,6 @@ $ \trace \hat{\rho} = 1$. Daraus folgt der statistische Operator.
 Das Problem besteht aus Mikrozust\"anden eines Systems von $N$-Teilchen.
 %
 
-
 \begin{description}
   \item[Problem]
     \begin{align*}
@@ -1504,22 +1503,23 @@ A und B sind Zustandsgleichungen des idealen Gases.
 \subsubsection*{Maxwell-Geschwindigkeitsverteilung}
 %
 \begin{align*}
-  dN = m(\vec{v}) \d{^3 v}
+  dN = n(\vec{v}) \d{^3 v}
 \end{align*}
 %
-Dies Entspricht der Anzahl der Teilchen mit Geschwindigkeiten 
-in einem Volumen $ \d{^3v }$um $\vec{v}$.
-$m(\vec{v})$ ist die Geschwindigkeitsverteilung.
+Dies ist die Anzahl der Teilchen mit Geschwindigkeiten $\vec{v}$
+in einem Volumen $ \d{^3v }$.
+$n(\vec{v})$ ist die Geschwindigkeitsverteilung.
 %
 \begin{align*}
+  % TODO: Fix Equation, its wrong
   n(\vec{v}) & = \Braket{ \sum_{i=1}^{ N } \delta(\vec{v} - \vec{v}_i)} 
-              = \frac{1}{Z_K} \frac{1}{N'} \frac{1}{h^{3N}} 
+              = \frac{1}{Z_K} \frac{1}{N!} \frac{1}{h^{3N}} 
   \int_{\R^{3N}}^{} \d{^{3N}r}\int_{\R^{3N}}^{} \d{^{3N} p }
   \sum_{i=1}^{N} \delta(\vec{v} - \vec{v}_i) e^{-\beta H (\vec{r}, \vec{p})} \\
   & = \frac{1}{Z_k} \frac{1}{N!} \frac{1}{h^{3N}} V^N 
   \left( 
     \sum_{i=1}^{N} \int_{\R^{3N}}^{} \d{^{3N}v}
-    \delta (\vec{v} - \vec{v}_i) e^{-\beta \sum_{i=1}^{N} }
+    \delta (\vec{v} - \vec{v}_i) e^{-\beta \sum_{i=1}^{N}  }
     \right) \\
   & = \frac{1}{Z_k} \frac{1}{N!} \frac{1}{h^{3N}} V^N
   \left(   \sum_{i=1}^{N} e^{-\beta \frac{m}{2} \vec{v}^2}
@@ -1712,6 +1712,7 @@ Schritt konstruieren.
 \emph{Schwabl Kapitel 3; Nolting Band 4 Teil 2}
 Wir wollen zuerst \"Anderung der Energie eines makroskopischen Systems diskutieren.
 Es gibt im wesentlichen 3 Arten von Energien in der analytischen Mechanik.
+
 \begin{itemize}
   \item Mechanische Energie (Arbeit)
     %
@@ -1734,11 +1735,11 @@ Es gibt im wesentlichen 3 Arten von Energien in der analytischen Mechanik.
       \delta C = \sum_{j}^{} \mu_j \d{N}_j
     \end{align*}
     %
-    Wenn $ \d{N}_1 > 0$ dann wird Materie hinzugef\"uhrt.
+    Wenn $ \d{N}_1 > 0$ dann wird Materie hinzugeführt.
     % TODO: Example Picture of system
-  \item W\"arme. In der Thermodynamik benutzt man die mikrostruktur der Systeme
-    nicht, deshalb die folgende Definition: Die W\"arme ist die Energie\"anderung
-    unter \"anderung der Temperatur
+  \item Wärme. In der Thermodynamik benutzt man die Mikrostruktur der Systeme
+    nicht, deshalb die folgende Definition: Die Wärme ist die Energieänderung
+    unter Änderung der Temperatur
     %
     \begin{align*}
       \d{T} > 0 \to \delta Q > 0 \\
@@ -1753,16 +1754,16 @@ Es gibt im wesentlichen 3 Arten von Energien in der analytischen Mechanik.
       \d{U} = \delta Q + \delta W + \delta C
     \end{align*}
     %
-    Die Bedeutung ist, dass W\"arme eine Form der Energie darstellt, und
+    Dies bedeutet, dass W\"arme eine Form der Energie darstellt, und
     dass die Energieerhaltung gilt.
 \end{description}
-Eine kurze wiederholung \"uber mathematische Konzepte bez\"uglich der 
-Differentiale.
+Eine kurze Wiederholung \"uber mathematische Konzepte der Differentiale.
 \subsubsection*{Mathematische Grundlagen}
-Wir betrachten eine Funktion mit mehreren Variablen
+Wir betrachten eine Funktion $f$ mit mehreren Variablen und definieren 
+die Differentialform $\d{f}$.
 %
 \begin{align*}
-  f: \R^n \to \R, && \text{ Totales Differential } df (\text{ Differentialform}) \\
+  f: \R^n \to \R, &&   \\
                   && \d{f} = \sum_{j=1}^{n} \pd{f}{x_j} \d{x_j} \quad 
   \d{f}(\vec{x})\vec{v}  = \vec{\Delta} f(\vec{x}) \cdot \vec{v}
 \end{align*}
@@ -1771,18 +1772,19 @@ Wir betrachten eine Funktion mit mehreren Variablen
   Eine Differentialform $w$ ist geschlossen, wenn
   %
   \begin{align*}
-    \oint_{\gamma}^{} w = 0 \quad\forall\, \text{ geschlossene Integrationswege } \gamma
-  \end{align*}
+    \oint_{\gamma}^{} w = 0  \end{align*}
   %
-\begin{theorem*}
+    f\"ur alle geschlossenen Integrationswege $\gamma$ gilt.
+\end{definition}
+\begin{theorem*}[Geschlossene Differentialformen]
   Eine Differentialform ist geschlossen, genau dann wenn alle Integrale
-  \"uber eien Weg eindeutig sind.
+  über einen Weg eindeutig sind.
   %
   \begin{align*}
-    w \text{ geschlossen } \iff \int_{A}^{B} \omega \text{ ist eindeutig f\"ur
+    w \text{ geschlossen } &  \iff \int_{A}^{B} \omega \text{ ist eindeutig f\"ur
     alle Wege zwischen $A$ und $B$} \\
-    \iff \omega \text{ ist exakt (auch totale Differentialform)} \\
-    \iff \text{ Es existiert eine Stammfunktion $f$ mit $ \d{f} = \omega$}
+    & \iff \omega \text{ ist eine exakte(totale) Differentialform} \\
+    & \iff \text{ Es existiert eine Stammfunktion $f$ mit $ \d{f} = \omega$}
   \end{align*}
   %
 \end{theorem*}
@@ -1802,21 +1804,20 @@ Wir betrachten eine Funktion mit mehreren Variablen
   \end{align*}
   %
   nicht geschlossen.
-\end{definition}
-\begin{beispiel}
-  Wir betrachten ein System, in dem die thermodynamischen VAriablen 
+
+  Wir betrachten ein System, in dem die thermodynamischen Variablen 
   Temperatur und Volumen sind.
+
   % TODO: Picture of this system.
   %
   \begin{align*}
-      U = U(T,V) \\
-      \int_{\gamma_1}^{} \d{U} = \int_{\gamma_2}^{} \d{V} = 
+    U & = U(T,V) \\
+      \int_{\gamma_1}^{} \d{U} & = \int_{\gamma_2}^{} \d{V} = 
       \int_{A}^{B} \d{U} = U(B)-U(A)\\
-      Q \neq Q(T, V) \\
-      \int_{\gamma_1}^{} \delta Q \neq \int_{\gamma_2}^{} \delta Q
+      Q  & \neq Q(T, V) \\
+      \int_{\gamma_1}^{} \delta Q & \neq \int_{\gamma_2}^{} \delta Q
   \end{align*}
   %
-\end{beispiel}
 Anmerkung: \\
 Konvservative Kraft
 %
@@ -1824,10 +1825,10 @@ Konvservative Kraft
   \int_{\gamma}^{} \vec{F} \d{\vec{r}} = \int_{A}^{B} \vec{F} \cdot \d{\vec{r}}
 \end{align*}
 %
-Dies bedeutet, es existiert eine Potentielle Energie $V(\vec{r})$ und
+Dies bedeutet, es existiert eine potentielle Energie $V(\vec{r})$ und
 %
 \begin{align*}
-  \vec{F} = - \vec{\Delta} V(\vec{r}) 
+  \vec{F} = - \vec{\nabla} V(\vec{r}) 
 \end{align*}
 %
 Wir haben jetzt die M\"oglichkeit, eine erste theoretische Maschine zu definieren,
@@ -1835,7 +1836,7 @@ die Carnotsche-Maschine. Wir werden die Maschine zuerst abstrakt einf\"uhren,
 und dann ein Beispiel f\"ur die Arbeit der Maschine f\"ur ein ideales Gas sehen.
 \begin{description}
   \item[Carnot-Maschine] 
-    Sie ist eine theoreitsche Maschine, deren Arbeitssubstanz
+    Sie ist eine theoretische Maschine, deren Arbeitssubstanz
     ein Thermodynamisches System ist. Es gibt zwei W\"armeb\"ader mit Temperaturen
     $\Theta_{1,2}, \Theta_{3,4}$. Die Maschine durchl\"auft einen Kreisprozess mit
     4 reversiblen thermodynamischen Transformationen.
@@ -1878,9 +1879,9 @@ und dann ein Beispiel f\"ur die Arbeit der Maschine f\"ur ein ideales Gas sehen.
     %
     %
     \begin{align*}
-      \Delta W = \int_{1}^{2} \delta W + \int_{2}^{3} \delta W + 
-      \int_{3}^{4} \delta W + \int_{4}^{1} \delta W = W_{1,2} +W_{2,3} +W_{3,4} +W_{4,1}  \\
-      \Delta Q = Q_{1,2} + Q_{2,3} + Q_{3,4} + Q_{4,1}
+      \Delta W  & = \int_{1}^{2} \delta W + \int_{2}^{3} \delta W + 
+      \int_{3}^{4} \delta W + \int_{4}^{1} \delta W  \\ & = W_{1,2} +W_{2,3} +W_{3,4} +W_{4,1}  \\
+      \Delta Q & = Q_{1,2} + Q_{2,3} + Q_{3,4} + Q_{4,1}
     \end{align*}
     %
     $Q_{2,3}$ und $Q_{4,1}$ kann man hierbei vergessen. Die geleistete Arbeit
@@ -1891,7 +1892,7 @@ und dann ein Beispiel f\"ur die Arbeit der Maschine f\"ur ein ideales Gas sehen.
       = 1 + \frac{Q_{3,4}}{Q_{1,2}} \le 1
     \end{align*}
     %
-  \item[Ideales Gas als Arbeitssubstanz]
+  \item[Ideales Gas als Arbeitssubstanz] $ $ \\
     \begin{enumerate}[I)]
       \item Isotherme Expansion
         % TODO: Picture of Bath
@@ -1915,10 +1916,10 @@ und dann ein Beispiel f\"ur die Arbeit der Maschine f\"ur ein ideales Gas sehen.
     $ \d{U} $ sowie $\delta W = -\delta Q$.
     %
     \begin{align*}
-      Q_{1,2} = \int_{1}^{2} \delta Q =  - \int_{1}^{2} \delta W = 
+      Q_{1,2} & = \int_{1}^{2} \delta Q =  - \int_{1}^{2} \delta W = 
       \int_{1}^{2} P \d{V} = \int_{1}^{2} \frac{N k_B f (\theta_{1,2})}{V}
       \d{ V} = N k_B f(\theta_{1,2}) \ln{\left( \frac{V_2}{V_1} \right)} \\
-      Q_{3,4} = N k_B f(\theta_{3,4}) = \ln{\left( \frac{V_1}{V_2} \right)}
+      Q_{3,4} & = N k_B f(\theta_{3,4}) \ln{\left( \frac{V_1}{V_2} \right)}
     \end{align*}
     %
     Eine Adiabatische Transformation ist gleichbedeutend mit
@@ -1944,22 +1945,276 @@ und dann ein Beispiel f\"ur die Arbeit der Maschine f\"ur ein ideales Gas sehen.
       \frac{V_2}{V_1} = \frac{V_3}{V_4}
     \end{align*}
     %
-    Wir k\"onnen nun den Wirkungsgrad ausschreiben
+    Wir k\"onnen nun den Wirkungsgrad ausschreiben als
     %
     \begin{align*}
       \eta = 1 + \frac{Q_{3,4}}{Q_{1,2}} = 1 + \frac{N k_B f(\theta_{3,4}) \ln{\left( \frac{V_4}{V_3} \right)}}{
-      N k_B f(\theta_{1,2}) \ln{\left( \frac{V_2}{V_1} \right)}} = 1 -
-      \frac{f(\theta_{3,4}}{f(\theta_{1,2})}
+      N k_B f(\theta_{1,2}) \ln{\left( \frac{V_2}{V_1} \right)}} 
+      = 1 - \frac{f(\theta_{3,4})}{f(\theta_{1,2})} 
     \end{align*}
     %
-    Man kann damit eine absolute Temperaturskala definieren \"uber
+    Man kann damit eine absolute Temperaturskala definieren über 
     %
     \begin{align*}
       \eta = 1 - \frac{T_{3,4}}{T_{1,2}} && \eta = 1 - \frac{T}{T_0}
     \end{align*}
     %
+\end{description}
+
+\subsection*{Thermodynamik III}
+
+  \subsubsection*{[2. Hauptsatz der Thermodynamik]}
+   
+    Wir Beobachten eine Brechung der Zeitumkehrsymmetrie in der makroskopischen
+    Welt.
+    % TODO: Figure irreversible thermodynamische Transformationen
+    Es gibt für den 2. Hauptsatz sehr viele verschiedene Formulierungen.
+    Wir geben hier ein Paar Beispiele.
+    \begin{description}
+      \item[Kelvin] Es gibt keine Maschine, dessen einziger Effekt ist, 
+        wärme aus einem Bad zu entnehmen und Arbeit zu Produzieren.
+        % TODO: Skizze
+
+      \item[Clausius] Es gibt keine Maschine, die 
+        % TODO: Skizze
+      \item[Carnot] Es gibt keine Wärmemaschine, die einen höheren Wirkungsgrad
+        als die Carnot-Maschine besitzt. Also $\eta \le \eta_{\text{Carnot}}$.
+
+      \item[Perpetuum mobile 2. Art] Es gibt kein Perpetuum mobile 2. Art!
+    \end{description}
+\subsubsection*{Absolute Temperatur}
+%
+\begin{align*}
+  \eta = F (\theta_{1,2}, \theta_{3,4})
+\end{align*}
+%
+Ideales Gas:
+%
+\begin{align*}
+  \eta = 1 -\frac{f(\theta_{3,4}}{f(\theta_{1,2})}
+\end{align*}
+%
+Wir benutzen ein absolutes Thermometer, die Carnot-Maschine
+% TODO: Skizze
+%
+Die Temperatur $T$ ist die Lösung von
+\begin{align*}
+  \eta = 
+  \begin{cases}
+    F(T_0, T)  & T_0 > T \\ 
+    F(T, T_0), & T > T_0 \\
+  \end{cases} 
+\end{align*}
+%
+In der Wissenschaft benutzt man eigentlich nur eine Temperaturskala, die
+\subsubsection*{Kelvin-Temperatur-Skala}
+%
+\begin{align*}
+  T_0 = \SI{273,16}{\kelvin}
+\end{align*}
+%
+Dies ist der Gefrierpunkt von Wasser.
+%
+\begin{align*}
+  T = \begin{cases}
+    (1- \eta) T_0 & T < T_0 \\
+    \frac{T_0}{1- \eta} & T > T_0
+  \end{cases} 
+\end{align*}
+%
+Dies ist die theoretische Definition der Kelvin Temperaturskala.
+\subsubsection*{Entropie}
+Wir können nun zeigen, dass die Entropie existiert.
+Wir betrachten einen Carnot-Prozess
+%
+\begin{align*}
+  \oint (\delta Q)/T =\frac{Q_{1,2}}{T_{1,2}} +\frac{Q_{3,4}}{T_{3,4}} = 0
+\end{align*}
+%
+Ein beliebiger reversibler Kreisprozess ist eine Folge von unendlich vielen
+Carnot-Prozessen.
+%
+Es gilt
+\begin{align*}
+  \oint
+\frac{\delta Q}{T} = 0 
+\end{align*}
+%
+Für alle reversiblen Kreisprozesse. Wir finden also für die Größe
+%
+\begin{align*}
+  \d{S} =\frac{\delta Q}{T} 
+\end{align*}
+,dass sie eine geschlossene Differtialform ist.
+Die Stammfunktion $S$ von $\frac{\delta Q}{T}$ nennt man die \emph{Entropie}
+Eigenschaften der Entropie
+\begin{itemize}
+  \item Zustandsgröße
+    %
+    \begin{align*}
+      S = S (U, X, N)
+    \end{align*}
+    %
+  \item Sie ist extensiv
+  \item Bis auf eine Konstante eindeutig definiert
+  \item $ \d{U} = T \d{S} + \delta W(=-p \d{V}) + \delta C = (\mu \d{N})$. Wobei 
+
+\end{itemize}
+    Es ist wichtig, die obige Formel zu verstehen, weil sie uns viele Beziehungen
+    gibt, wenn man klassische Probleme untersucht.
+%
+\begin{align*}
+  \left( \pd{U}{S} \right)_{X, N} = T && \left( \pd{S}{U} \right)_{X, N} =\frac{1}{T}
+\end{align*}
+%
+Dies gilt nur, wenn die Funktionen monoton sind.
+%
+\begin{align*}
+  \left( \pd{S}{V} \right)_{U, N} =\frac{P}{T} && T \d{S} - p \d{V} = 0
+\end{align*}
+%
+\begin{description}
+  \item[Fundamentalgleichung (Euler-Gleichung)] 
+    %
+    \begin{align*}
+      S(\lambda U, \lambda X, \lambda N) = \lambda S (U, X, N)
+    \end{align*}
+    %
+    Diese gleichung beschreibt, dass die Entropie eine Lineare größe ist.
+    Wir berechnen die Ableitung nach $\lambda$
+    %
+    \begin{align*}
+      \left( \pd{S}{U} \right)_{V, N} U + \left( \pd{S}{V} \right)_{U,N}
+      + \left( \pd{S}{N} \right)_{V,U} N = S \\
+      & \iff 
+      \frac{V}{T} +\frac{PV}{T} +\frac{MN}{T} = S
+    \end{align*}
+    %
+    Euler-Gleichung:
+    %
+    \begin{align*}
+      U = ST - PV + \mu N
+    \end{align*}
+    %
+    Man muss verstehen, dass diese Gleichung mehr information enthält als
+    die Andere.
+    %
+    \begin{align*}
+      \d{U} = T \d{S} + S \d{T} - p \d{V} - V \d{P} + \mu \d{N} + N \d{\mu}
+    \end{align*}
+    %
+    Daraus folgt mit dem 1. Hauptsatz
+    %
+    \begin{align*}
+      0 = S \d{T} - V \d{P} + n \d{\mu}
+    \end{align*}
+    %
+    Sie wird die \emph{Gibbs-Duhem-Gleichung} gennant.
+    Man hat immer die Struktur intensiven Variable, gepaart mit einer Extensiven
+    Variable.
+\end{description}
+\subsubsection*{Irreversible Prozesse}
+%
+\begin{align*}
+  \eta^{\text{Reell}} &= 1 +\frac{Q_{3,4}}{Q_{1,2}} < \eta^{\text{Ideal}} = 1-\frac{T_{3,4}}{T_{1,2}} \\
+         & \implies \oint 
+\frac{\delta \theta}{T} =\frac{Q_{1,2}}{T_{1,2}} +\frac{Q_{3,4}}{T_{3,4}} < 0  \\
+\end{align*}
+%
+Das bedeutet, dass $\frac{\delta Q}{T}$ nicht exakt für irreversible Prozesse ist.
+Das bringt uns auch zur Formulierung des 2. Hauptsatzes
+\subsubsection*{2. Hauptsatz}
+\begin{itemize}
+  \item %
+    \begin{align*}
+      \d{S} \ge 
+      \frac{\delta Q}{T}
+    \end{align*}
+    %
+  \item 
+    Irreversible Transformationen im isolierten System sind gleichbedeutend
+    mit zunehmender Entropie.
+    \begin{description}
+      \item[Beispiel] Streben ins Gleichgewicht.
+        % TODO: Skizze
+        %
+        \begin{align*}
+          S_B - S_A = \int_{A}^{B} \d{S} = \int_{t_A}^{t_B} \dd{S}{t} \d{t}  > 0
+        \end{align*}
+        %
+    \end{description}
+  \item Ein isoliertes System im thermodynamischen ist im Gleichgewicht
+    genau dann wenn die Entropie maximal ist. Um dies zu illustrieren
+    berechnen wir ein Beispiel.
+\end{itemize}
+\begin{description}
+  \item[Anwendung] Wir benutzen die Extensitivität
+    %
+    \begin{align*}
+      U &= U_1 + U_2 \\
+      V &= V_1 + V_2 \\
+      N &= N_1 + N_2 \\
+      S &= S_1 + S_2 \\
+    \end{align*}
+    %
+    Diese Gleichungen beschreiben den Makrozustand.
+    %
+    \begin{align*}
+      S = S(U_1, U_2, V_1, V_2, N_1, N_2) = S_1 (U_1, V_1, N_1) + 
+      S_2 ( U_2, V_2, N_2)
+    \end{align*}
+    %
+    Allerdings gibt es für die Entropie mehrere Makrozustände 
+    $U_1, U_2, V_1, V_2, N_1, N_2$.
+    Im Gleichgewicht ist die Entropie $S$ maximal, mit der Nebenbedingung, 
+    dass $U = U_1 + U_2$ $V + V_1 + V_2$, $N = N_1 + N_2$.
+    Wie berechnen wir das? Man kann Lagrange-Multiplikatoren benutzen, aber
+    hier machen wir es einfacher. Da
+    %
+    \begin{align*}
+      S(U_1, V_1, N_1) = S (U_1, V_1, N_2) + S_2 (U- U_1, V- V_1, N- N_1)
+    \end{align*}
+    %
+    Wir maximieren nun diese Funktion
+    %
+    \begin{align*}
+      0 = \left( \pd{S}{U_1} \right)_{V_1, N_1} = \left( \pd{S_1}{U_1} \right)_{V_1, N_1}
+      - \left( \pd{S}{U_1} \right)_{V_1, N_1} |_{U_2 = U - U_1}
+      =\frac{1}{T_1} -\frac{1}{T_2} \implies T_1 = T_2
+    \end{align*}
+    %
+    Wir können dasselbe auch mit den anderen Variablen machen
+    %
+    \begin{align*}
+     0 =  \left( \pd{S}{V_1} \right)_{V_1, N_1} =\frac{P_1}{T_1} -\frac{P_2}{T_2}
+     \implies P_1 = P_2
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      0 = \left( \pd{S}{N_1} \right)_{U_1, V_2} = -\frac{ \mu_1}{T_1} + 
+\frac{      \mu_2}{T_2} \implies \mu_1 = \mu_2
+    \end{align*}
+    %
+    
     
 \end{description}
+\subsection*{3. Hauptsatz}
+\begin{itemize}
+  \item %
+    \begin{align*}
+      \lim_{T\to  0 } 
+      \frac{    S}{N} = 0
+    \end{align*}
+  \item %
+    \begin{align*}
+      \lim_{T \to 0}
+      C_x = T \left( \pd{S}{T} \right)_{x} = 0
+    \end{align*}
+    %
+  \item Der absolute Nullpunkt ist nicht erreichbar
+\end{itemize}
+
 
 
 \end{document}
