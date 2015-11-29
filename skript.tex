@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english, german]{babel}
+\usepackage{mhchem}
 \renewcommand{\baselinestretch}{1.05}
 \usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
 \usepackage[]{mathtools}
@@ -2057,7 +2058,7 @@ Eigenschaften der Entropie
     %
   \item Sie ist extensiv
   \item Bis auf eine Konstante eindeutig definiert
-  \item $ \d{U} = T \d{S} + \delta W(=-p \d{V}) + \delta C = (\mu \d{N})$. Wobei 
+  \item $ \d{U} = T \d{S} + \delta W(=-p \d{V}) + \delta C (=\mu \d{N})$
 
 \end{itemize}
     Es ist wichtig, die obige Formel zu verstehen, weil sie uns viele Beziehungen
@@ -2217,4 +2218,328 @@ Das bringt uns auch zur Formulierung des 2. Hauptsatzes
 
 
 
+\subsection*{Thermodynamik IV}
+Thermodynamische Potentiale sind Energiefunktionen der thermodynamischen
+Variablen.
+%
+\begin{align*}
+  U(S,X,N) && F(T, X, N), && \Phi(T,X, \mu)
+\end{align*}
+%
+Die äquivalenz der thermodynamischen Potentiale sind durch ihren ursprung
+aus der Legendre-Transformation gegeben.
+\begin{description}
+  \item[Thermisch Isoliertes System] (Mikrokanonisches Ensemble)
+    %
+    \begin{align*}
+      S, \left\{ X \right\}, \left\{ N \right\}
+    \end{align*}
+    %
+    Die innere Energie ist %
+    \begin{align*}
+      U(S, \left\{ x \right\}, \left\{ N \right\})
+    \end{align*}
+    %
+    Der erste Hauptsatz besagt
+    %
+    \begin{align*}
+      \d{U} = \delta Q + \sum_{j}^{} y_j \d{x}_j + \sum_{j}^{} \mu_j \d{ N}_j 
+    \end{align*}
+    %
+    $Y_j$ ist eine intensive thermodynamische Variable konjugiert zu $x_j$.
+    Ein Reversibler Prozess
+    %
+    \begin{align*}
+      \d{U}_{\text{rev}} = T \d{S} + \sum_{j}^{} y_j \d{x}_j + 
+      \sum_{j}^{} \mu_j \d{N}_j
+    \end{align*}
+    %
+    Daraus folgt
+    %
+    \begin{align*}
+      T & = \left( \pd{U}{S} \right)_{ \left\{ x \right\}, \left\{ N \right\} }
+      = T \left( S, \left\{ x \right\}, \left\{ N \right\} \right) \\
+      y_j & = \left( \pd{U}{x_j} \right)_{ T, \left\{ x_j \right\}, \left\{ N \right\} }
+      = T \left( S, \left\{ x \right\}, \left\{ N \right\} \right) \\
+      \mu_j & = \left( \pd{U}{N_j} \right)_{ T, \left\{ x \right\}, \left\{ N \right\} i \neq j }
+      = T \left( S, \left\{ x \right\}, \left\{ N \right\} \right) \\
+    \end{align*}
+    %
+  \item[Maxwell-Relationen] 
+    %
+    \begin{align*}
+      \left( \pd{T}{X} \right)_{S, N} = \pd{}{x} \pd{U}{S} = 
+      \pd{}{S} \pd{U}{x} = \left( \pd{y}{S} \right)_{X, N}
+    \end{align*}
+    %
+    Zum Beispiel
+    %
+    \begin{align*}
+      \left( \pd{T}{V} \right)_{S, N} = - \left( \pd{P}{S} \right)_{V, N}
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \left( \pd{P}{N} \right)_{S, V} = - \left( \pd{\mu}{V} \right)_{S, N}
+    \end{align*}
+    %
+    Irreversible Transformationen 
+    %
+    \begin{align*}
+      \delta Q < T \d{S} \implies \d{U}_{\text{irreversibel}} < \d{U}_{\text{reversibel}}
+    \end{align*}
+    %
+    Bei festen $S, \left\{ x \right\}, \left\{ N \right\}$ und $ \d{U}_{\text{reversibel}} = 0 $
+    ist $ \d{U}_{\text{irreversibel}} < 0$.
+    Ein Makrozustand 
+    %
+    \begin{align*}
+      S, \left\{ x \right\}, \left\{ N \right\}
+    \end{align*}
+    %
+    ist im Gleichgewicht, genau dann wenn $U$ minimal wird.
+  \item[Thermodynamisches isoliertes System mit intensiven mechanischen Variablen]
+    % TODO: Skizze
+    Die thermodynamischen Variablen sind
+    %
+    \begin{align*}
+      S, \left\{ y \right\}, \left\{ N \right\}
+    \end{align*}
+    %
+    Wir verwenden eine Legendre-Transformation
+    %
+    \begin{align*}
+      x_j \to y_j = \pd{U}{x_j}
+    \end{align*}
+    %
+    Man erhält damit die sogennante Enthalpie $H$
+    %
+    \begin{align*}
+      H(S, \left\{ y \right\}, \left\{ N \right\} ) = U -
+      \sum_{j}^{} y_j x_j
+    \end{align*}
+    %
+    Zum Beispiel ist
+    %
+    \begin{align*}
+      H(S, P, N) = U(S, V, N) + PV 
+    \end{align*}
+    %
+    Wir berechnen nun die Variation von $H$
+    %
+    \begin{align*}
+      \d{H}  = \d{U} - \sum_{j}^{} x_j \d{y}_j - \sum_{j}^{} y_j \d{x}_j 
+      = \delta Q - \sum_{j}^{} x_j \d{y}_j + \sum_{j}^{} \mu_j \d{N}_j
+    \end{align*}
+    %
+    Wir können nun ähnlich vorgehen wie bei der inneren Energie.
+    Zuerst betrachten wir reversible Prozesse
+    %
+    \begin{align*}
+      \d{H}_{\text{rev}} = T \d{S} - \sum_{j}^{} x_j \d{y}_j + \sum_{j}^{}
+      \mu_j \d{N}_j
+    \end{align*}
+    %
+    Daraus können wir ablesen
+    %
+    \begin{align*}
+      T = \left( \pd{H}{S} \right)_{ \left\{ y \right\}, \left\{ N \right\} }, &&
+      x_j = - \left( \pd{H}{y_j} \right)_{ S, \left\{ y_j \right\} i\neq j, \left\{ N \right\} }
+    \end{align*}
+    %
+    Man kann damit wieder die Maxwel Relationen ableiten
+    %
+    \begin{align*}
+      \left( \pd{T}{P} \right)_{S, N} = - \left( \pd{V}{S} \right)_{P, N}
+    \end{align*}
+    %
+    Auch interessant ist was für irreversible Prozesse geschieht, im Prinzip
+    ist das genau wie bei den vorigen Prozessen.
+    %
+    \begin{align*}
+      \delta Q < T \d{S} \implies \d{H}_{\text{irreversibel}} < \d{H}_{\text{reversibel}}
+    \end{align*}
+    %
+    Bei festen $S, \{y\}, \{N\}$ haben wir $ \d{H}_{\text{reversibel}} = 0$
+    und darum ist die Variation der Energie bei reversiblen Prozessen negativ
+    $ \d{H}_{\text{reversibel}} < 0$. 
+    Ein Makrozustand $S, \{y\}, \{N\}$ ist im thermodynamischen Gleichgewicht
+    genau dann wenn $H$ minimal ist.
+    Man kann dieses Spiel wiederholen für andere Kombinationen von Variablen.
+    Statt nur intensive oder extensive Variablnen zu nutzen kann man sie auch Mischen.
+    Es gibt eine Menge möglichkeiten diese zu variieren. Es gibt bestimmte
+    Kombinationen die eigenen konventionelle Buchstaben erhalten haben. 
+\end{description}
+
+Hier einige Beispiele
+\begin{description}
+  \item[Geschlossenes System (Kanonisches Ensemble)] 
+    % TODO: Skizze
+    %
+    \begin{align*}
+      & T, \{x\}, \{N\} \to \text{ Helmholtz freie Energie } F \\
+      & F(T, \{x\}, \{N\}) = U - TS
+    \end{align*}
+    %
+    Ein Makrozustand $T, \{x\}, \{N\}$ ist im thermodynamischen Gleichgewicht, genau
+    dann wenn $F$ minimal ist. Dies ist äquivalent zu der Idee der maximierung
+    der Entropie.
+  \item[Geschlossenes System mit intensiven mechanischen Variablen]
+    % TODO: Skizze
+    %
+    \begin{align*}
+      T, \{y\}, \{N\}, && G(T, \{y\}, \{N\}) & = F - \sum_{j}^{}x_j y_j \\
+                       && & =  U - TS - \sum_{j}^{} x_j y_j
+                       && & = H - TS
+    \end{align*}
+    %
+    Ein Name für $G$ ist \emph{(Gibbs'sche) Freie Energie}
+\end{description}
+\subsubsection*{Antwortfunktionen}
+Antwort eines thermodynamischen Systems auf einen äußeren Einfluss.
+Wir nehmen an, dass dieser Einfluss sehr klein ist, und alle Vorgänge
+reversibel sind (Quasistatisch). Wir betrachten zuerst ein intensive Variable
+$f$ welches eine von $T, y, \mu, B, P, \ldots $.
+Außerdem ein thermodynamisches Potential 
+%
+\begin{align*}
+  \Phi = \Phi(f)
+\end{align*}
+%
+Und die konjugierte extensive Variable 
+%
+\begin{align*}
+  F = \pm \pd{\Phi}{f}
+\end{align*}
+%
+Die Antwortfunktion ist gegeben durch die Variation der extensiven Variable
+bezüglich der intensiven Variable (Bis auf ein Vorzeichen), also 
+die zweite Ableitung des Potentials
+\begin{description}
+  \item[Antwortfunktion] 
+    %
+    \begin{align*}
+      A = \pm \pd{F}{f} = \pm \pd{^2 \Phi}{f^2}
+    \end{align*}
+    %
+\end{description}
+Beispiel
+\subsubsection*{Wärmekapazität}
+%
+\begin{align*}
+  \delta Q = C \d{T}
+\end{align*}
+%
+wobei $C \ge 0$.
+Es ist klar, dass die änderung dieser Variable auch von den anderen abhängt.
+Die isobare Wärmekapazität %
+\begin{align*}
+  C_P =(\frac{ \delta Q}{ \d{t}})_P = T \left( \pd{S}{T} \right)_P =
+  - T \left( \pd{^2 G}{T^2} \right)_P
+  % TODO: Skizze
+\end{align*}
+%
+\subsubsection*{Isochore Wärmekapazität}
+%
+\begin{align*}
+  C_v = \left(\frac{ \delta Q}{dT} \right)_V = T \left( \dd{S}{T} \right)_V
+  = - T \left( \pd{^2 F}{T^2} \right)_V
+\end{align*}
+%
+% TODO: Skizze
+\begin{description}
+  \item[Anmerkungen] 
+    %
+    \begin{align*}
+      C \ge 0 \implies \left( \pd{^2 F}{T^2} \right) \le 0
+    \end{align*}
+    %
+    Die spezifische Wärme ist
+    %
+    \begin{align*}
+\frac{      C}{N},\frac{ C}{V},\frac{ C}{\text{masse}}
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      C_V = \left( \pd{U}{T} \right)_{V, N}
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      C_P > C_V
+    \end{align*}
+    %
+    Für Luft ist 
+    %
+    \begin{align*}
+\frac{      C_P}{\text{Masse}} = \SI{1005}{\joule\per\kilogram\kelvin}
+\frac{      C_V}{\text{Masse}} = \SI{717}{\joule\per\kilogram\kelvin}
+    \end{align*}
+    %
+\end{description}
+\subsubsection*{Kompressibilität}
+%
+\begin{align*}
+  (f = P) && \d{V} = - V K \d{P} && K \ge 0
+\end{align*}
+%
+Wenn man den Druck erhöht, soll das System kleiner werden , deswergen das minuszeichen.
+Die isotherme Kompressibilität ist
+%
+\begin{align*}
+  K_T = -\frac{ 1}{V} \left( \pd{V}{P} \right)_{T} = 
+  -\frac{1}{V} \left( \pd{^2 G}{P^2} \right)_T \\
+  V = \left( \pd{G}{P} \right)_T
+\end{align*}
+% TODO: Skizze
+%
+Die Adiabatische Kompressibilität ist
+\begin{align*}
+  K_S = -\frac{ 1}{V} \left( \pd{V}{P} \right)_S = -\frac{ 1}{V}
+  \left( \pd{^2 H}{P^2} \right)_{S}
+\end{align*}
+%
+Sie ist wiederrum eine Antwortfunktion.
+% TODO: Skizze
+%
+\begin{align*}
+  K_T > K_S
+\end{align*}
+%
+\subsubsection*{Magnetische Suszeptibilität($f = B$)  }
+\begin{description}
+  \item[Isotherme Suszeptibilität]  
+    %
+    \begin{align*}
+      \chi_T = \left( \pd{M}{B} \right)_T= \left( \pd{^2 G}{B^2} \right)_T
+    \end{align*}
+    %
+  \item[Adiabatishe Suszeptibilität]
+    %
+    \begin{align*}
+      \chi_S = \left( \pd{M}{B} \right)_S = \left( \pd{^2 H}{B^2} \right)_S
+    \end{align*}
+    %
+\end{description}
+\subsubsection*{Thermischer Ausdehnungskoeffizient}
+Sie ist eine gemischte Antwortfunktion.
+% TODO: Skizze
+Wir haben ein Objekt und wollen es aufwärmen. Sie führen das Experiment für einen
+festen Druck durch. 
+%
+Ausdehnungskoeffizient:
+\begin{align*}
+  \rho_P = \left( \pd{V}{T} \right)_P = - \left( \pd{^2 G}{T, P} \right)
+\end{align*}
+%
+Ein einfaches Beispiel
+%
+\begin{align*}
+  \kappa_T - \kappa_S =\frac{ T V \alpha_P^2}{C_P}
+\end{align*}
+%
+
+
+\input{skript_2.tex}
 \end{document}

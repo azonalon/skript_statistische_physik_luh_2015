@@ -1,0 +1,482 @@
+\subsection*{Anwendungen und Rechenmethoden}
+
+\begin{itemize}
+    \item Reale Gase und Fl\"ussigkeiten
+    \item Ideale Quantengase
+    \item Magnetismus
+\end{itemize}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{p{5cm} | p{5cm}}
+        Ideales Gas & Reales Gas \\
+        \hline
+        1 Art von Teilchen & Gemisch (L\"osung) \\
+        Punktteilchen & Endliche Ausdehnung, Innere Struktur, Spaltung und Bindung \\
+        Keine Wechselwirkung & Wechselwirkung \\
+    \end{tabular}
+\end{table}
+\subsection*{Ideales Molek\"ulgas}
+Ideal ist hier im sinne von ``Keine Wechselwirkung'' gemeint. Wir betrachten 
+also ein verd\"unntes Gas.
+%
+\begin{align*}
+    \mathcal{H} = \bigotimes_{i=1}^{N} \mathcal{H}_i^{(1)} &&
+    H = \sum_{i=1}^{N} H_i^{(1)} && H_i^{(1)} = 
+    I_1 \otimes I_2 \otimes \ldots \otimes H_i \otimes I_{n-1} \otimes \ldots 
+\end{align*}
+%
+%
+\begin{align*}
+    [H_i^{(1)} , H_i^{(1)}]  = 0
+\end{align*}
+%
+
+%
+\begin{align*}
+    Z_N & = \trace_{\mathcal{H}^{(N)}} e ^{-\beta H(N)} = 
+    \trace_{\mathcal{H}^{(N)}} \prod_{i=1}^{N} e ^{-\beta H_i^{(1)}} \\
+    & = \trace_{\mathcal{H}_1^{(1)}}\trace_{\mathcal{H}_2^{(1)}} \ldots \trace_{\mathcal{H}_N^{(1)}} 
+    \prod_{i=1}^{N} e^{-\beta H^{1}_i} = \prod_{i=1}^{N} \trace_{\mathcal{H}_i^{(1)}} = 
+    \left( \trace_{\mathcal{H}_i^{(1)}} e ^{-\beta H^{(1)}} \right)^{N}
+\end{align*}
+%
+%
+\begin{align*}
+    F = -k_B T \ln{Z_N} = - k T N \ln{Z_1} && \implies &&  
+    \frac{F}{N} = - k_B \ln{Z_1}
+\end{align*}
+%
+\subsection*{Freiheitsgrade eines Molek\"uls}
+\begin{itemize}
+    \item Bewegung des Schwerpunkts
+    \item Rotation
+    \item Schwingung (Vibrationen)
+    \item Elektronische Anregung
+\end{itemize}
+Wir nehmen an, dass die Freiheitsgrade s\"amtlich unabh\"angig sind.
+%
+\begin{align*}
+    H^{(1)} & = H_{\text{SP}} + H_{\text{rot}} + H_{\text{vib}} +
+    H_{\text{Elek}} \\
+    \mathcal{H}^{(1)} & = \mathcal{H}_{\text{sp}} \otimes \mathcal{H}_{\text{rot}} \otimes
+    \mathcal{H}_{\text{vib}} \otimes \mathcal{H}_{\text{El}} \\
+    Z_1 & = \trace e^{-\beta H^{(1)}} = 
+    \left( \trace_{\mathcal{H}_{\text{sp}}} e^{- \beta H_{\text{sp}}} \right)
+    \left( \trace_{\mathcal{H}_{\text{rot}}} e^{- \beta H_{\text{rot}}} \right)
+    \left( \trace_{\mathcal{H}_{\text{vib}}} e^{- \beta H_{\text{vib}}} \right)
+    \left( \trace_{\mathcal{H}_{\text{el}}} e^{- \beta H_{\text{el}}} \right)
+\end{align*}
+%
+Damit ist
+%
+\begin{align*}
+    f = - k_B T \ln{ Z_{\text{sp}}} - k_B T \ln{Z_{\text{rot}}}
+- k_B T \ln{Z_{\text{vib}}}
+- k_B T \ln{Z_{\text{el}}}
+= f_{\text{SP}} + f_{\text{rot}} + f_{\text{vib} } + f_{\text{el}}
+\end{align*}
+%
+Beispiel
+% imap <c-s> \text{}<left><left><left><left><left>
+%
+\begin{align*}
+    \frac{C_{V, N}}{N} & = \frac{1}{N} 
+    \frac{\delta Q }{ \d{T}} = - \frac{T }{N} \left( \pd{^2 F}{T^2} \right)_{V,N}
+    = - T \left( \pd{^2f}{T^2} \right)_{V, N} \\
+    & = C_{\text{sp}} + C_{\text{rot}} + C_{\text{vib}} + C_{\text{El}}
+\end{align*}
+%
+%
+\begin{align*}
+    P = - \left( \pd{F}{V} \right)_{T, N} \simeq - N \left( \pd{f_{\text{sp}}}{V} \right)_{T, N}
+\end{align*}
+%
+% TODO: Diagramm
+%
+\begin{align*}
+    T_0 & = T_F \text{ (Fermi Temperatur) } \\
+        & = T_C \text{ (BEC kritische Temperatur)}\\
+\end{align*}
+%
+%
+\begin{align*}
+    T_0 < \SI{5}{\kelvin} \text{ f\"ur } \ce{He^3}, \ce{He^4}
+\end{align*}
+%
+\subsection*{Rotationsanteil}
+F\"ur ein zweiatomiges Moek\"ul aus 2 verschiedenen Atomen zb
+\ce{HCl} aber nicht \ce{O2}, \ce{N2}
+%
+\begin{align*}
+    H_\text{rot} = \frac{\vec{L}^2}{2 I}
+\end{align*}
+%
+Mit dem Tr\"agheitsmoment $I = m_\text{reduziert} R^2$
+%
+\begin{align*}
+    \epsilon_{lm} = \frac{\hbar^2}{2 I} l(l+1), \quad\forall\, l \in \N,
+    m = -l, -l+1 ,\dotsc, +l
+\end{align*}
+%
+%
+\begin{align*}
+    \Theta_\text{rot} = \frac{\hbar^2}{I k_B}
+\end{align*}
+%
+%
+F\"ur $T \ll \Theta_\text{rot}$:
+\begin{align*}
+    C_\text{rot} \approx k_B 3 \left( \frac{\Theta_\text{rot}}{T} \right)^2
+    e^{- \frac{\Theta_\text{rot}}{T}} \xrightarrow{ T \to 0} 0 
+\end{align*}
+%
+F\"ur hohe Temperaturen $T \gg \Theta_\text{Rot}$ gilt dann
+%
+\begin{align*}
+    C_\text{rot} \approx k_B \left[ 1 + \frac{1}{180} \left( \frac{\Theta_\text{rot}}{T} \right)^2 + \ldots \right] \xrightarrow{T \to \infty} k_B
+\end{align*}
+%
+% TODO: Diagram
+Beispiel
+%
+\begin{align*}
+    \ce{H Cl} && \Theta_\text{rot} & = \SI{30}{\kelvin} \\
+    \ce{H2} && &= \SI{170}{\kelvin} \\
+    \ce{O2} && &= \SI{4}{\kelvin} \\
+\end{align*}
+%
+\subsection*{Vibrationsanteil}
+Beispiel: Harmonische Schwingungen eines zweiatomigen Molek\"uls.
+Aus der Eigenfrequenz $\omega$ kann man eine Temperaturskala definieren.
+%
+\begin{align*}
+    \Theta_\text{vib} = \frac{\hbar W }{k_B}
+\end{align*}
+%
+Beispiele
+%
+\begin{align*}
+    \ce{H Cl} && \Theta_\text{vib} & = \SI{4e3}{\kelvin} \\
+    \ce{H2} && &= \SI{6e3}{\kelvin} \\
+    \ce{O2} && &= \SI{2e3}{\kelvin} \\
+\end{align*}
+
+%
+\begin{align*}
+    C_\text{vib} = k_B \left( \frac{\Theta_\text{vib}}{T} \right)^2
+    \frac{1}{\left[ 2 \sinh\left( \frac{\Theta_\text{vib}}{2} \right) \right]}
+    = \begin{cases}
+        \left( \frac{\Theta_\text{vib}}{T} \right)^2 e^{\frac{\Theta_\text{vib}}{T}} \to 0 & T \ll \Theta_\text{vib} \\
+        1 - \frac{1}{12}\left( \frac{\Theta_\text{vib}}{T} \right)^2 + \ldots \to 1 & T \gg \Theta_\text{vib}
+    \end{cases} 
+\end{align*}
+%
+% TODO: Diagram
+
+\subsection*{Elektronischer Anteil}
+Wasserstoffatom
+%
+\begin{align*}
+    \mathcal{E}_n = - \frac{\SI{13.6}{\electronvolt}}{n^2}
+\end{align*}
+%
+Die minimale Anregungsenergie ist
+%
+\begin{align*}
+    \mathcal{E}_2 - \mathcal{E}_1 = \SI{10}{\electronvolt} \approx \SI{1e5}{\kelvin}
+\end{align*}
+%
+% TODO: BIG Diagram
+\section*{Reales Klassisches Gas Teil I}
+\emph{Schwabl Kapitel 5.3}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c c c c c c}
+    Klassisch & Verd\"unnt und hohe Temperaturen \\
+    Real & Wechselwirkende Teilchen (Atome oder Molek\"ule)
+  \end{tabular}
+\end{table}
+%
+\begin{align*}
+  Z_K(N) & = \frac{1}{h^{3N}} 
+  \frac{1}{N!} \int_{V^N}^{} \d{^{3N}} r \int_{\R^{3N}}^{} e ^{-\beta H (\vec{r}, \vec{p})} \\
+  H(\vec{r},\vec{p}) & = \sum_{i=1}^{N} 
+  \frac{\vec{P}_1^2}{2m} + \frac{1}{2} \sum_{i,j=1}^{N} w (\abs{\vec{r}_1 - \vec{r}_2})
+\end{align*}
+%
+Dabei ist $w(r)$ ein Zentralpotential.
+% TODO: Skizze
+%
+\begin{align*}
+  Z_K(N) = \frac{1}{N! h^{3N}} ( \int_{\R^{3N}}^{} d^{3N}p e^{-\beta \sum_{i}^{} 
+  \frac{\vec{P}_i^2}{2m}} 
+)\end{align*}
+%
+Der Konfigurationsanteil ist:
+%
+\begin{align*}
+  Q(T,V, N) = \int_{V^N}^{} \d{^{3N}r} e^{-\beta \sum_{i=1}^{}w (\abs{\vec{r}_i,\vec{p}_i})}
+\end{align*}
+%
+Die thermische Wellenl\"ange ist:
+%
+\begin{align*}
+  \lambda_T = \frac{h}{\sqrt{2 \pi m k_B T}}
+\end{align*}
+%
+F\"ur $w=0$ haben wir ein ideales Gas.
+%
+\begin{align*}
+  Q = V^N
+\end{align*}
+%
+Wenn $w \neq 0$ ist es ein reales Gas, wir k\"onnen dann $Q$ im allgemeinen
+nicht berechnen. Es gibt jedoch N\"aherungsverfahren
+\begin{itemize}
+  \item Virialentwicklung
+  \item Molekularfelfdn\"aherung
+  \item Computersimulation
+  \item Molek\"uldynamik
+  \item Monte Carlo
+\end{itemize}
+
+Potentiale $w(r)$ f\"ur neutrale Teilchen.
+Lennard-Jones-Potential
+%
+\begin{align*}
+  w(r) = 4 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{12} - \left( \frac{\sigma}{r} \right)^6 \right], \quad\forall\, \epsilon, \sigma > 0
+\end{align*}
+%
+% TODO: skizze
+Teilchen mit einem harten Kern, also harte Kugeln:
+%
+\begin{align*}
+  w(r) = \begin{cases}
+    \infty & r < d \\
+    - w_r & d < r \\
+    0 r > l \\
+  \end{cases} 
+\end{align*}
+%
+\subsection*{Virialentwicklung}
+Die Gro\ss{}kanonische Zustandssumme
+%
+\begin{align*}
+  Z_\text{GK} = \sum_{N=0}^{\infty} Z_K(N) e^{\beta \mu N}
+\end{align*}
+%
+%
+\begin{align*}
+  Z_K(0) = 1, && Z_K(1) = \frac{V}{\lambda_T^3}, && Z_K(2) = ? 
+\end{align*}
+%
+Klassisches Gas: Fugazit\"at $e^{\beta\mu} = y \ll 1$, das bedeutet
+$-\mu \gg k_B T$. Mithilfe dieser Annahme k\"onnen wir einfach eine Taylor-Entwicklung
+machen
+%
+\begin{align*}
+  Z_\text{GK} = Z_K(0) + Z_K(1) y + Z_K(2)y^2 + \mathcal{O}(y^3) \\
+\end{align*}
+%
+Das bedeutet 
+%
+\begin{align*}
+  \Omega(T, V, \mu) = - k_B T \ln{ Z_\text{GK}} = -k_B T \left[ 
+  \frac{V}{\lambda_T^3} y + \left( Z_K(2) - \frac{V}{2 \lambda^3_T} \right) y ^2 
++ \mathcal{O}(y^3)\right]
+\end{align*}
+%
+So erh\"alt man
+%
+\begin{align*}
+  PV = N k_B T \left[ 1+ B \rho + \mathcal{O}(\rho^2) \right] && \rho= \frac{N}{V} \ll 1
+\end{align*}
+%
+$B$ ist der 2. Virialkoeffizient. 
+%
+\begin{align*}
+  B = \frac{V}{2} - \frac{\lambda_T^6 }{V} Z_K(2)
+\end{align*}
+%
+%
+\begin{align*}
+  Z_K(2) = \frac{1}{\lambda_T^6} 
+  \frac{1}{2} \int_{V}^{} \d{^3 r_1} \int_{V}^{} \d{^3r_2} e^{-\beta w(\abs{\vec{r}_1 - \vec{r}_2})}
+\end{align*}
+%
+Daraus folgt dann
+%
+\begin{align*}
+  B = - \frac{1}{2V} \int_{V}^{} \d{^3 r_1} \int_{V}^{} \d{^3 r_2} 
+  \left[ e^{-\beta w ( \abs{\vec{r}_1 - \vec{r}_2})} - 1 \right] && \left( \frac{V}{N} \right)^{\frac{1}{3}} \gg \sigma, l
+\end{align*}
+% TODO: Skizze
+%
+\begin{align*}
+  W \simeq 0 \iff (e^{-\beta w} \approx 1) \quad\forall\, \vec{r}_2 \notin V
+  \text{ und } \vec{r}_1 \in V
+\end{align*}
+%
+Wir k\"onnen also das Integral auf den ganzen Raum erweitern und
+nicht nur \"uber das Volumen.
+%
+\begin{align*}
+  \vec{r} = \vec{r}_2 - \vec{r}_1 \implies B = - \frac{1}{2V} \int_{V}^{} \d{^3 r_1}
+  \int_{\R^3}^{} \d{^3 r} \left[ e^{-\beta w(r)} - 1 \right]
+\end{align*}
+%
+Wir haben einen Kugelsymmetrischen Integranden also verwenden wir Kugelkoordinaten.
+%
+\begin{align*}
+  B = - 2 \pi \int_{0}^{\infty} \d{r} r^2 \left[  e^{-\beta w(r)} - 1 \right]
+\end{align*}
+%
+
+%
+\begin{align*}
+  B & = 2 \pi \int_{0}^{d} \d{r} (r^2 e ^{+ \beta w_s} - 1 ) + 0 \\
+    & = \frac{2 \pi}{3} d^3 (l^3  - d^3) \left(\e^{\beta w_s} - 1 \right)
+  \simeq - \frac{a}{k_B T} + b
+\end{align*}
+%
+mit %
+\begin{align*}
+  a & = \frac{2\pi}{3} (l^3 - d^3) w_s > 0 \text{ (Anziehende Wechselwirkung)}\\ 
+  b & = \frac{4 \cdot 4 \pi}{3} \left( \frac{d}{2} \right)^3 > 0
+\end{align*}
+%
+Man sieht, dass $b$ eigentlich nur 4-mal das Volumen einer Kugel ist.
+%
+\begin{align*}
+  P V = N k_B T \left[ 1 + \left(  - \frac{a}{k_B T} + b \right) 
+  \frac{N}{V}\right] + \mathcal{O}\left( \left( \frac{N}{V} \right)^2 \right) && (*)
+\end{align*}
+%
+\subsection*{Van-der-Waals Zustandsgleichung}
+%
+\begin{align*}
+  \left[ P + a\left( \frac{N}{V} \right)^2 \right] ( V - N b) = N k_B T
+\end{align*}
+%
+F\"ur
+%
+\begin{align*}
+  \frac{N}{V} \ll 
+  \frac{1}{b} \iff
+  \frac{V}{N} \gg b \implies
+  (*)
+\end{align*}
+\subsection*{Harte Kugeln}
+%
+\begin{align*}
+  w(r) = \begin{cases}
+    \infty & r < \sigma \\
+    0 & r > \sigma \\
+  \end{cases} 
+\end{align*}
+%
+%
+\begin{align*}
+  Q_{HK} = \int_{V'}^{} \d{^{3N}r} = \underset{N \gg 1}{ = } (V - N b)^N
+\end{align*}
+%
+ist das Volumen von $V'$
+%
+%
+\begin{align*}
+  V' = \left\{ \{\vec{r}_1\} \in V^N \subset \R^{3N} 
+  \text{ mit } \abs{\vec{r}_1 - \vec{r}_{j}} > \sigma \quad\forall\,
+ i\neq j = 1, \ldots , N\right\}
+\end{align*}
+%
+$b$ ist gr\"o\ss{}er oder gleich dem Volumen des harten Kerns
+$\frac{\pi \sigma^3}{6}$.
+Dies ist kein mathematischer Beweis, aber
+\begin{itemize}
+  \item Exakt in $D=1$
+  \item Numerischer Beweis f\"ur $D = 2, 3$
+\end{itemize}
+Sie m\"ussen das als ein asymptotishes Verhalten
+verstehen wenn $N $ sehr gr\"o\ss{} ist. Wenn sie das mit der virialentwicklung
+vergleichen dann sehen sie, dass
+%
+\begin{align*}
+  b = 4 \cdot \left( \frac{\pi \sigma^3 }{b} \right)
+\end{align*}
+%
+Das ist Physik, mann kann nicht immer alles mathematisch streng beweisen.  Wir
+haben jetzt einen spezialfall diskutiert und werden uns nun allgemeineren
+probemen widmen. Wir nehmen an, dass die WEchselwirkung die folgende Struktur hat
+%
+\begin{align*}
+  w(\vec{r}) = \begin{cases}
+    w_K(r) > 0 \text{ f\"ur } r  < \sigma \\
+    w_K(r) \le 0 \text{ f\"ur } r  > \sigma \\
+  \end{cases} 
+\end{align*}
+%
+Wir nehmen an, dass
+%
+\begin{align*}
+  w_K(r) \gg k_B T \gg \abs{ w_F (r)}
+\end{align*}
+%
+\begin{align*}
+  w(r) = w_K(r) + w_F(r)
+\end{align*}
+%
+mit 
+%
+\begin{align*}
+  w_K(r > \sigma) &= 0 \\
+  w_F(r \le \sigma)& = 0 \\
+\end{align*}
+%
+
+%
+% TODO: Skizze
+%
+\begin{align*}
+  Q = Q_H \frac{\int_{V^N}^{} \d{^{3N}r} e^{-\beta \sum_{i<j}^{} w_K \left( \vec{r}_2  - \vec{r}_1  \right) }   e ^{-\beta \sum_{ i<j }^{} w_F (\vec{r}_2 - \vec{r}_1)}   }{\int_{V^N}^{} \d{^{3N}r} e ^{-\beta \sum_{i=1}^{w_K\left( \vec{r}_1 -\vec{r}_2 \right)}}}
+  = Q_\text{HK} \Braket{ e ^{- \beta \sum_{i < j}^{} w_F (\vec{r}_1 - \vec{r}_j)}}_{HK}
+\end{align*}
+%
+$\Braket{ \ldots }_{HK}$ ist der Erwartungswert im Gas harter Kueln
+\begin{description}
+  \item[Definition] Dichte
+    %
+    \begin{align*}
+      \rho(\vec{r}) = \sum_{i=1}^{N} \delta(\vec{r} - \vec{r}_i) &&
+      \int_{\Delta V}^{} \rho (\vec{r}) \d{^3 r} = \sum_{\vec{r}_1 \in
+      \Delta V}^{} 1
+    \end{align*}
+    %
+    Dies entspricht der Teilchenzahl in $\Delta V$.
+\end{description}
+
+%
+\begin{align*}
+  \sum_{i < j = 1}^{N} w_F (|\vec{r}_i - \vec{r}_j|) = 
+  \frac{1}{2} \int_{V}^{} \d{^3} R_1 \int_{V}^{} \d{^3} R_2 
+  w_F (\abs{\vec{R}_1 - \vec{R}_2}) \rho(\vec{R}_1) \rho(\vec{R}_2)
+\end{align*}
+%
+%
+\begin{align*}
+  Q & = Q_{HK} \Braket{ \exp{
+    \left[ - \frac{\beta}{2} \int_{V}^{} \d{^3R_1} \int_{V}^{} \d{^3 R_2}
+w_F \left( \abs{\vec{R}_1- \vec{R}_2}  \right) \rho(\vec{R}_1)\rho(\vec{R}_2)\right]}}_{HK} \\
+& = Q_{HK}  \exp{
+    \left[ - \frac{\beta}{2} \int_{V}^{} \d{^3R_1} \int_{V}^{} \d{^3 R_2}
+w_F \left( \abs{\vec{R}_1- \vec{R}_2}  \right) \rho_{MF}(\vec{R}_1)\rho_{MF}(\vec{R}_2)\right]}_{HK}
+\end{align*}
+%
+mit
+%
+\begin{align*}
+  \rho_{MF}(\vec{R}) = \Braket{ \rho(\vec{R})}_{HK}
+\end{align*}
+%
+% TODO: skizze
+
+
