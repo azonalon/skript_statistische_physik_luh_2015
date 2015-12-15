@@ -1,0 +1,360 @@
+\begin{description}
+  \item[Bose-Gas bei $T=0$] 
+    %
+    \begin{align*}
+      \Braket{\hat{n}_{s,\vec{k}}} = \begin{cases}
+        0 & \quad\forall\, \vec{k} \neq 0 \\
+        \ge 0 & \quad\forall\, \vec{k} = 0 , \quad \sum_{s}^{} \Braket{\hat{n}_{s,\vec{k}=0}} = N
+      \end{cases} 
+    \end{align*}
+    %
+    Das bedeutet der Grundzustand ist makroskopisch besetzt. Man nennt das
+    Bose-Einstein-Kondensat. 
+    %
+    \begin{align*}
+      \frac{N_0}{N} > 0 && N \to \infty 
+    \end{align*}
+    %
+    Man kann daraus sehr leicht die Fluktuation der Teilchenzahlen berechnen.
+    Wenn man das mit der Großkanonischen Beschreibung vergleicht, dann muss
+    man um diesen Effekt zu bekommen das folgende machen
+\end{description}
+%
+\begin{align*}
+  \frac{1}{e^{\beta(\epsilon(\vec{k}) - \mu)} - 1} = \begin{cases}
+    0 & \quad\forall\, \epsilon(\mathcal{k}) > \mu \\
+    \infty & \text{ für } \epsilon(\vec{k} = 0) = \mu
+  \end{cases} 
+\end{align*}
+%
+Wir erreichen dass wenn das chemische Potential den festen Wert des Grundzustands
+hat. Wir wollen die Funktion oben invertieren, also sollte die Funktion
+$\mu(N)$ umkehrbar sein. Das ist im allgemeinen jedoch nicht möglich. Man braucht
+eine Funktion die varriiert in abhängigkeit der Parameter. Physkialisch gesehen, 
+was passiert da? Sobald es eine endliche Temeperatur gibt dann ist das Kondensat
+gelöst. Dann kann man das großkanonische ensemble verwenden. in 3 dimensionen
+ist das im allgeminen nicht der Fall. Wir können diesen Fall mit unserer berechnung
+nicht berücksichtigen. Wir müssen also die gleichung korrigieren. Unser 
+startpunkt war dabei die Summe oben. Wir hatten geschrieben
+%
+\begin{align*}
+  N = \sum_{s, \vec{k}}^{} \Braket{\hat{n}_{s,\vec{k}}} = \sum_{n}^{} \Braket{\hat{n}_{s,\vec{k}=0}}
+  + \sum_{s, \vec{k} \neq 0 }^{} \Braket{\hat{n}_{s,\vec{k}}}.
+\end{align*}
+%
+Wenn man die Summe durch ein Integral ersetzt dann spielt ein Punkt keine rolle
+und man kann wieder das Ergebnis von oben verwenden. Sie sehen, dass nun die
+Zustandsgleichung ein bisschen anders ist als Vorher
+%
+\begin{align*}
+  N = N_0 + \frac{v(2S+1}{\lambda_T^3} g_{\frac{3}{2}} (Z)
+\end{align*}
+%
+Wir müssen nun diese Gleichung näher untersuchen. Für
+%
+\begin{align*}
+  N_0 = 
+  \begin{cases}
+    0 &  T > T_c(\rho) \\
+    N - \frac{V(2 S + 1}{\lambda_T^3} g_{\frac{3}{2}}(1) &  T < T_c(\rho)\\
+  \end{cases} 
+\end{align*}
+%
+%
+\begin{align*}
+  \frac{N_0 }{N} = 1 - \frac{\rho_c(T) }{\rho} = 1- \left( \frac{T}{T_c(\rho)} \right)^{\frac{3}{2}}
+\end{align*}
+%
+Dies ist der Anteil des Kondensats.
+%
+\begin{align*}
+  1  - \frac{N_0}{N} 
+\end{align*}
+%
+Ist der nicht kondensierte Anteil. Wir können nun kurz analysieren was das
+eigentlich bedeutet. Man hat ein Kondensat oberhalb der kritischen dichte.
+Es verschwindet jedoch genau wenn die Dichte diesen Wert erreicht. Man 
+kann das graphisch illustrieren. \\
+Ausrduck Name vorname matrikelnummer\\
+elektronisch name nachnahme \\
+sprechzeiten 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c c c c c c}
+     & & & nächste woche \\
+    Mi & 11-12 & Mi & & vorlesungsfrei nach absprache \\
+    & 14-16:30 & & 14-18 \\
+    Do & 10-12 & Do & & \\
+         &      &  & 14-16 \\
+  \end{tabular}
+\end{table}
+
+% TODO: skizze
+\subsection*{Freies ideales Fermi-Gas}
+\emph{Schwabl Kapitel 4.2, 4.3}
+%
+\begin{align*}
+  \epsilon(\vec{k}) = \frac{\hbar^2}{2 m} \vec{k}^2 && s = -S, -S + 1, \ldots , S
+  && \text{ Entartung: } 2 S + 1 && S = \frac{1}{2} , \frac{3}{2}, \ldots
+\end{align*}
+%
+Damit ist
+%
+\begin{align*}
+  Z(\epsilon \ge 0) = \frac{2 S + 1) ((2 \pi m)^{\frac{d}{2}}}{k^d}
+  \frac{1}{\Gamma\left( \frac{d}{2} \right)} \epsilon^{\frac{d}{2} - 1} \\
+  \text{ Fermi-Dirac-Verteilung } \Braket{ \hat{n}_{\vec{k},s}} = 
+  \frac{1}{e^{\beta(\epsilon(\vec{k}) - \mu)} + 1}
+\end{align*}
+%
+Wir berechnen zuerst großkanonisch die Teilchenzahl
+%
+\begin{align*}
+  N(T, \mu, V) = \sum_{\vec{k},s}^{} \Braket{\hat{n}_{\vec{k},s}} = 
+  V \int_{0}^{ + \infty} \d{\epsilon} \frac{Z(\epsilon) 1}{e^{\beta(\epsilon-\mu)} + 1}
+\end{align*}
+%
+Wir müssen dieses Integral analysieren indem wir für $Z$ diese besondere Form
+verwenden.
+%
+\begin{align*}
+  N(T, \mu, V)= \frac{V(2 S + 1}{\lambda_T^d} f_{\frac{d}{2}}(Z)
+\end{align*}
+%
+mit der Fugazität $Z = e^{\beta \mu}$ und $\lambda_T = \sqrt{2 \pi m k_B T}
+\frac{1}{h}$. 
+%
+\begin{align*}
+  f_\alpha(Z) = \int_{0 }^{ + \infty} \d{x} x^{\alpha-1} \frac{1}{\frac{1}{z} e^x + 1} 
+  \frac{1}{\Gamma(\alpha)} = 
+  \sum_{m=1}^{\infty} (-1)^{n+1} \frac{z^n}{n^\alpha}
+\end{align*}
+%
+%
+\begin{align*}
+  U(T, \mu, V) & = \sum_{\vec{k},s}^{} \epsilon(\vec{k}) \Braket{\hat{n}_{\vec{k},s}} \\
+               & = V \int_{0}^{ + \infty} \d{\epsilon} Z(\epsilon) 
+  \frac{\epsilon}{e^{\beta(\epsilon-\mu)} + 1} \\
+  &  = V ( 2 S + 1) 
+  \frac{1}{\lambda_T^d} f_{\frac{d}{2} + 1} (z) 
+  \frac{d}{2} k_B T
+\end{align*}
+%
+%
+\begin{align*}
+  \Omega(T, \mu, V) & = - k_B T \ln{Z_{GK}} = 
+  - k_B T \sum_{\vec{k},s}^{} \ln{\left( 1 + e^{-\beta(\epsilon(\vec{k}) - \mu)} \right)} \\
+  & = - k_B T V \int_{0}^{+ \infty} \d{\epsilon} Z(\epsilon) \ln{\left[ 1 + e^{-\beta(\epsilon- \mu)} \right]} \\
+  & = - k_B T V (2  S + 1)
+  (2 \pi m )^{\frac{d}{2}} \frac{1}{h^d} \underbrace{\frac{1}{\Gamma\left( \frac{d}{2} \right)}
+  \int_{0}^{+ \infty} \d{\epsilon} \epsilon^{\frac{d}{2} - 1}\ln{
+\left[ 1 + e^{- \beta (\epsilon - \mu)} \right]}}_{ = (k_B T) ^{\frac{d}{2}}
+\frac{1}{\Gamma\left( \frac{d}{2} \right)}  \int_{0}^{\infty} x^{\frac{d}{2} - 1}
+\ln{\left[ 1 + Z e^{-x} \right]}}
+\end{align*}
+%
+%
+\begin{align*}
+  \frac{1}{\Gamma(\frac{d}{2})} \int_{0}^{ \infty} x^{\frac{d}{2} - 1}
+  \ln{\left[  1 + Z e^{-x} \right]} = 
+  \frac{1}{\Gamma\left( \frac{d}{2} \right)} \frac{Z}{d} x^{\frac{d}{2}}
+  \ln{\left[ 1 + Z e^{-x} \right]} |_0^\infty
+  - \frac{1}{\Gamma\left( \frac{d}{2} \right)} \int_{0}^{\infty}
+  \d{x} \frac{2}{d} x^{\frac{d}{2}} 
+  \underbrace{\frac{-z e^{-x}}{1 + z e^{-x}}}_{=  - \frac{1}{e^{x} \frac{1}{z} + 1}}
+ \end{align*}
+%
+%
+\begin{align*}
+  \Omega(T, \mu, V) = k_B T V \left( 2 S + 1 \right) 
+  \frac{1}{\lambda_T^d} \frac{2}{d} f_{\frac{d}{2} + 1}(z) = 
+  - \frac{2}{d} U
+\end{align*}
+%
+Wir können nun den Druck berechnen, da wir das großkanonische Potential ausgerechnent
+haben
+%
+\begin{align*}
+  P & = - \left( \pd{\Omega}{V} \right)_{T, \mu} = 
+  - \frac{\Omega}{V} = \frac{2}{d} \frac{U}{V} 
+  \implies U = \frac{PV d}{2}
+\end{align*}
+%
+Im Grenzfall ist
+%
+\begin{align*}
+  Z \ll 1 && \iff && \beta \mu \to -\infty && \iff && - \mu \gg k_B T
+\end{align*}
+%
+%
+\begin{align*}
+  f_\alpha(z) = z - z^{-\alpha} z^2 + \mathcal{O}(z^3)
+\end{align*}
+%
+Daraus folgt
+%
+\begin{align*}
+  P V = \frac{2}{d} U \simeq V (2 S + 1) 
+  \frac{1}{\lambda_T^d} k_B T \left[ z - z^{-\left( \frac{d}{2} + 1 \right)
+  z^2 + \mathcal{O}(z^3)} \right]
+\end{align*}
+%
+%
+\begin{align*}
+  N \simeq V (2 S + 1) 
+  \frac{1}{\lambda_T^d} \left[ z - z^{-\frac{d}{2}} z^2 z^2 + \mathcal{O}(z^3) \right] (*)
+\end{align*}
+%
+Das bedeutet
+%
+\begin{align*}
+  \frac{P V }{N k_B T} & = 
+  \frac{z - z ^{\left( - \frac{d}{2} + 1 \right) z^2 + \mathcal{O}(z^3)}}{
+    (z - z ^{\left( - \frac{d}{2} \right) z^2 + \mathcal{O}(z^3)}) } \\
+    & = 1 - \left( z^{-\left( \frac{d}{2} + 1\right)} - z^{-\frac{d}{2}} \right)Z
+    + \mathcal{O} \\
+    & = 1 + z^{-\left( \frac{d}{2} + 1 \right)} z + \mathcal{O}(z^2) \quad (+)
+\end{align*}
+%
+%
+\begin{align*}
+  Z = \frac{N}{V} \frac{1 }{2 S + 1} \lambda_T^d 
+\end{align*}
+%
+Aus $(*)$ folgt
+%
+\begin{align*}
+  Z = \frac{N}{V} 
+  \frac{1}{2 S + 1} \lambda_T^d
+\end{align*}
+%
+und dann mit $(+)$
+%
+\begin{align*}
+  PV = N k_B T \left[ 1 + z^{-\left( \frac{d}{2} + 1 \right)} 
+  \frac{\rho }{2 S + 1} \lambda_T ^d \right]
+\end{align*}
+%
+Dies ist die erste Quantenkorrektur zur Zustandsgleichung des idealen Gases für
+Fermionen. Wenn man betrachtet, wann dies Gleichung erfüllt ist:
+Wir haben angenommen dass $z \ll 1$ also
+%
+\begin{align*}
+  \rho \lambda_T^d \ll 1 && T \to \infty && S \to \infty
+\end{align*}
+%
+Bevor wir den Grenzfall $ z \gg 1 $ betrachten untersuchen wir den Fall
+$T = 0$. 
+%
+\begin{align*}
+  \Braket{\hat{n}_{s ,\vec{k}}} = \frac{1}{e^{\beta(\epsilon(\vec{k}) - \mu)} + 1}
+  \underset{=}{T\to0} \begin{cases}
+    0 & \text{ für } \epsilon(\vec{k}) > \mu \\
+    1 & \text{ für } \epsilon(\vec{k}) < \mu \\
+  \end{cases} 
+\end{align*}
+% TODO: Skizze
+%
+%
+\begin{align*}
+  \text{ Fermi-Energie } \epsilon_F = \mu \text{ für } T = 0\\
+  \text{ Fermi-Temperatur } \epsilon_F = k_B T_F
+\end{align*}
+%
+Das schöne an diesem Grenzfall ist, dass die Rechnung sehr einfach wird.
+%
+\begin{align*}
+  N & = \sum_{\vec{k},s}^{} \Braket{\hat{n}_{\vec{k},s}} = 
+  V \int_{0}^{+ \infty} \d{\epsilon} Z(\epsilon) \Omega(\epsilon_F - \epsilon) \\
+  & = V (2 S + 1)
+  (2 \pi m)^{\frac{d}{2}}\frac{1}{h^d} 
+  \frac{1}{\Gamma\left( \frac{d}{2} \right)} \underbrace{\int_{0}^{\epsilon_F}
+  \epsilon^{\frac{d}{2} - 1} \d{\epsilon}}_{ = \frac{2}{d} \epsilon_F^{\frac{d}{2}}}
+\end{align*}
+%
+%
+\begin{align*}
+  \epsilon_F = \left( \rho
+  \Gamma\left( \frac{d}{2} + 1 \right)/ (2S + 1) \right)^{\frac{2}{d}}
+  \frac{h^2 }{2 \pi m}
+\end{align*}
+%
+Beispiel 
+%
+\begin{align*}
+  d = 3 && \epsilon_F 
+  \left( \frac{6 \pi^2}{2 S + 1} \rho \right)^{\frac{2}{3}} 
+  \frac{\hbar^2}{2 m}
+\end{align*}
+%
+%
+\begin{align*}
+  E_0 = \sum_{\vec{k},s}^{} \epsilon(\vec{k}) \Braket{\hat{n}_{\vec{k},s}}
+= U(T = 0)  = N \epsilon_F
+\frac{\frac{d}{2}}{\frac{d}{2} + 1}
+\end{align*}
+%
+%
+\begin{align*}
+  d = 3 && E_0 = \frac{3}{5} N \epsilon_F
+\end{align*}
+%
+%
+\begin{align*}
+  \text{ Grenzfall } z \gg 1 && \iff && \beta \mu \gg 1
+  && \iff && \mu > k_B T
+\end{align*}
+%
+%
+\begin{align*}
+  d = 3 && \text{ Sommerfeld-Entwicklung } \equiv \text{ asymptotische Entwicklung 
+der } f_\alpha(z)
+\end{align*}
+%
+%
+\begin{align*}
+  f_{\frac{3}{2}} (z) = \frac{4}{3} \frac{1}{\sqrt{\pi}}
+  (\ln{ z}) ^{\frac{3}{2}} \left[ 1 + \frac{\pi^2}{8}
+  \frac{1}{(\ln{z})^2} + \ldots \right]
+\end{align*}
+%
+Das funktioniert auch für die zweite Funktionen die wir brauchen, 
+für die Energie haben wir
+%
+\begin{align*}
+  f_{\frac{5}{2}} (z) = \frac{8}{15} \frac{1}{\sqrt{\pi}} (\ln{z})^{\frac{5}{2}}
+  + \pi^{\frac{3}{2}}\frac{1}{3} (\ln{z})^{\frac{1}{2}} + \ldots 
+\end{align*}
+%
+Sie können diese Formel verwenden um die Teilchenzahl als funktion von 
+$z$ zu entwickeln. Damit ergibt sich
+%
+\begin{align*}
+  \mu & = \epsilon_F \left[  1- \frac{\pi^2}{12} \left( \frac{T}{T_F} \right)^2
+  + \mathcal{O}\left( \left( \frac{T}{T_F}^4 \right) \right)\right] \\
+  U & = \frac{3}{5} N \epsilon_F \left[ 1 + \frac{5}{12} \pi^2 \left( \frac{T }{T_F} \right)^{2} 
++ \mathcal{O}\left( \left( \frac{T}{T_F} \right)^4 \right)\right]
+\end{align*}
+%
+Wenn $z \gg 1$ dann ist $T \ll T_F$ und wir haben ein entartetes Fermi-Gas.
+Man kann jetzt die Wärmekapazität berechnen:
+%
+\begin{align*}
+  C_{V, N} = \dd{U}{T} = \frac{N  k_B \pi^2}{2} \frac{T }{T_F} \xrightarrow{T\to 0} 0
+\end{align*}
+%
+% TODO: skizze
+
+Beispiele sind 
+% \begin{itemize}
+%   % \item Elektronen im Metall $ \epsilon_F = \SI{1-10}{\electronvolt}$ $T_F = \SI{e4-e5}{\Kelvin}$
+%   % \item Weiße Zwerge $\epsilon_F = \SI{1-10}{\electronvolt}$ $T_F = \SI{3e9}{\Kelvin}$
+%   % \item \ce{He3}$ \epsilon_F = \SI{4e-4}{\electronvolt}$ $T_F = \SI{5}{\kelvin}$ theoretisch, experimentell \SI{1}{\Kelvin}.
+% \end{itemize}
+
+
+
+
+
+
+

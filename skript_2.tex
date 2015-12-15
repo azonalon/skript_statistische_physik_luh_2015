@@ -480,3 +480,909 @@ mit
 % TODO: skizze
 
 
+\subsection*{Reales Klassisches Gas}
+Molekularfeldn\"aherung, Van-Der-Waals-Zustandsgleichung
+%
+\begin{align*}
+  Z = \frac{1}{N!} \lambda_T^{-3N} Q, && Q & = Q_{HK} 
+  \Braket{\exp{\left[ -\beta \sum_{i < j}^{} w_F(\abs{\vec{r}_i - \vec{r}_j}) \right]}}_{HK} \\
+  &&& = Q_{HK} \Braket{\exp{\left[ - \beta \int_{V}^{} \d{^{3}R_1} \int_{V}^{} \d{^3 R_2}
+  W(\abs{\vec{R}_1 - \vec{R}_2}) \rho(\vec{R}_1) \rho(\vec{R}_2) \right]}}_{HK} \\
+  &&& = Q_{HK} \exp{\left[ -\frac{\beta}{2} \int_{V}^{ } \d{^3 R_2} w_F \left(\abs{\vec{R}_1 - \vec{R}_2}\right) \rho_{MF}(\vec{R}_1) \rho_{MF}(\vec{R}_2) \right]}
+\end{align*}
+%
+wobei %
+\begin{align*}
+  \rho_{MF} (\vec{R}) = \Braket{ \rho (\vec{R})}_{HK}
+\end{align*}
+%
+Die Molekularfeldn\"aherung ist die n\"aherung des mittleren Feldes, 
+\emph{mean-field approximation}.
+
+Die Potentialenergie eines Teilchens $i$ lautet
+%
+\begin{align*}
+  V_1 (\vec{r}) = \sum_{j \neq i, j = 1}^{}w_F (\abs{\vec{r}_i - \vec{r}_j})
+  \simeq \int_{V}^{} \d{^3 R}w_F (\abs{\vec{r}_1 - \vec{R}}) \rho(\vec{R})
+\end{align*}
+%
+%
+\begin{align*}
+  V_{MF}(\vec{r}) = \Braket{V_i(\vec{r})}_{HK} = 
+  \int_{V}^{} \d{^3 R } w_F (\abs{\vec{r} - \vec{R}}) \rho_{MF} (\vec{R})
+\end{align*}
+% TODO: skizze
+%
+\begin{description}
+  \item[1. Ansatz] Symmetrieerhaltung: Es gibt keinen Grund f\"ur das Gas
+    eine bestimmte Richtung zu bevorzugen, es gibt also auch keinen Grund
+    anzunehmen, dass die dichte nicht konstant ist. Wir nehmen sie also als
+    Konstant an.
+    %
+    \begin{align*}
+      \rho_{MF}(\vec{R}) = \frac{N}{V}
+    \end{align*}
+    %
+    Daraus folgt dann
+    %
+    \begin{align*}
+      Q = Q_{HF} \exp \left[ - \frac{\beta}{2} \underbrace{\int_{V}^{} \d{^3 R_1} \int_{V}^{} \d{^3 R_2}
+      w_F (\abs{\vec{R}_1 - \vec{R}_2})}_{= - 2 a V}\left( \frac{N}{V} \right)^2\right]
+    \end{align*}
+    %
+    Wir k\"onnen das wie bei der Virialentwicklung behandeln: Wir werden das
+    deswegenen nicht nochmal explizit berechnen. Die gr\"o\ss{}e $a \ge 0 $ ist
+    extensiv.
+    %
+    \begin{align*}
+      Z = \frac{1}{N!} \lambda_T ^{-3N} \left[ V - Nb \right]^N
+      \e^{+ \frac{\beta N^2}{V} a}
+    \end{align*}
+    %
+    Damit ist dann
+    %
+    \begin{align*}
+      F = - k_B T \ln{Z} = - k_B T N \left[ 1 + \ln{\left( 
+      \frac{V - Nb}{N \lambda_T ^{3}}\right)} \right] - \frac{a N^2 }{V}
+    \end{align*}
+    %
+    (Dies ist der Startpunkt der Computeraufgabe 2)
+    Wir werden hier die Physik und die idee hinter der Berechnung vermitteln, 
+    das eigentliche Berechnen ist Teil der Computeraufgabe 2.
+    %
+    \begin{align*}
+      \mu(T, v) &= - k_B T \left[ \ln{\frac{v-b}{\lambda_T^3}} + 
+      \frac{v}{b - v}\right] - \frac{2a}{v} \\
+      P(T, v) & = \frac{k_B T }{v - b} - \frac{a}{v}
+    \end{align*}
+    %
+    Wir erkennen, dass diese Gleichung nur von dem spezifischen Volumen und ..
+    abh\"angt.
+    %
+    \begin{align*}
+      v = \frac{V}{N} = \rho^{-1}
+    \end{align*}
+    %
+    Die isotherme kompressibilit\"at ist
+    %
+    \begin{align*}
+      \kappa_T = - \frac{1}{V} \left( \pd{V}{P} \right)_{N,T}
+    \end{align*}
+    %
+    daraus folgt
+    %
+    \begin{align*}
+      \left( P+ a \left(\frac{N}{V}\right)^2\right) (V - N b) = k_B T N 
+    \end{align*}
+    %
+    % TODO: Isothermen im $P-v$ Diagramm
+    %
+    \begin{align*}
+      \kappa_T \ge 0 \implies T \ge T_c (\rho) = 2 a \rho (1- b\rho)^2 \\
+      & \implies \rho_c = \frac{1}{3b}, T_c = T(\rho_c) = \frac{8}{27} 
+      \frac{a}{k_B b} \implies P_c = \frac{a}{27 b^2} 
+    \end{align*}
+    %
+  \item[2. Ansatz] Symmetriebrechung
+    Wir haben ein heterogenes System, in welchem 2 Phasen koexistieren.
+    Gas und Fl\"ussigkeit. Das bedeutet ein Teil des Systems ist in 
+    Gasform, ein anderer Teil jedoch in Fl\"ussiger Form
+    %
+    \begin{align*}
+      \text{Gas: } T, N_G, V_G \quad \implies \quad F (T, N_G, V_G) ,
+      v_G = \frac{V_G}{N_G}, \mu(T, v_G), P(T, v_G)
+    \end{align*}
+    %
+    F\"ur die Fl\"ussigkeit ist es \"ahnlich:
+    %
+    \begin{align*}
+      T, N_F, V_F \quad \implies \quad F(T, N_F, V_F), v_F = \frac{V_F}{N_F}, 
+      \mu(T, v_F) , P(T, v_F)
+    \end{align*}
+    %
+    Wir nehmen an, dass die WEchselwirkung zwischen Gas und Fl\"ussigkeit
+    vernachl\"assigbar ist:
+    %
+    \begin{align*}
+      F(T, V_G, V_F, N_G, N_F) &= F(T, V_G, N_G) + F(T, N_F, V_F) \\
+      N & = N_G + NF (*)\\
+      V &= V_G + V_F (*)
+    \end{align*}
+    %
+    % TODO: Skizze
+    Im thermodynamischen Gleichgewicht ist
+    \begin{enumerate}[A)]
+      \item F ist minimal bei $N_F, N_G, V_F, V_G$ unter der Nebenbedingung
+        (*) \\ ODER
+      \item %
+      \begin{align*}
+        \mu (T, v_G) = \mu(T, v_F) \quad (1)
+      \end{align*}
+      %
+      und 
+      %
+      \begin{align*}
+        P(T, v_G) = P(T, v_F) \quad (2)
+      \end{align*}
+      %
+    \end{enumerate} 
+    Sie m\"ussen Verfahren B auch in Computeraufgabe 2 verwenden.
+    \begin{description}
+      \item[L\"osung] Das spezifische Volumen des Gases sollte gr\"o\ss{}er
+        als das der Fl\"ussigkeit sein
+        %
+        \begin{align*}
+          v_G \ge v_F > 0
+        \end{align*}
+        % TODO: Skizze
+       Es gibt also nur eine L\"osung f\"ur $T \ge T_c$ n\"ahmlich
+       $v_G = v_F$. Damit haben wir das Problem im wesentlichen gel\"ost.
+       Damit ist die $v \d{w}$ Gleichung wieder anwendbar.
+      
+       F\"ur 
+       %
+       \begin{align*}
+         v < v_F^\text{min} \text{ oder } v > v_G ^\text{max}
+       \end{align*}
+       %
+       gibt es nur eine L\"osung mit $v_G = v_F$ und die Van-der-Waals Gleichung
+       ist anwendbar.
+       %
+       \begin{align*}
+         v_F^\text{min} < v < v_G^\text{max} ( P_\text{min} < P < P_\text{max})
+       \end{align*}
+       %
+       Es gibt also ein kontinuum von \"osungen zu Gleichung (1). Man kann
+       das so schreiben
+       %
+       \begin{align*}
+         v_F(T, v_G) \text{ mit } v_G \in [v_G^\text{min}, v_G^\text{max}]
+       \end{align*}
+       %
+       Aus Gleichung (2) Folgt dann
+       %
+       \begin{align*}
+         \mu(T, v_G) = \mu(T, v_F(T, v_G)) 
+       \end{align*}
+       %
+       ergibt dann $v_G$. Das ist das Verfahren, dass sie in der Computeraufgabe
+       verwenden sollten. Es gibt ein altes verfahren, die sogennante Maxwell
+       Konstruktion: Man hat ein Praktisches Verfahren entwickelt um den Wert
+       von $v_G$ zu bestimmen.
+     \item[Maxwell-Konstruktion] 
+       % TODO: Skizze
+       %
+       \begin{align*}
+         \int_{v_F(T)}^{v_G(T)} P(T, v) \d{v} = 
+         P_M(T) (v_G(T) - v_F(T))
+       \end{align*}
+       %
+       Wir m\"ussen den 1. Hauptsatz f\"ur die freie Enthalpie verwenden
+       %
+       \begin{align*}
+         G(T, P, N) && \d{G} = - S \d{T} + V \d{p} + \mu \d{N}
+       \end{align*}
+       %
+       Nun fragen wir uns, was passiert wenn man bei einer Transformation
+       einer isotherme folgt. $ \d{T }$ ist dann Null. Die freie Energie
+       ist dann %
+       \begin{align*}
+         \d{G} = V \d{p} \implies G_G - G_F =
+         \int_{P(T, v_F)}^{P(T, v_G)} V(P) \d{P}  =
+         \int_{v_F}^{v_G} v \dd{P}{v} \d{v}
+       \end{align*}
+       %
+       Wir k\"onnen nun einfach ein Parielle Integration machen
+       %
+       \begin{align*}
+         G_G - G_F = N[v_G P(T, v_G) - v_F P(T, v_F) - 
+         \int_{v_F}^{v_G} P(T, v) \d{v} ] 
+       \end{align*}
+       %
+       Im thermodynamischen Gleichgewicht ist
+       %
+       \begin{align*}
+         G_G = G_F, P(T, v_G) = P(T, v_F) = P_N (T)
+       \end{align*}
+       %
+       Daraus folgt dann auch die Maxwell-Konstruktion.
+     \item[Physikalische Zustandsgleichung]
+       %
+       \begin{align*}
+         \tilde{P}(T, v) = \begin{cases}
+           P(T, v) & \text{ f\"ur } v < v_F(T) \\
+           P_M(T) & \text{ f\"ur } v_F(T) < v < v_G(T) \\
+           P(T, v) & \text{ f\"ur } v > v_G(T) \\
+         \end{cases} 
+       \end{align*}
+       %
+      Es folgt eine Zusammenfassung der Physik
+    \end{description}
+  \item[Zusammenfassung]
+    %
+    \begin{itemize}
+      \item F\"ur $T \ge T_c$ gibt es nur eine Phase, und mann kann
+        die Van-der-Waals zustandsgleichung verwenden
+      \item F\"ur $T < T_c, v < v_F(T)$ gibt es nur eine fl\"ussige Phase, 
+        und man kann auch die Van-der-Waals gleichung verwenden.
+      \item F\"ur $T < T_c, v > v_G(T)$ Gibt es nur die gasf\"ormige Phase, also
+        benutzt man auch die Van-der-Waals Gleichung
+      \item F\"ur $T < T_c, v_F(T) < v < v_G(T)$ gibt es 2 Phasen und man kann
+        die Van-der-Waals Gleichung nicht verwenden. Es gibt dann konstanten
+        Druck, und Chemisches Potential.
+        %
+        \begin{align*}
+          C = \frac{N_F}{N} = \frac{v-G(T) - v}{v_G(T) - v_F(T)}
+        \end{align*}
+        %
+        Ist der Anteil der Materie der in der fl\"ussigen Phase ist.
+        % TODO: Skizze
+        % TODO: Noch eine Skizze
+    \end{itemize}
+    %
+    % TODO: Skizze
+\end{description}
+
+
+\section*{Ideale Quantengase}
+Gase von Bosonen und Fermionen ohne Wechselwirkung.
+Sie bilden die Grundlagen f\"ur die Festk\"orperphysik. Wir haben es
+in erster N\"aherung mit einem Elektrongas in einem Metall zu tun. In der 
+Festk\"orpherphysik gibt es auch die Vibration des Gitters also Phononen.
+Beispiele sind 
+\begin{itemize}
+  \item Photonengas
+  \item Ultrakalte Gase mit Bose-Einstein Kondensation
+  \item Fermigase
+\end{itemize}
+\subsection*{Vorlesung 15: Fermi- und Bose-Verteilungen}
+\emph{Schwabl Kapitel 4.1}
+Wir machen zuerst Quanten-Vielteilchentheorie, das bedeutet wir haben ein 
+system von vielen Quantenteilchen $N \gg 1$ welche nicht wechselwirken.
+Beginnen wir jedoch mit einem Teilchen um ein paar notationen einzuf\"uhren.
+F\"ur diesen Fall haben wir einen Hilbertraum
+%
+\begin{align*}
+  \mathcal{H}^{(1)}_j && \text{ Hamilton-Operator } H_j^{(1)}
+\end{align*}
+%
+Zum beispiel
+%
+\begin{align*}
+  H_j^{(1)} = \frac{\hbar^2}{2m} \Delta_j + V(\vec{r}_j)
+\end{align*}
+%
+Es gibt einteilchen Eigenzust\"ande
+%
+\begin{align*}
+  \Ket{\Phi_\alpha} 
+\end{align*}
+%
+mit Eigenenergien
+%
+\begin{align*}
+  \epsilon_\alpha, \quad \alpha=0,1,2, \ldots
+\end{align*}
+%
+Ordnung
+%
+\begin{align*}
+  \epsilon_0 \le \epsilon_1 \le \epsilon_2 \le \ldots
+\end{align*}
+%
+F\"ur $N$ Teilchen k\"onnen wir den Hilbert-Raum einfach mit einem 
+Tensorprodukt bilden.
+%
+\begin{align*}
+  H^{(N)} = \bigotimes_{j=1}^{N} \mathcal{H}_j^{(1)}, &&
+  H^{(N)} = \sum_{j=1}^{N} H^{(1)}
+\end{align*}
+%
+Wir k\"onnen sehr leicht die Eienzust\"ande dieses Hamilton-Operators
+schreiben. Die $N$-Teilchen  Eigenzust\"ande kann man mit $N$ quantenzahlen
+parametrisieren
+%
+\begin{align*}
+  \Ket{\alpha_1 \alpha_2 \alpha_3 \ldots \alpha_N} = \Ket{\alpha_1}
+  \otimes \Ket{\alpha_2} \otimes \ldots \otimes \Ket{\alpha_N}
+\end{align*}
+%
+Mit den Eigenenergien
+%
+\begin{align*}
+  E(\alpha_1, \alpha_2, \ldots, \alpha_N) = \sum_{j=1}^{N} \epsilon_{\alpha_j}
+\end{align*}
+%
+Wir k\"onnen das erweitern auf eine beliebeige Zahl von Teilchen, mit
+dem sogennanten \emph{Fock-Raum}
+%
+\begin{align*}
+  \mathcal{F} = \bigoplus_{N=0}^{\infty} \mathcal{H}^{(N)}
+\end{align*}
+%
+In jedem Unterraum gibt es den Hamilton-Operator mit der Eigenbasis und den
+Eigenenergien. Wir werden nun annehmen, dass die Teilchen alle identisch und
+ununterscheidbar sind. Wenn Quantenteilchen identisch sind, dann gibt es jedoch
+ein Problem, denn man kann die Teilchen nicht durchnummerieren und ihre Bahnen einzeln bestimmen.
+Daraus folgt eine besondere Eigenschaft dieses Zustandes:
+Die Funktion sollte nicht von der Nummerierung der Teilchen abh\"angen. Man 
+verlangt also, dass wenn man einen Zustand hat der Vertauschungsoperator
+folgende Eigenschaft besitzt
+%
+\begin{align*}
+  A_{jl} \Ket{\alpha_1 \alpha_2 \ldots \alpha_N} & = \Ket{\alpha_1 \ldots \alpha_l
+  \ldots \alpha_j \ldots \alpha_N} \\
+  & = e^{i \varphi_{jl}} \Ket{\alpha_1 \ldots \alpha_j \ldots \alpha_l
+\ldots \alpha_N}
+\end{align*}
+%
+Die Anwendung dieses Operators ergibt die Vertauschung von zwei Quantenzahlen.
+Wir verlangen, dass die Physik nicht von der Reihenfolge abh\"angt. Es gibt eine
+experimentelle Beobachtung f\"ur Bosonen:
+%
+\begin{align*}
+  \varphi_{jl} = 0
+\end{align*}
+%
+F\"ur Fermionen wird beobachtet
+%
+\begin{align*}
+  \varphi_{jl}  = \pi
+\end{align*}
+%
+Das bedeutet es ergibt keinen Sinn in diesem Ganzen Raum zu arbeiten,
+sondern wir m\"ussen uns auf Unterr\"aume beschr\"anken die symmetrisch
+oder antisymmetrisch sind.
+%
+\begin{align*}
+  \mathcal{H}_S^{(N)} && \mathcal{H}_A^{(N)} \subset \mathcal{H}^{(N)}
+\end{align*}
+%
+%
+\begin{align*}
+  \Ket{\alpha_1, \ldots \alpha_N}_{S,A} = C_{S,A} \sum_{P}^{} (\pm) P
+  \Ket{\alpha_{P(!)} \alpha_{P(3)} \ldots \alpha_{P(N)}}
+\end{align*}
+%
+Je nachdem ob der Zustand symmetrisch oder antisymmetrisch ist gibt es ein
+Vorzeichen.  Jeder Zustand hat wieder eine Energie von oben, man hat nur die
+Reihenfolge permutiert.  Die Zust\"ande sind also wieder Eigenzust\"ande des
+hamilton-Operators mit den Entsprechenden Eigenenergien
+
+%
+\begin{align*}
+  \mathcal{F} = \bigoplus_{N=0}^{\infty} \mathcal{H}_{S,A}^{(N)}
+\end{align*}
+%
+\subsection*{Besetzungszahldarstellung}
+Wir definieren zuerst einen Operator der auf dem Fock-Raum wirkt.
+Der Teilchenzahl- oder Besetzungszahloperator
+%
+\begin{align*}
+  \hat{n}_\alpha: \mathcal{F}_{S,A} \to \mathcal{F}_{S,A}
+  \hat{n}_\alpha \Ket{\alpha_1, \ldots, \alpha_N}_{S,A} = 
+  n_\alpha \Ket{\alpha_1, \ldots ,\alpha_N }_{S,A}
+\end{align*}
+%
+mit $n_\alpha$ der Anzahl der $\alpha_1 = \alpha, \quad j=1, \ldots ,N$
+als Besetzungszahl.
+Der Teilchenzahloperator
+%
+\begin{align*}
+  \hat{N} = \sum_{\alpha}^{} \hat{n}_{\alpha}
+\end{align*}
+%
+und der Hamilton-Operator
+%
+\begin{align*}
+  H = \sum_{N=0}^{\infty} H^{(N)}  = \sum_{\alpha}^{} \epsilon_\alpha \mathcal{n}_\alpha
+\end{align*}
+%
+%
+\begin{align*}
+  \Ket{\alpha_1, \ldots, \alpha_N}_{S,A} \leftrightarrow \Ket{n_0 n_1 \ldots}_{S,A} \subset \mathcal{F}_{S,A}
+\end{align*}
+%
+\begin{description}
+  \item[Gittermodell] 
+    %
+    \begin{align*}
+      \operatorname{dim} \mathcal{H}^{(1)} & = L && \operatorname{dim} \mathcal{F} = 4^L \\
+      \operatorname{dim} \mathcal{H}^{(N_\text{up} N_\text{down})} = 
+      \begin{pmatrix}
+        L & N_{up} 
+      \end{pmatrix} 
+      \begin{pmatrix}
+        L & N_{down} 
+      \end{pmatrix} 
+    \end{align*}
+    %
+\end{description}
+
+%
+\begin{align*}
+  \hat{N} \Ket{n_0 n_1 \ldots } = N \Ket{ n_0 n_1 \ldots} \text{ mit } N = 
+  \sum_{\alpha}^{} n_\alpha \\
+  H \Ket{n_0 n_1 \ldots} = E \Ket{n_0 n_1 \ldots } \text{ mit } E = 
+  \sum_{\alpha}^{} E_\alpha n_\alpha = E (\alpha_1, \ldots , \alpha_N)
+\end{align*}
+%
+F\"ur Bosonen 
+%
+\begin{align*}
+  0 \le n_\alpha \le \infty \implies \text{ Grundzustand } n_0 = N, \quad
+  E_0 = N \epsilon_0
+\end{align*}
+%
+F\"ur Fermionen gilt das Pauli-Prinzip
+%
+\begin{align*}
+  0 \le n_\alpha \le 1 \implies \text{ Grundzustand } n_0 = n_1 - \ldots - n_{N-1} -1,
+  \quad n_{\alpha \ge N} = 0 , \quad E_0 = \sum_{\alpha=0}^{N-1} \epsilon_\alpha
+\end{align*}
+% TODO: skizze
+%
+\begin{description}
+  \item[Zustandsumme]
+    \begin{itemize}
+      \item Unterscheidbare Teilchen
+        %
+        \begin{align*}
+          Z_N = \trace_{\mathcal{H}^{(N)}} e ^{- \beta H^{(N)}} = \prod_{j=1}^{N}
+          \trace_{\mathcal{H}_j^{(1)}} e ^{-\beta H_j ^{(1)}}
+        \end{align*}
+        %
+      \item Identische Quantenteilchen
+        %
+        \begin{align*}
+          Z_{GK} = \trace_{\mathcal{F}_{S,A}} e ^{-\beta \left( \hat{H} - \mu  \hat{N} \right)}
+           & = \sum_{}^{} \Braket{\{n_\alpha\} e ^{-\beta \left( \hat{H} - \mu \hat{N} \right)} | \{n_\alpha\} } \\
+          \sum_{\{n_\alpha\}}^{} e^{-\beta \left( \sum_{\alpha}^{}
+          \epsilon_\alpha n_\alpha - \mu \sum_{\alpha}^{ } n_\alpha \right)}
+          = \sum_{n_0}^{} \sum_{n_1}^{} \ldots \prod_{\alpha}^{}
+          e^{-\beta (\epsilon_\alpha - \mu )}
+         \end{align*}
+        %
+        %
+        \begin{align*}
+          Z_{GK} = \prod_{\alpha}^{} \sum_{n_\alpha}^{} e^{-\beta(\epsilon-\mu) n_\alpha}
+        \end{align*}
+        %
+        Bosonen:
+        %
+        \begin{align*}
+          Z_{GK} = \prod_{\alpha}^{} \sum_{n_\alpha = 0}^{ \infty}
+          e^{-\beta\left( \epsilon_\alpha - \mu  \right) n_\alpha} 
+          = \prod_{\alpha}^{} 
+          \frac{1}{1- e ^{-\beta(\epsilon_\alpha - \mu)}}
+        \end{align*}
+        %
+        Diese geomtetrische Reihe ist nur konvergent f\"ur 
+        %
+        \begin{align*}
+          \mu < \epsilon_\alpha \quad\forall\, \alpha
+        \end{align*}
+        %
+        Man kann also das chemische Potential in einem Bose-Gas nicht beliebig 
+        w\"ahlen. \\
+        Fermionen:
+        %
+        \begin{align*}
+          Z_{GK} &= \prod_{\alpha}^{} \sum_{n_\alpha=0,1}^{} e ^{-\beta(\epsilon_\alpha - \mu)n_\alpha} \\
+                 & = \prod_{\alpha}^{} \left( 1 + e^{-\beta(\epsilon_\alpha - \mu)} \right)
+        \end{align*}
+        %
+        
+    \end{itemize}
+  \item[Mittlere Besetzungszahl]
+    %
+    \begin{align*}
+      \Braket{\hat{n}_\alpha} & = \trace(\hat{n}_\alpha \hat{\rho}) = 
+      \frac{1}{Z_{GK}} \trace_{\mathcal{F}_{S,A}} \left( \hat{n}_\alpha
+      e ^{-\beta (\hat{H} - \mu \hat{N})}\right) \\
+      & = -k_B T \pd{}{\epsilon_\alpha} \ln{Z_{GK}}
+    \end{align*}
+    %
+  \item[Bose-Einstein-Verteilung]
+    %
+    \begin{align*}
+      \Braket{\hat{n}_\alpha} = \frac{1}{e^{-\beta(\epsilon_\alpha - \mu)} - 1}
+      \text{ mit } \mu < \epsilon_0 \le \epsilon_\alpha
+    \end{align*}
+    %
+  \item[Fermi-Dirac-Verteilung]
+    %
+    \begin{align*}
+      \Braket{\hat{n}_\alpha} = \frac{1}{e^{\beta(\epsilon_\alpha - \mu)} + 1}
+    \end{align*}
+    %
+\end{description}
+Die Anzahl der Teilchen im Einteilchen-Zustand $\Ket{\Phi_\alpha}$
+mit Eigenergie $\epsilon_\alpha$
+%
+\begin{align*}
+  \Braket{\hat{n}_\alpha} 
+\end{align*}
+%
+
+
+% TODO: Skizze
+\subsection*{Zustandsdichte und Photonengas}
+\emph{Schwabl Kapitel 4.1, 4.5}
+Wir haben Makroskopische Variable von der Form
+%
+\begin{align*}
+  F = \sum_{\alpha}^{} 
+  \frac{1}{e^{\beta(\epsilon_\alpha - \mu)} \pm 1}
+\end{align*}
+%
+Die Idee ist
+%
+\begin{align*}
+  F= \int_{-\infty}^{\infty} \d{\epsilon} f(\epsilon) \sum_{\alpha}^{}
+  \delta (\epsilon-\epsilon_\alpha) = 
+  V \int_{-\infty}^{\infty} \d{\epsilon}f(\epsilon) Z(\epsilon)
+\end{align*}
+%
+Wir definieren die \emph{Einteilchen-Zustandsdichte}
+auch \emph{Density of States (DOS)} genannt.
+%
+\begin{align*}
+  Z(\epsilon) = \frac{1}{V} \sum_{\alpha}^{} \delta (\epsilon-\epsilon_\alpha)
+\end{align*}
+%
+\begin{itemize}
+  \item $Z(\epsilon)$ ist (stückweise) stetig für $ \lim_{N\to \infty}$
+  \item $Z(\epsilon) \d{\epsilon}$ ist die Dichte der Einteilchen-Eigenzustände
+    im Intervall $[\epsilon], \epsilon + \d{\epsilon}$.
+  \item $V Z(\epsilon) \d{\epsilon}$ ist die Anzahl der Einteilchen-Eigenzustände
+    im Intervall $[\epsilon], \epsilon + \d{\epsilon}$.
+  \item Eine Folgerung daraus ist
+    %
+    \begin{align*}
+      \int_{-\infty}^{\infty} Z(\epsilon) \d{\epsilon} = \frac{1}{V}
+      \operatorname{dim} \mathcal{H}^{(1)}
+    \end{align*}
+    Um das zu integrieren muss man zuerst $N\to\infty$ schicken. Wir lassen 
+    dabei jedoch $\frac{V}{N}$ konstant.
+    %
+\end{itemize}
+Die Zustandsdichte ist keine abstrakte größe, sonder man kann sie auch konkret
+messen. Sie ist zum Beispiel relevant für die Wärmeleitfähigkeit eines Metalls.
+Wir berechnen jetzt ein Beispiel:
+\subsubsection*{Freies Quantengas}
+% TODO: Skizze
+Es gibt kein Potential, also ist der Hamilton-Operator eines Teilchens
+%
+\begin{align*}
+  H^{(1)} & = - \frac{h^2}{2m} \Delta \\
+  H^{(1)} \Psi_\alpha(\vec{r}) & = \epsilon_\alpha \Psi_\alpha (\vec{r})
+\end{align*}
+%
+Die Zustandsdichte hängt nicht von der Randbedingung ab, aber man muss 
+trotzdem die Richtige Randebedingung wählen.
+\begin{enumerate}[I)]
+  \item Offene Randbedingungen
+    % TODO: Skizze
+    %
+    \begin{align*}
+      \Psi_k(x) = \sqrt{\frac{2}{L}} \sin{k x}
+    \end{align*}
+    %
+    also
+    %
+    \begin{align*}
+      k & = \frac{\pi}{L}n, \quad n = 1, 2, \ldots \\
+      \epsilon(k) & = \frac{\hbar^2}{2 m} k^2
+    \end{align*}
+    %
+  \item Periodische Randbedingungen
+    %
+    \begin{align*}
+      \Psi(x+L) = \Psi(x)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \Psi_k(x) = \frac{1}{\sqrt{L}} e^{i k x} \\
+      k = \frac{2 \pi}{L} z, \quad\forall\,z \in \mathbb{Z}
+    \end{align*}
+    %
+    Man kann das mit der Definition der Delta-Funktion ausrechnen, man 
+    erhält dann ein sehr leichtes Ergebnis. Wir definieren zuerst eine größe,
+    die Anzahl der Eigenzustände mit Energie kleiner als $\epsilon$.
+    %
+    \begin{align*}
+      N(\epsilon) & = \frac{1}{V} & \epsilon(\vec{k}) = \frac{\hbar^2}{2m} \vec{k}^2 < \epsilon \\
+                & = \frac{1}{V} \text{ Anzahl der $\vec{k}$ Punkte mit $\abs{\vec{k} < \sqrt{\frac{2 m \epsilon}{ \hbar^2}}}$} \\
+                  & = \frac{1}{V} \frac{V_d \left(\sqrt{\frac{2m\epsilon}{ \hbar^2}}\right) } 
+      { \left( \frac{2 \pi}{L} \right)^d}
+    \end{align*}
+    % TODO: Skizze
+    %
+
+    \begin{align*}
+      V_d(R) = \frac{\pi^{\frac{d}{2} R^d}}{\Gamma\left( \frac{d}{2} + 1 \right)}
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      Z(\epsilon) = \dd{N}{\epsilon} \begin{cases}
+        0 & \text{ für } \epsilon < 0 \\
+        (2\pi)^{\frac{d}{2}} \left( \frac{m}{h^2} \right)^{\frac{d}{2}}
+        \frac{1}{\Gamma(\frac{d}{2})} \epsilon^{\frac{d}{2} - 1} & \text{ für } \epsilon > 0 \\
+      \end{cases} 
+    \end{align*}
+    %
+    %
+    Zum beispiel
+    \begin{align*}
+      d = 1 && Z(\epsilon) = \frac{\sqrt{\frac{2 m }{ \hbar^2}} 1}{\sqrt{\epsilon}} \\
+      d = 2 && Z(\epsilon) = \frac{2 \pi m }{ \hbar^2} \\
+      d = 3 && Z(\epsilon) = 2 \pi \left( \frac{2m }{ \hbar^2} \right)^{\frac{3}{2}} \sqrt{\epsilon}
+    \end{align*}
+    %
+\end{enumerate} 
+\subsubsection*{Photonengas}
+Elektromagnetisches Feld in einem Hohlraumresonator
+% TODO: Skizze
+Die Maxwell-Gleichungen ergeben stehende Wellen
+%
+\begin{align*}
+  w(\vec{k}) = c \abs{\vec{k}}, && \vec{k} = \frac{\pi}{L} \vec{n}, \quad\forall\, n_j \in \N^{\ast}
+\end{align*}
+%
+Quantenmechanisch sind Photonen Bosonen:
+%
+\begin{align*}
+  \epsilon(\vec{k}) = \hbar w (\vec{k}) = \hbar c  \abs{\vec{k}} 
+\end{align*}
+%
+%
+\begin{align*}
+  H & = \sum_{\vec{k}, \lambda}^{} \epsilon(\vec{k}) \hat{n}_{\vec{k} \lambda} \\
+  \lambda & = 1,2 \text{ (Polarisation) }
+\end{align*}
+%
+Wir wollen nun die Energiedichte des Systems berechnen
+%
+\begin{align*}
+  n & = \frac{u}{V}= \frac{\Braket{\hat{H}}}{V} = \frac{1}{V} \sum_{\vec{k}, \lambda}^{} \epsilon(\vec{k})
+  \Braket{ \hat{n}_{\vec{k},\lambda} } = \frac{1}{V} \sum_{\vec{k \neq 0 },\lambda}^{} \epsilon(\vec{k}) 
+  \frac{1}{e^{\beta \epsilon(\vec{k})} - 1} \\
+  & = \sum_{0}^{\infty} \d{\epsilon} * \frac{\epsilon}{e^{\beta \epsilon} - 1} Z(\epsilon) \\
+  & = \hbar^2 \int_{0}^{\infty} \d{\omega} * \frac{\omega}{e^{\beta \hbar \omega} - 1} Z(\hbar \omega)
+\end{align*}
+%
+Das ist schon sehr schön, mann muss jetzt noch die Zustandsdichte bestimmen
+%
+Wir nehmen nun an, dass das System unendlich groß ist und benutzen Periodische Randbedingungen
+\begin{align*}
+  Z(\hbar\omega) & = \frac{1}{V} \sum_{\vec{k}, \lambda}^{} \delta\left( \hbar \omega - \hbar c \abs{\vec{k}} \right) \\
+                 & = \frac{2}{V} * \left( \frac{L}{2\pi} \right)^3 \int_{\R^3}^{} \d{^3 k} \delta(\hbar \omega - \hbar c \abs{\vec{k}}) \\
+                 & = \frac{2}{(2\pi)^3}  4 \pi \int_{0}^{\infty} \d{k} k^2 \delta\left( \hbar \omega - c \hbar k \right) \\
+                 & = \frac{1}{\pi^2 \hbar c} \left( \frac{\omega}{c} \right)^2
+\end{align*}
+%
+Damit folgt
+%
+\begin{align*}
+  u = \int_{0}^{\infty} \d{\omega} * \frac{\hbar}{\pi^2} \left( \frac{\omega}{c} \right)^3
+  \frac{1}{e^{\beta \hbar \omega} -1 }
+\end{align*}
+%
+Der Term im Integranden ist die Spektrale Energiedichte $u(T, \omega)$. \\
+% TODO: Skizze
+Rayleigh-Jeans Gesetz:
+%
+\begin{align*}
+  \hbar \omega \ll  k_B T && u(T, \omega) = \frac{1}{\pi^2} k_B T * \frac{\omega^2}{c^3} && \text{ Rayleigh-Jeans Gesetz} \\
+  \hbar \omega \gg  k_B T && u(T, \omega) ~ e^{-\beta \hbar \omega} && \text{ Wien Gesetz}
+\end{align*}
+%
+%
+\begin{align*}
+  x = \beta \hbar \omega \implies  && u(T) = (k_B T)^4 * \frac{1}{\pi^2} * \frac{1}{(c \hbar)^3}
+  \underbrace{\int_{0}^{\infty} \d{x} * \frac{x^3}{e^x - 1}}_{= b} = a T^4 && \text{ Stefan-Boltzmann-Gesetz }
+\end{align*}
+%
+%
+\begin{align*}
+  b = \int_{0}^{\infty} \d{x} * \frac{x^4}{\sinh(\frac{x}{2})} = \frac{\pi^4}{15}
+\end{align*}
+%
+%
+\begin{align*}
+  \implies u = \frac{\pi^2}{15} * \frac{1}{(c \hbar)^3} (k_B T)^4
+\end{align*}
+%
+Beispiel:
+%
+\begin{align*}
+  T_1 \simeq \SI{27}{\kelvin}, V_1 \\
+  T_2 = \SI{270}{\kelvin}, V_2 = ? \\
+\end{align*}
+%
+%
+\begin{align*}
+  U_1 = V_1 u_1 = U_2 = V_2 u_2 \\
+  \implies V_2 = V_1 * \frac{u_1}{u_2} = V_1 \left( \frac{T_1}{T_2} \right)^4 = 
+  \num{1e-8} V_1
+\end{align*}
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Bose-Einstein-Kondensation}
+Ideales freies Gas von Bosonen mit $s=0,1,2,...$.
+Die Dispersion ist
+%
+\begin{align*}
+  \epsilon(\vec{k}) = \frac{\hbar^2}{2m} \vec{k}^2 \ge 0 && s = -S, -S + 1, \ldots , +S
+\end{align*}
+%
+Die Zustandsdichte ist das Produkt mit der Entartung
+%
+\begin{align*}
+  Z(\epsilon \ge 0) = (2 S + 1)\left( \frac{2 \pi m}{\hbar^2}  \right)^{\frac{d}{2}}
+  \epsilon^{\frac{d}{2} - 1} * \frac{1}{\Gamma\left( \frac{d}{2} \right)}
+\end{align*}
+%
+Bose-Einstein-Verteilung 
+%
+\begin{align*}
+  \Braket{\hat{n}_{\vec{k},s}} = \Braket{\hat{n}_{\vec{k},s}} = 
+  \frac{1}{e^{(\beta(\vec{k}) - \mu)} - 1} && \text{ mit } \mu < 0
+\end{align*}
+%
+Die erste Größe die wir damit zum Beispiel berechnen können ist die mittlere
+Teilchenzahl
+%
+\begin{align*}
+  N(T, \mu, V) = \sum_{s, \vec{k}}^{} \Braket{\hat{n}_{\vec{k},s}} = 
+  V \int_{0}^{E} \d{\epsilon} Z(\epsilon) * \frac{1}{e^{(\beta(\epsilon - \mu))} - 1}
+\end{align*}
+%
+Daraus folgt
+%
+\begin{align*}
+  N = \frac{V (2 S + 1) }{\lambda_T^d} \int_{0}^{\infty} \d{x} x^{\frac{d}{2} - 1}
+  \frac{1}{\frac{1}{z} e^{x} - 1} && \text{ mit } 0 \le Z = e^{\beta\mu} < 1
+\end{align*}
+%
+\begin{description}
+  \item[Definition] 
+    %
+    \begin{align*}
+      g_\alpha(z) & = \int_{0}^{+\infty} \d{x} x^{\alpha-1} 
+      \frac{1}{\frac{1}{z} e^x - 1} * \frac{1}{\Gamma(\alpha)} && \alpha > 0 \\
+                                                               & = \sum_{n=1}^{\infty} 
+      \frac{Z^n}{n^\alpha}
+    \end{align*}
+    Daraus folgt
+    %
+    \begin{align*}
+      N(T, \mu, V) = V * \frac{2S+1}{\lambda_T^d} g_{\frac{d}{2}}(Z)
+    \end{align*}
+    %
+    %
+\end{description}
+Die innere Energie
+%
+\begin{align*}
+  U(T, \mu, V) = \sum_{\vec{k},s}^{}\epsilon(\vec{k}) \Braket{\hat{n}_{\vec{k},s}}=
+  V * \frac{2S+1}{\lambda_T^d} k_B T * \frac{d}{2} g_{\frac{d}{2} + 1}(Z)
+\end{align*}
+%
+Wir brauchen jedoch das großkanonische Potential
+%
+\begin{align*}
+  \Omega(T, \mu, V)  & = + k_B T \sum_{\vec{k},s}^{} \ln{(1-e^{-\beta(\epsilon(\vec{k}) - \mu)})}  \\
+                     & = -\frac{2}{d} U(T, \mu, V)
+\end{align*}
+%
+Wir können damit einige allgemeine Ergebnisse herleiten, wie zum Beispiel den Druck
+%
+\begin{align*}
+  P = - \left( \pd{\Omega}{V} \right)_{T, \mu} - \frac{\Omega}{V} = 
+  \frac{2}{d} * \frac{U}{V} \implies U = \frac{d}{2} PV
+\end{align*}
+%
+\subsection*{Quantenkorrekturen zum klassischen idealen Gas}
+%
+\begin{align*}
+  Z \ll 1 \iff \abs{\mu} \gg k_B T \implies g_\alpha(z) \simeq Z + Z^{-\alpha} Z^2
+  + \mathcal{O}(Z^3) \\
+  \implies N = V * \frac{2S+1}{\lambda_T^d}\left(Z + Z^{-\frac{d}{2}} Z^2 + \mathcal{O}(Z^3)\right) \quad (*)
+\end{align*}
+%
+Man kann hier auch eine Entwicklung machen
+%
+\begin{align*}
+  P V = V * \frac{2S+1}{\lambda_T^d} k_B T \left( Z + Z^{-\frac{d}{2} - 1} Z + \mathcal{O}(Z^3) \right)
+\end{align*}
+%
+Man kann damit sehr schön die Änderung der Zustandsgleichung des idealen Gases berechnen
+%
+\begin{align*}
+  \frac{PV }{n k_B T} & = \left( Z + Z^{-\left( \frac{d}{2} + 1 \right)} Z^2 \right)/(Z+ Z^{-\frac{d}{2} Z^2}) + \mathcal{O}(Z^3) \\
+                      & = 1 - Z^{-\left( \frac{d}{2} + 1 \right)} Z + \mathcal{O}(Z^3)
+\end{align*}
+%
+Aus $(*)$ folgt
+%
+\begin{align*}
+  Z = \frac{N}{V} \lambda_T^d * \frac{1}{2S +1} = \rho * \frac{\hbar^{d}}{(2 \pi m k_B T)^{\frac{d}{2}}} 
+  \frac{1}{2 S + 1}
+\end{align*}
+%
+Wenn $Z \ll 1$
+%
+\begin{align*}
+  \rho \ll 1 && T\to\infty && S \to \infty
+\end{align*}
+%
+%
+\begin{align*}
+  \mu(T, N, V) = ? \quad \implies g_{\frac{d}{2}}(z) = \frac{\rho \lambda_T^{d} 1}{2 S +1} \quad(+)
+\end{align*}
+$g_\alpha(z)$ ist monoton steigend und $g_\alpha(0) = 0$. Was passiert nun 
+wenn $Z\to1$ ?
+%
+%
+\begin{align*}
+  g_{\frac{d}{2}} (z\to1) = \begin{cases}
+    +\infty & d = 1,2 \quad \implies \exists z(T, \rho) \quad\forall\, T > 0, \rho > 0 \\
+    g_{\frac{3}{2}}(1) \simeq 2.612... & \text{ sonst }\implies \exists z(T, \rho) \quad\forall\, 0 < \rho < \rho_c(T) \text{ oder }
+    \quad\forall\, T > T_c(\rho)
+  \end{cases} 
+\end{align*}
+%
+mit der kritischen Dichte $\rho_c(T) = \frac{g_z(1}{\lambda_T^3} (2 S + 1)$ 
+oder der kritischen Temperatur $T_c(\rho) = \left( \frac{\rho}{(2 S +1)
+g_{\frac{3}{2}}(1)}^{\frac{2}{3}} \right) \frac{\hbar^2}{2 \pi m k_B}$.
+
+
+
+
+
+
+
+
+
