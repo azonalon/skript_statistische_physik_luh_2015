@@ -352,6 +352,279 @@ Beispiele sind
 %   % \item \ce{He3}$ \epsilon_F = \SI{4e-4}{\electronvolt}$ $T_F = \SI{5}{\kelvin}$ theoretisch, experimentell \SI{1}{\Kelvin}.
 % \end{itemize}
 
+\subsection*{Vorlesung 19: Magnetismus und Ising-Modell}
+\begin{description}
+  \item[Klassische Physik] 
+    %
+    \begin{align*}
+      H = \sum_{i=1}^{N}\frac{1}{2 m_i} \left[ \vec{P}_i - q_i \vec{A}(\vec{r}_i, t) \right]^2
+      + \sum_{i=1}^{N} q_i \Phi(\vec{r}_i, t) + W (\{\vec{r}_i\})
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      Z(T, V, N, \vec{B}) = c \int_{\R^{3N}}^{V^N} \d{^{3N} r} e^{-\beta H}
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      G(T, V, N, \vec{B}) = - k_B T \ln{Z}
+    \end{align*}
+    %
+    Magnetisierung
+    %
+    \begin{align*}
+      \vec{M}(T, V, N, \vec{B}) = - \left( \pd{G}{\vec{B}} \right)_{T, V, N}
+    \end{align*}
+    %
+  \item[Bohr-Van-Leeaven-Theorem]
+    Es gibt keinen magnetismus in der klassichen statistischen Physik. Das heißt
+    %
+    \begin{align*}
+      \vec{M}(\vec{B}) = 0 \quad\forall\, \vec{B}
+    \end{align*}
+    %
+  \item[Beweis] Man macht eine Substitution
+    %
+    \begin{align*}
+      \tilde{\vec{P}}_i = \vec{P}_i - q_i \vec{A}
+    \end{align*}
+    %
+    Damit verschwindet die Abhängigkeit vom Vektorpotential. Mit der richtigen
+    Eichung ist das Magnetfeld unabhängig von $\Phi$.
+  \item[Quantenphysik]
+    %
+    \begin{align*}
+      H = [\sum_{i=1}^{N} 
+        \frac{( \vec{P}_i^2 )}{2 m_i} - \mu_i^z B
+    ]    
+  \end{align*}
+    %
+    Magnetisches Moment des Teilchens $i$ in $z$-Richtung
+    %
+    \begin{align*}
+      \hat{\mu}_i^z = + \frac{q_i}{2 m_i}\left( \hat{L}_i^z + g_i \hat{S}_i^z \right)
+      + \frac{q_i^2}{4 m_i} (\hat{x}_i^2 + \hat{y}_i^2) B
+    \end{align*}
+    %
+    In der Regel wird der Zweite Term vernachlässigt.
+    %
+    \begin{align*}
+      G(T, V, N, \vec{B}) & = - k_B T \ln{( \trace e ^{-\beta H})}\\
+      M(T, V, N, \vec{B}) = - \left( \pd{G}{\vec{B}} \right)_{T, V, N} = 
+      \Braket{
+        \sum_{i}^{} \hat{\mu}_i^z
+      }
+    \end{align*}
+    %
+    Es gibt isotherme magnetische Suszeptibilität
+    %
+    \begin{align*}
+      \chi_T(T, V, N, \vec{B}) = \left( \pd{\vec{M}}{\vec{B}} \right)_{T, V, N}
+      = \left\{ \pd{M_i}{B_j} \right\}
+    \end{align*}
+    %
+  \item[Beispiele]
+    \begin{enumerate}[1)]
+      \item Magnetismus von Atomen und Ionen
+        \begin{itemize}
+          \item Edelgase $\vec{L} + \vec{S} = 0$. Damit folgt Diamagnetismus, also
+            $\chi_T < 0$.
+          \item Ungerade Anzahl von Elektronen $( \ce{Na}, \ce{U^{4+}})$:
+            $J^z = L^z + 2 S^z \neq 0$. Es gibt also Paramagnetismus
+            $\chi_T > 0$, $\chi_T = \frac{C}{T}$. Man nennt diesen Zusammenhang
+            auch \emph{Curie-Weiss-Gesetz}.
+        \end{itemize}
+
+      \item Magnetismus der Metalle \\
+        Man hat Leitungselektronen, also Delokalisierte Elektronen im positiv
+        geladenen Hintegrund. Dies ist letztlich ein Freies Fermi-Gas.
+        Jetzt schalten wir ein Magnetfeld ein. Wir müssen aus dem hamilton-Operator
+        den Teil nehmen der für das Magnetfeld relevant ist. Dazu machen wir die
+        Vereinfachung, dass es nur Kopplung des Magnetfeldes mit dem Spin
+        gibt.
+        %
+        \begin{align*}
+          H = \sum_{i=1}^{N} 
+          \frac{(\vec{P}_i^2)}{2 m_i} + 2 \mu_B S_i^z
+        \end{align*}
+        %
+        Dabei ist $\mu_B = \frac{2 \hbar}{2 m_l}$. Die Einteilchen Eigenenergien
+        %
+        \begin{align*}
+          \epsilon_\sigma(\vec{k}) = \frac{\hbar \vec{k}^2}{2 m_l} + \mu_B \cdot B \cdot \sigma
+          && \text{ mit } \sigma = \pm 1 && S^z \Ket{\vec{k} r} = \frac{\hbar}{2} 
+          \sigma \Ket{\vec{k} \sigma}
+        \end{align*}
+        %
+        Man kann die Physik sehr gut verstehen wenn man das System bei $T=0$ betrachtet.
+        In diesem Fall hat man die Situation, dass dispersion bei $B=0$ eine Parabel ist.
+        Die Niveaus unter der Fermi-Energie sind besetzt, die anderen nicht.
+        Man hat dabei für jedes Niveau ein up und ein down elektron. Wenn
+        man nun das magnetfeld einschaltet, dann muss man die Dispersion nach
+        oben oder unten verschieben, je nchdem ob man Spin Up oder Spin Down hat.
+        Die Verschiebung ist dabei proportional zu $B \mu_B$. Man hat also nun
+        mehr Elektronen mit Down Spin als mit Up. Man kann dann die Magnetisierung
+        in $z$-Richtung explizit berechnen. Die magnetisierung ist
+        der Erwartungswert des magnetischen Momentes. man bekommt dann
+        %
+        \begin{align*}
+          M_z  = - \frac{e}{m_e} \Braket{\sum_{i}^{} S_i^z} = 
+          - \mu_B (N_+ - N_-) > 0
+        \end{align*}
+        %
+        Wir bekommen tatsächlich eine magnetisierung die Positiv oder Negativ ist, 
+        je nach orientierung des Magnetfeldes. Man kann dies auch für tiefe Temperaturen
+        berechnen aber man führt das letztlich nur auf den vorigen Weg zurück.
+        Man bekommt dann einen Wert für die Suszeptibilität die auch
+        Pauli-Suszeptibilität gennannt wird
+        %
+        \begin{align*}
+          \chi_P = \mu_B^2 Z(\epsilon_F) V
+        \end{align*}
+        %
+        Da der Wert größer als 0 ist nennt man das Phänomen
+        auch Pauli-Paramagnetismus.
+
+        Mit Kopplung zu $L^z$ und $x^2 + y^2: \chi_L = - \frac{\xi_p}{3}$. Dies
+        ist der \emph{Landau-Diamagnetsimus}.
+        Wenn das Magnetfeld in einem Metall sehr groß wird kann man kreisbewegung
+        der Elektronen beobachten. Man kann das auch quantenmechanisch erklären.
+
+        Es gibt Verschiedene Konventionen in der Physik, also sieht das ERgebnis
+        nicht immer so aus wie oben. Man muss dann aufpassen in welchen 
+        Einheiten die Werte definiert sind.
+        
+    \end{enumerate} 
+\end{description}
+    \begin{description}
+      \item[Ising Modell] Wir haben lokalisierte Elektronen auf einem $d$-dimensionalen
+        hyperkubischen Gitter. Lokalisierte heißt hier, dass sie sich nicht bewegen
+        können, der einzige Freiheitsgrad ist also der Spin der Elektronen.
+        Wir werden nun annehmen, dass es in dem System eine sehr anisotrope
+        Austauschkopplung gibt. Wir beschränken uns dabei auf kurzreichweitige
+        Wechselwirkungen, also solche mit den nächsten Nachbarn. Dass die
+        Richtung sehr anisotop ist, bedeutet dass auch nur z.B. die $z$-Komponente
+        des Spins koppelt. Der Hamilton operator schreibt sich dann zu
+        %
+        \begin{align*}
+          H = - \sum_{\Braket{i,j}}^{} I_{i,j} S_i^z S_j^z + 
+          \frac{2 \mu_B}{\hbar} \sum_{i=1}^{N} B_i S_i^z
+        \end{align*}
+        Die Summe geht dabei über alle Gitterplätze.
+        Die standardnotatinon
+        %
+        \begin{align*}
+          \sum_{\Braket{i,j}}^{}
+        \end{align*}
+        %
+        Bedeutet eine Summer über alle Paare von nächsten Nachbarn.
+        %
+        Das könnte man noch aus der Quantenmechanik kennen:
+        %
+        \begin{align*}
+          H = - J \vec{S}_1 \cdot \vec{S}_2 \to 
+          - J_x S_1^x S_2^x + J_x S_1^x S_2^x + J_z S_1^z S_2^z
+        \end{align*}
+        %
+        Das wichtige ist hier, dass es zwei räume gibt. Einen raum des Gitters
+        und einen Raum des Spins. Wir nehmen allerdings an, dass für die richtung
+        des Spins nur eine Komponente wichtig ist. $I$ ist nur ein Platzhalter
+        für die Austauschkopplung. Wir werden das später noch konkretisieren.
+        Jetzt müssen wir jedoch vorerst das Problem lösen. Dazu müssen wir
+        wissen was Der Hilbert-Raum eines Elektronenspins eigentlich ist.
+        %
+        \begin{align*}
+          \text{Hilbert-Raum } \mathbb{C}^{2N}
+        \end{align*}
+        %
+        Wir dürfen und werden ein Tensorprodukt der Basen verwenden.
+
+        Stellen sie sich nun vor man hätte keine Wechselwirkung. Dann wäre
+        die Lösung einfach, die eigenzustände sind dann
+        %
+        \begin{align*}
+          \Ket{\{s_i\}} = \Ket{s_1} \otimes \Ket{s_2} \otimes \ldots \otimes
+          \Ket{s_N} \text{ mit } S_i^z \Ket{s_i} = \frac{\hbar}{2}
+          \Ket{s_i}, \quad s_i = \pm 1
+        \end{align*}
+        %
+        Alle Operatoren die wir hier haben kommutieren miteinander. Wir können
+        das System also fast wie ein klassisches System behandeln. Der Grund
+        warum wir dass Problem in 2 Dimensionen überhaupt lösen konnen ist,
+        dass die Eigenzustände eine so einfache Form haben. Die Eigenenergien sind
+        %
+        \begin{align*}
+          E(\{s_i\}) = -  \sum_{\Braket{i,j}}^{} I_{i,j} \frac{\hbar}{4}
+          s_i s_j + \sum_{i}^{} \underbrace{B_i \mu_B}_{- H_i} s_i
+        \end{align*}
+        %
+        Wir haben also die eigenzustände und die Eigenenergien, wir können
+        also die Magnetisierung eines Eigenzustandes $\Ket{\{s_i\}}$ berechnen
+        %
+        \begin{align*}
+          M(\Ket{\{s_i\}}) = - \frac{2 \mu_B}{\hbar} \Braket{\{s_i\}
+            | \sum_{i}^{} S_i^z | \{s_i\}} = \underbrace{- \mu_B}_{=1} \sum_{i}^{} s_i
+        \end{align*}
+        %
+        aus historischen Gründen haben wir $\mu_B$ gleich 1 gesetzt. Das ist 
+        alles für die Eigenzustände gewesen. Wir haben nun also 
+        alles um die Zustandssumme zu schreiben:
+        %
+        \begin{align*}
+          Z & = \trace e^{-\beta H}  = \sum_{\{s_i\}}^{} 
+          \Braket{\{s_i\} | e^{-\beta H} | \{s_i\}} \\
+          & = \sum_{\{s_i\}}^{} e ^{-\beta E (\{s_i\})}
+        \end{align*}
+        %
+        Damit ist dann,
+        %
+        \begin{align*}
+          G(T, H) = - k_B T \ln{Z} 
+        \end{align*}
+        %
+        Man kann damit zum Beispiel die Magnetisierung berechnen
+        %
+        \begin{align*}
+          M(T, H) = - \left( \pd{G}{H} \right)_T = 
+          \Braket{ \sum_{i}^{} s_i} = 
+          \frac{1}{Z} \sum_{\{s_i\}}^{} \left( \sum_{j}^{} s_j \right)
+          e^{-\beta E(\{si\})}
+        \end{align*}
+        %
+        Das problem sind nun die Wechselwirkungen, wir haben also ein Summe  
+        über $2^N$ Terme
+        %
+        \begin{align*}
+          \sum_{\{s_i\}}^{} = \sum_{s_1 = \pm 1}^{} \sum_{s_2 = \pm 1}^{} \ldots\sum_{s_N = \pm 1}^{}
+        \end{align*}
+        %
+        Angenommen wir haben nun ein Quadratisches Gitter mit $d=2$.  Und
+        kantenlänge 10. Das bedeutet  wir haben $N= 10^2$. Und damit
+        $2^{100} \approx 10^{30}$ Terme. Exakte Lösung in 
+        $d = 1$ und $z$. Die Lösung in einer Dimension wird eine Hausübung sein,
+        die Lösung in zwei Dimensionen ist jedoch viel schwieriger. Interessant
+        ist jedoch, dass es exakte Lösungen gibt für Phasenübergänge bei
+        $T_c > 0$ in $d=2$.
+
+        Es gibt jedoch auch Näherungsverfahren, ein Beispiel ist die 
+        
+        \begin{itemize}
+          \item Tief-und Hochtemperaturentwicklung
+          \item Molekularfeldnäherung
+          \item Monte-Carlo-Simulationen \\
+            Diese werden auch Teil der dritten Computerübung sein.
+        \end{itemize}
+
+
+        
+
+        
+      
+    \end{description}
+    
+
+
 
 
 
