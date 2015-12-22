@@ -615,19 +615,292 @@ Beispiele sind
           \item Monte-Carlo-Simulationen \\
             Diese werden auch Teil der dritten Computerübung sein.
         \end{itemize}
-
-
-        
-
-        
       
     \end{description}
-    
-
-
-
-
-
-
+\subsection*{Vorlesung 20: Ising-Modell und Transfermatrix-Methode}
+\emph{Schwabl Kapitel 6.5 und Anhang F} \\
+Das Ising Modell ist für uns wie eine klassische Energie die von der Spinkonfiguration
+abhängt
+%
+\begin{align*}
+  E(\{s_i\}) = - J \sum_{\Braket{i,j}}^{} s_i s_j - H \sum_{i}^{} s_i && s_i = \pm 1
+\end{align*}
+%
+\begin{description}
+  \item[Tiefe Temperatur] Wir werden nur den Fall $T=0$ diskutieren.
+    \begin{itemize}
+      \item $H=0$ \\ Grundzustand.  Eine konfigureation ist
+        %
+        Die einfache Formel für paare in einem kubischen Gitter:
+        \begin{align*}
+          \begin{cases}
+            s_i = + 1 \quad\forall\,i & E_0 = - J N d, \quad m = \frac{M}{N} = +1 \\
+            s_i = - 1 \quad\forall\, i & E_0 = - J N d, \quad m = -1 
+          \end{cases} 
+        \end{align*}
+        Neben der Entartung haben wir auch eine spontante Symmetriebrechung.
+        ($Z \to - Z$). Dies entspricht in unserem Modell $s_i \to - s_i$.
+        %
+        Das System hat eine Spiegelsymmetrie, der Grundzustand jedoch nicht mehr.
+        Dies ist characteristisch für Phasenübergänge. Wenn der spin immer in die Gleiche
+        richtung zeigt, dann nennt man das auch einen Ferromagneten. Es gibt also
+        auch eine spontane Magnetisierung (Permanentmagnet). Antiferromagnetismus
+        erhält mann wenn die Kopplung negativ ist ($J< 0$). In diesem Fall gibt es auch
+        eine Symmetriebrechung und zwei Grundzustände. In diesem Fall wird die Energie
+        edoch maximiert, das ist jedoch nicht was wir wollen. Wir beschränken
+        uns hier auf den Fall des Ferromagnetismus.
+      \item $H > 0$ \\
+        Es gibt nur einen Zustand 
+        %
+        \begin{align*}
+          s_i = +1 \quad\forall\, i, && E_0 = - J N d - H N
+        \end{align*}
+        %
+      \item $H > 0$ \\
+        Es gibt nur einen Zustand 
+        %
+        \begin{align*}
+          s_i = -1 \quad\forall\, i, && E_0 = - J N d + H N
+        \end{align*}
+        %
+    \end{itemize}
+  \item[Hohe Temperaturen] Wir machen eine Taylor-Entwicklung für hohe Temperaturen.
+    %
+    \begin{align*}
+      k_B T \gg J, H
+    \end{align*}
+    %
+    Die Temperatur ist also viel größer als die Wechselwirkungsenergie die wir haben.
+    Wir machen jetzt also eine Taylor-Entwicklung
+    %
+    \begin{align*}
+      Z & = \sum_{ \{s_i\} }^{} e^{-\beta E (\{s_i\})} = \sum_{\{s_i\}}^{}
+      \left[ 1 - \beta E (\{s_i\}) + \frac{1}{2 \beta^2 E^2 (\{s_i\})} + \mathcal{O}(\beta^3) \right] \\
+       & = \sum_{\{s_i\}}^{} \left[ 1+ \beta J \sum_{\Braket{i,j}}^{}
+        s_i s_j + \beta H \sum_{i}^{} s_i + \frac{1}{2} \left( \beta J \right)^2
+         \sum_{\Braket{i,j}}^{} \sum_{\Braket{k, l}}^{} s_i s_j s_k s_l  + \frac{1}{2} (\beta H )^2 \sum_{i}^{} \sum_{j}^{} s_i s_j
+         + \beta J \beta H \sum_{\Braket{i,j}}^{} \sum_{k}^{} s_i s_j s_k
+       \right] + \mathcal{O}(\beta^3)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \sum_{s = \pm 1}^{} f(s) = \begin{cases}
+        0 & \text{ ungerade } \\
+        2 f(1) & \text{ gerade}
+      \end{cases} 
+    \end{align*}
+    %
+    Wir haben hier zum beispiel 3 Spin $s_i s_j s_k$, wir können also nie eine gerade 
+    Potenz haben, deswegen wird der Term 0.
+    %
+    \begin{align*}
+      \implies Z & = Z^N + \frac{1}{2}(\beta J)^2 \sum_{\{s_i\}}^{} \sum_{\Braket{i,j}}^{} 
+      s_i^2 s_j^2 + \frac{1}{2} (\beta H)^2 \sum_{\{s_i\}}^{} \sum_{i}^{} s_i^2  \\
+      & = Z^N \left[ 1 + \frac{1}{2} (\beta J)^2 \d{N} + \frac{1}{2} (\beta H)^2 N \right]
+      + \mathcal{O}(\beta^3)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \implies G(T, H) = - k_B T \ln{Z} = - k_B T N \ln{Z} - \left\{ \frac{N}{2 k_B T} J^2 d+  H^2 \right\} + \mathcal{o}(\beta^2)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \implies M(T, H) =  - \left( \pd{G}{H} \right)_T = N
+      \frac{H}{k_B T}
+    \end{align*}
+    %
+    Wir können daraus zwei wichtige Punke folgern:
+    %
+    \begin{align*}
+      \begin{cases}
+        \lim_{H\to 0} \quad M = 0 & \text{ keine Spontane Magnetisierung} \\
+        \chi_T = \left( \pd{M}{H} \right)_T = \frac{N}{k_B T} & \text{ ( Curie Gesetz )}
+      \end{cases} 
+    \end{align*}
+    %
+  \item[Phasenübergang bei $H\to0$]
+    \begin{table}[h!]
+      \centering
+      \begin{tabular}{c c c c c c}
+        $T = 0$ & $T \gg J, H$ \\
+        Ferromagnet & Paramagnet \\
+        $M \neq 0$  & $ M = 0$ \\
+        Symmetriebrechung & Symmetrieerhaltung \\
+      \end{tabular}
+    \end{table}
+    Damit ist die Kritische Temperatur $T_c \ge 0$. Wir könnten jetzt einfach
+    eine Taylor-Entwicklung für hohe und tiefe Temperaturen machen, aber diese
+    Vorgehensweise ist nicht besonders gut. Man kann damit nie wirklich
+    singularitäten untersuchen wegen des endlichen konvergenzradius der Entwicklung.
+    Man müsste dann eine unendliche Anzahl von Termen berücksichtigen. Eine 
+    der wichtigsten Methoden ist die der Transfermatrix.
+  \item[Transfermatrix-Methode] Wenn man eine Zustandsumme eines klassichen
+    $d$ Dimensionalen Systems berechnen möchte kann man das über eine Matrix machen.
+    Man versucht Probleme zurückzuführen auf solche, die man bereits gelöst hat.
+    Deswegen ist diese Methode sehr beliebt. Es geht um die Berechnung des größten
+    Eigenwertes meiner Transfermatrix. Dies ist gleichbedeutend mit der Berechnung
+    des Grundzustandes eines $d$-dimensionalen Quantensystems. In zwei dimensionen
+    hat man ein system von nicht wechselwirkenden Fermionen, deswegen kann 
+    man es in diesem Fall einfach lösen. 
+  \item[Das eindimensonale Ising-Modell] Um das Problem in einer Dimension zu verstehen
+    muss man die Energie explizit ausschreiben
+    %
+    \begin{align*}
+      E (\{s_i\})  = -J \sum_{i=1}^{N} s_i s_{i+1} -  H \sum_{i=1}^{N} s_i
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      Z &  = \sum_{\{s_i\}}^{} \exp \left[ \beta J \sum_{i=1}^{N} s_i s_{i+1} + \beta H \sum_{i=1}^{N} s_i \right] \\
+        &= \sum_{\{s_i\}}^{} \prod_{i=1}^{N} \exp\left[ \beta J s_i s_{i+1}  + \frac{1}{2} \beta H ( s_i + s_{i+1}) \right]
+    \end{align*}
+    %
+    Wir definieren jetzt die Transfermatrix 
+    %
+    \begin{align*}
+      T(s, s') & = \exp\left[ \beta J s s' + \frac{1}{2}\beta H (s + s') \right] &&
+      s, s' = \pm 1 \\
+      &  = \begin{pmatrix}
+      e^{\beta(J + H)} & e^{- \beta J} \\
+      e^{- \beta J} & e^{\beta (J- H)} \\
+      \end{pmatrix} 
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      Z = \sum_{s_1 = \pm 1}^{} \sum_{s_2 = \pm1}^{} \ldots \sum_{s_N = \pm 1}^{}
+      T(s_1, s_2) \cdot T(s_2, s_3) \cdot \ldots \cdot T(s_{N-1}, s_N) \cdot 
+      T(s_N, s_1)
+    \end{align*}
+    %
+    Das ganze ist ein Matrixprodukt
+    %
+    \begin{align*}
+      \sum_{s' = \pm 1}^{} T(s, s') T(s', s'') = T^2(s, s'')
+    \end{align*}
+    %
+    Daraus folgt
+    %
+    \begin{align*}
+      Z = \sum_{s_i = \pm 1}^{} T^N (s_1, s_1) = \trace T^N \lambda_+^N + \lambda_-^N
+    \end{align*}
+    %
+    Wir schreiben direkt die Eigenwerte
+    %
+    \begin{align*}
+      \lambda_{ \pm} = e^{\beta J} \cosh(\beta H) \pm \sqrt{
+        e^{2 \beta J} \sinh^2\left( \beta H \right) + e^{ - 2 \beta J}
+      } \\
+      \text{ Nebenbedingung } \lambda_+ > \lambda_- > 0 \\
+    \end{align*}
+    %
+     Der Logarithmus einer Summe ist nicht besonders einfach zu behandeln.
+     %
+     \begin{align*}
+       G(T, H) = - k_B T \ln{ Z}  = - k_B T N \ln{ \lambda_+} - \underbrace{k_B T
+       \ln{\left( 1 = \left( \frac{\lambda_-}{\lambda_+} \right)^N \right)}}_{\to 0 \text{ für } N \to \infty}
+     \end{align*}
+     %
+     Eine funktion die analystisch in $\beta $ ist bleibt es auch. Der Rest ist standard.
+     Wir haben die freie Enthalpie, also berechnen wir nun die Physikalischen Größen.
+     %
+     \begin{align*}
+       M(T, H) & = - \left( \pd{G}{H} \right)_T =  N \frac{\sin(\beta h)}{\sqrt{\sinh^2(\beta H) + e^{- 4 \beta J}}} \\
+               & \underset{H\to 0}{=} 
+       \begin{cases}
+         N \sign H & \text{ für } T\to 0 \\
+         0 & \text{ für } T > 0 \\
+       \end{cases}  \implies \quad T_c = 0
+     \end{align*}
+     %
+     Die nächste größe ist die Suszeptibilität
+     %
+     \begin{align*}
+       \chi_T = \left( \pd{M}{H} \right)_T = \frac{N}{k_B T}
+       \frac{(\cosh(\beta H) e^{-4 \beta J})}{\left( \sinh^2 (\beta H)+ e^{-4 \beta J} \right) ^{\frac{3}{2}}}
+       \simeq 
+       \frac{N }{k_B T} e^{2 \beta J} = \begin{cases}
+         \frac{N}{k_B T} & \text{ für } k_B T \gg J \\
+         \infty & \text{ für } T\to0
+       \end{cases} 
+     \end{align*}
+     Dies ist auch ein allgemeines Ergebnis bei der Kritischen Temperatur.
+     Als übungsaufgabe dürfen wir einen Teil dieser Rechnung durchführen.
+     Für die Freie Energie selbst braucht man nur den Größten Eigenwert.
+     Wir fassen jetzt kurz zusammen was das in Zwei dimensionen bedeutet.
+   \item[Zweidimensionales Ising-Modell]
+     Wir haben ein periodisches Gitter mit der Kantenlänge $L$.
+     %
+     \begin{align*}
+       s_{x,y} = s_{x + L, y} = s_{x, y+L}
+     \end{align*}
+     %
+     %
+     \begin{align*}
+       E(\{s_i\}) = - J \sum_{x=1}^{L}\sum_{y=1}^{L} \left( 
+         s_{x,y} s_{x+1, y} + s_{x,y} s_{x, y+1} 
+       \right) - H 
+       \sum_{x=1}^{L} \sum_{y=1}^{L} s_{x,y}
+     \end{align*}
+     %
+     Wir definieren die Transfermatrix als eine $(2^L \times 2^L)$ Matrix:
+     %
+     \begin{align*}
+       T(s_{x,1} s_{x,2} \ldots s_{x,L}, s_{x+1, 1} s_{x+1,2}, \ldots s_{x+1, 2}) \\
+       = \exp\left[ \beta J \sum_{y=1}^{L} s_{x, y} s_{x+1,y} + 
+         \frac{1}{2\left( s_{x,y} s_{x, y+1} + s_{x+1, y} s_{x+1, y+ 1} \right)}
+         + \frac{\beta H}{2} \sum_{y=1}^{L} (s_{x,y} + s_{x+1, y})
+       \right]
+     \end{align*}
+     %
+     Wir können wieder die Zustandssumme als Produkt dieser Matrizen schreiben.
+     Die wechselwirkung zwischen dem Nachbarspin ist hier relevant. 
+     %
+     \begin{align*}
+       Z & = \trace T^L =  \sum_{i=1}^{Z^L} \lambda_i^L \\
+     \end{align*}
+     %
+     %
+     \begin{align*}
+       \implies G \underset{=}{L\to \infty} - k_B T L \ln{ \lambda_1}
+     \end{align*}
+     %
+     Weil $\lambda_1$ der größte Eigenwert ist. Das Problem ist, dass wir hier
+     eine riesige matrix haben, die wir diagonalisieren müssen. Für das 
+     zweidimensionale Modell kann man das aber noch machen. Wenn man die Matrix
+     nicht per hand diadonalisieren kann, dann muss man numerische Simulationen starten.
+     Mann kann schnell risiege Matrizen diagonalisieren die dünn besetzt sind.
+     Eine beliebte Methode ist die Transfermatrix analytisch zu berechnen
+     und sie dann numerisch zu diagonalisieren. Wir kehren nun zurück zum
+     zweidimensionalen Ising-modell. Wir wollen die Ergebnisse kurz
+     zusammenfassen. Man findet hier einen Phasenübergang
+     vom Paramagnet zum Ferromagnet bei einer endlichen kritischen Temperatur
+     $T_c$
+     %
+     \begin{align*}
+       k_B T_c = \frac{2 J }{\operatorname{asinh}(1)} = \frac{2 J}{\ln{(1 + \sqrt{2})}} 
+       \approx \SI{2.269}{\joule}
+     \end{align*}
+     %
+     An diesem Punkt geschehen sehr interessante Dinge.
+   \item [Kritisches Verhalten]
+     %
+     \begin{align*}
+       M & \propto (T_c - T)^\beta , && \beta = \frac{1}{8} && (T < T_c)\\
+       C_H & \propto \abs{T_c - T}^{-\alpha}, && \alpha = 0 \\
+       \chi_T & \propto \abs{ T_c - T} ^{-\gamma}, && \gamma = \frac{7}{4} \\
+       M \propto \abs{H}^{\frac{1}{8}}, && \delta = 15 && (T = T_c) \\
+     \end{align*}
+     Dieser Exponent ist ein sehr wichtiges Ergebnis der theoretischen Physik.
+     Man findet bei Phasenübergängen immer die Gleichen exponenten finden.
+     Diese hängen von der Dimension des Systems ab. Die berechnung dieses
+     Exponenten einer der Hauptaufgaben der statistischen Physik. Das Ising-Modell
+     ist sehr interessant, da es eine der wenigen ist, mit denen man diese Parameter
+     berechnen kann.
+  
+\end{description}
 
 
