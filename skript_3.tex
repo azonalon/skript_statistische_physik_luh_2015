@@ -904,3 +904,347 @@ abhängt
 \end{description}
 
 
+
+\subsection*{Vorlesung 21 Molekularfeldnäherung}
+\emph{Schwabl Kapitel 6.5}\\
+Auf Englisch auch \emph{Mean-Field approximation}, Näherung des mittleren 
+Feldes gennant. Sie werden beide Namen selbst z.B. in der deutschsprachigen
+Literatur finden. Diese Methode ist grundlegend für die statistische Physik
+und der Vielteilchenphysik. Man findet sie in vielen Feldern der Physik unter
+verschiedenen Namen. In der Festkörperphysik gibt es z.B. die \emph{Hartree-Fock}
+Näherung. Es stellt ein \emph{Variationsverfahren} dar. Zuerst kommt eine 
+Wiederholung einiger notwendiger Grundlagen.
+
+Wir haben ein System von $N$-Teilchen
+%
+\begin{align*}
+  \mathcal{H} = \bigotimes_{i=1}^{N} \mathcal{H}_i, && H: \mathcal{H} \to \mathcal{H}.
+\end{align*}
+%
+Wir beschreiben einen Zustand durch den hermitischen Dichteoperator
+%
+\begin{align*}
+  \rho: \mathcal{H} \to \mathcal{H}
+\end{align*}
+%
+Das Grundkonzept der statistischen Physik war, dass wir ein Funktional
+der freien Energie formulieren können.
+%
+\begin{align*}
+  F[\rho] = \trace_{\mathcal{H}} (\rho H) + k_B T \trace_\mathcal{H}(\rho \ln{\rho})
+\end{align*}
+%
+Im Gleichgewicht muss man einen Zustand haben, der die freie Energie minimiert.
+Aus dieser minimierung bekommen wir $\rho$
+%
+\begin{align*}
+  \rho = \frac{1}{Z} e ^{-\beta H} = \trace_{\mathcal{H}} e^{-\beta H} , &&
+  F = F[\rho_\text{min}] = - k_B T \ln{ Z}
+\end{align*}
+%
+Das ist im wesentlichen das Problem, dass wir für die Systeme lösen müssen.
+Wir berechnen entweder die Zustandsumme, oder die Erwartungswerte 
+auf eine andere Art- und Weise.
+
+Für ideale Systeme ohne Wechselwirkung gilt
+%
+\begin{align*}
+  H = \sum_{i=1}^{N} H_i, && [H_i, H_j] = 0
+\end{align*}
+%
+in diesem Fall ist es einfach. Wir können dann den Dichteoperator faktorisieren.
+%
+\begin{align*}
+  \rho = \prod_{i=1}^{N} \rho_i && \rho_i = e^{-\beta H_i} \frac{1}{Z_1} && Z_i = \trace_{\mathcal{H}_i}
+  e^{-\beta H_i} && [\rho_i, \rho_j] = 0
+\end{align*}
+%
+%
+\begin{align*}
+  Z = \prod_{i=1}^{N} Z_i, && F = - k_B T \sum_{i=1}^{N} \ln{Z_i}
+\end{align*}
+Physikalisch ist das Problem dann gelöst. Auch wenn Mathematisch das ganze nicht
+so klar ist. 
+
+Der Ansatz der Molekularfeldnäherung ist, dass der Dichteoperator die
+obige Form hat
+%
+\begin{align*}
+  \rho^{\text{MF}} = \prod_{i=1}^{N} \rho_i^\text{MF} &&
+  [\rho_i^\text{MF}, \rho_j^\text{MF}]
+\end{align*}
+%
+Wir Minimieren $F[\rho]$in der Untermenge der $\rho^\text{MF}$. Wir erhalten
+dadurch eine Obergrenze der Freien Energie.
+%
+\begin{align*}
+  F^\text{MF} = F \left[ \rho_\text{min}^\text{MF} \right] \ge
+  F^\text{exakt} = F [\rho_\text{min}]
+\end{align*}
+%
+Man kennt das aus der Quantenmechanik, da versucht man zum Beispiel die Schrödinger-Gleichung
+durch ein Variationsverfahren zu lösen. Ohne Wechselwirkung funktioniert das Modell exakt.
+Mit Wechselwirkung jedoch hat man nur die erwähnte Obergrenze.
+
+Auch sieht man dem Ausdruck nicht an wie gut oder schlecht die Approximation ist.
+Wenn man zum Beispiel Hartree-Fock auf Atome mit mehreren Elektronen anwendet,
+bekommt man sehr gute Eigenergien, aber die Wellenfunktionen sind trotzdem völlig
+falsch.
+
+\begin{description}
+  \item[Beispiel] Zweikörper-Wechselwirkung
+    %
+    \begin{align*}
+      H = \sum_{i\neq j = 1}^{N} V_{ij} \mathcal{O}_i \mathcal{O}_j
+    \end{align*}
+    %
+    Wenn man zum Beispiel die Coloumb-Wechselwirkung schreibt als
+    %
+    \begin{align*}
+      H = \frac{1}{2}\sum_{i \neq j = 1}^{N} - \frac{e^Z}{\epsilon_0 \abs{\vec{r}_i - \vec{r}_j}} n_i n_j
+    \end{align*}
+    %
+    Wir müssen nun die Spur des Hamilton-Operators ausrechnen
+    %
+    \begin{align*}
+      \left[ \rho^\text{MF} \right] = \sum_{i \neq j =1}^{N} V_{ij} \Braket{\mathcal{O_i}_i} \Braket{\mathcal{O}_j}_j
+      + k_B T \sum_{i=1}^{N} \trace_{\mathcal{H}_1} \left( \rho_i^\text{MF } \ln{\rho_i}^\text{MF} \right)
+    \end{align*}
+    %
+    wobei
+    %
+    \begin{align*}
+      \Braket{\mathcal{O_i}}_i = \trace_{\mathcal{H}_i} \left( \mathcal{O}_i \rho_i^\text{MF} \right)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \Braket{\mathcal{O}_i \mathcal{O}_j} \simeq \Braket{\mathcal{O}_i}\Braket{\mathcal{O}_j}
+    \end{align*}
+    %
+    Minimierung bezüglich $\rho_i^\text{MF}$ liefert
+    %
+    \begin{align*}
+      \rho_i^\text{MF} = \frac{1}{Z_i} e^{- \beta H_i^\text{MF}} && Z_i = \trace_{\mathcal{H}_i} e ^{-\beta H_i^\text{MF}} && (3)
+    \end{align*}
+    %
+    mit dem Hamilton Operator in der Midfield Näherung 
+    %
+    \begin{align*}
+      H_i^\text{MF} = \sum_{j=1, j\neq i}^{N} m_j V_{ij} \mathcal{O}_i =  f_i \mathcal{O}_i  && (1)
+    \end{align*}
+    %
+    die mittleren Felder sind
+    %
+    \begin{align*}
+      m_i = \Braket{\mathcal{O}_i}_i,  && f_i = \sum_{j \neq i }^{}V_{ij} m_j && (2)
+    \end{align*}
+    %
+    Wir haben hier eine Selbskonsistente Gleichungen: (1), (2) und (3).
+  \item[Alternatives Verfahren]
+    Wir können jetzt ein bisschen weiter gehen und nicht nur den Produkansatz machen
+    von vorhin sondern man kann die $f_i$ und $f_j$ variieren.
+    %
+    \begin{align*}
+      F[\rho^\text{MF}] \underset{(1)+(3)}{=}  F \left( \{m_i\} \right) = 
+      F(\{f_i\})
+    \end{align*}
+    %
+    Wir minimieren nun bezüglich $\{m_i\}$ beziehungsweise $\{f_j\}$.
+    %
+    \begin{align*}
+      F\left[ \rho^\text{MF} \right] = \Braket{ H - H^\text{MF}}_\text{MF}
+      - k_B T \ln{Z^\text{MF}}
+    \end{align*}
+    %
+    Unsere Näherung vernachlässigt die Wechselwirkug der Teilchen und erzeugt
+    ein mitteleres Potential der Wechselwirkung.
+  \item[Anwendung auf das Ising-Modell] 
+    %
+    \begin{align*}
+      H = - \sum_{\Braket{ij}}^{} I S_i^Z S_j^Z + \frac{2 \mu_b}{\hbar} B \sum_{i}^{}S_i^Z
+    \end{align*}
+    %
+    Dies ist der Wechselwirkungsteil welcher schon die richtige Form besitzt.
+    Wir ersetzen nun den Erwartungswert des Produktes durch das Produkt der 
+    Erwartungswerte.
+    %
+    \begin{align*}
+      H_i^\text{MF} = - f_i \frac{2}{\hbar} S_i^Z
+    \end{align*}
+    %
+    Wir machen zusätzlich die Näherung, dass das Feld nicht vom Gitterplatz abhängt.
+    Wir können die Energie der Spinkonfiguration schreiben
+    %
+    \begin{align*}
+      E(\{s_i\}) = - J \sum_{\Braket{ij}}^{} s_i s_j - H_i \sum_{i}^{} s_i && s_i = \pm 1
+    \end{align*}
+    %
+    Damit bekommen wir 
+    %
+    \begin{align*}
+      E_i = - f s_i
+    \end{align*}
+    %
+    Durch den Vergleich erhält man
+    %
+    \begin{align*}
+      f_i = J \sum_{\Braket{ij}}^{} \Braket{s_i}_j + H = 2 d J m + H
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      m = \Braket{s_i}_i = \frac{M}{N} = \frac{1}{Z_j} \sum_{s_i = \pm 1}^{} e^{-\beta E_i} = \tanh(\beta f)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      Z_i = \sum_{s_i = \pm 1}^{} e^{-\beta E_i} = 2 \cosh\left( \beta f \right)
+    \end{align*}
+    %
+    Man kann die Zwei Gleichungen elimieren, um eine Selbstkonsistente zu bekommen.
+    %
+    \begin{align*}
+      f= 2 d J \tanh(\beta f) + H
+    \end{align*}
+    %
+    Äquivalent bekommen wir
+    %
+    \begin{align*}
+      m = \tanh(\beta 2 d J m + \beta H)
+    \end{align*}
+    %
+    $d$ ist die Dimension des Gitters.
+    Wir haben jetzt Gleichungen welche die Felder bestimmen. Wenn wir sie lösen
+    haben wir das Problem gelöst. $f$ ist einfach das effektive Magnetfeld das
+    auf den Spin $i$ wirkt. 
+
+    Alternativ könnte man die FreieEnergie als funktion der Parameter bestimmen
+    mit dem Ansatz 
+    %
+    \begin{align*}
+      H^\text{MF} = -  f s_i && \text{ mit } f = 2 d J m + H
+    \end{align*}
+    %
+    Daraus folgt die Gibbsche-Freie-Enthalpie (wir haben ein Magnetfeld).
+    %
+    \begin{align*}
+      G(m) = 
+      N \left[ - J d \tanh^2(\beta 2 d J m + \beta H) 
+        + J 2 d m \tanh(\beta 2 d J m + \beta H)
+        - k_B t \ln{} ( 2 \cosh(\beta 2 d J m + \beta H))
+      \right]
+    \end{align*}
+    %
+    Am Mininimum ist $ \dd{G}{m} = 0$ also $m = \tanh(\beta 2 d J m + \beta H)$.
+    Die zweite Gleichung ist wichtig für die Hausübung.
+    Man kann dann überprüfen ob man wirklich ein Minimum hat:
+    %
+    \begin{align*}
+      \dd{^2 G}{m^2} > 0
+    \end{align*}
+    %
+    Wir fangen ohne Magnetfeld an ($H=0$)
+    %
+    \begin{align*}
+      m = \tanh(\beta 2 d J m) \implies \frac{x}{\beta 2 d J} = \tanh(x)
+    \end{align*}
+    %
+    Man kann die Lösung graphisch untersuchen. Man stellt dann fest
+    %
+    \begin{align*}
+      & \beta 2 d J < 1 \iff  k_B T > 2 d J :&& 1 \text{Lösung} m = 0 \text{ ( Paramagnet )} \\
+      & \beta 2 d J > 1 \iff  k_B T < 2 d J :&& 3 \text{Lösungen} m = 0 \text{ aber } G''(m=0) < 0 \implies \text{ Maximum }
+      & \pm m_0 \text{ mit } G''( \pm m_0) > 0 \implies \text{ Minima }
+    \end{align*}
+    %
+    Der kritische Punkt ist
+    %
+    \begin{align*}
+      T_c^\text{MF} = \frac{2 d J}{k_B}
+    \end{align*}
+    %
+    Wie lautet die Magnetisierung in der Nähe der kritischen Temperatur aus?
+    Magnetisierung für $T\to T_c (m_0 \to 0)$.
+    %
+    \begin{align*}
+      m_0 = \tanh( 2 d J \beta m_0) = \beta 2 d J m_0 - \frac{1}{3} (\beta 2 d J m_0)^3 
+      + \mathcal{O}(m_0^3)
+    \end{align*}
+    %
+    Dies kann man einfach Lösen
+    %
+    \begin{align*}
+      m_0 = \sqrt{3} \sqrt{1 - \frac{T}{T_c}} \frac{T}{T_c} && (T < T_c) 
+    \end{align*}
+    %
+  \item[Wärmekapazität]
+    %
+    \begin{align*}
+      T > T_c : G(m=0) & = - N k_B T \ln{ Z} \implies C_H = - T (\pd{^2 G}{T^2})_H = 0 \\
+      T < T_c : G(m_0) & \simeq - N k_B T \ln{Z} - \frac{3}{4} N k_B T \left( 1 - \frac{T}{T_c} \right)^2
+      + \mathcal{O}\left( \left( 1 - \frac{T}{T_c} \right)^3 \right) \\
+      T \to T_c \implies C_H & = \frac{3}{2} N k_B + \mathcal{o}\left( \left( 1 - \frac{T}{T_c} \right) \right)
+    \end{align*}
+    %
+    Wenn das Magnetfeld nicht Null ist:
+    %
+    \begin{align*}
+      m = \tanh(\beta 2 d J m + \beta H) \iff \tanh(x) = \frac{x - \beta H}{\beta 2 d J}
+    \end{align*}
+    %
+  \item[Magnetisierung]
+    %
+    \begin{align*}
+      \abs{\beta H}, \beta J \gg 1 (T\to 0) \implies m = \sign(H)
+    \end{align*}
+    %
+    Eine weitere Näherung sind kleine Magnetisierung und Magnetfelder.
+    Da kann man eine Taylor-Entwicklung machen
+    %
+    \begin{align*}
+      m, H \to 0: m \simeq \beta 2 d J m + \beta H - \frac{1}{3} \left( \beta 2 d J m + \beta H \right)^3 + \ldots\\
+      = \beta 2 d J m  - \frac{1}{3 } - \frac{1}{3} \left( \beta 2 d J m  \right)^3 + \beta H \\
+      \iff \frac{1}{3} m^3 + m (\frac{T}{T_c})^2 \left( \frac{T}{T_c} - 1 \right) = 
+      \left( \frac{T}{T_c} \right)^2 \frac{H}{k_B T_c}
+    \end{align*}
+    %
+    Für $T= T_c$ ist
+    %
+    \begin{align*}
+      m = \left( \frac{3 H}{k_B T_c} \right)^{\frac{1}{3}}
+    \end{align*}
+    %
+    Für $ T > T_c$
+    %
+    \begin{align*}
+      \lim_{H\to  0} m= 0 \implies \abs{m}^3 \ll \abs{m} \implies m = \frac{H}{k_B (T- T_c)} \\
+      \chi_T = \frac{1}{k_B (T - T_c)}
+    \end{align*}
+    %
+    Für $ T < T_c$
+    %
+    \begin{align*}
+      \lim_{H\to  0} m = m_0 \sign H
+    \end{align*}
+    %
+    Für $ T \to T_c$
+    %
+    \begin{align*}
+      m = m_0 \sign H = \delta m \implies m = m_0 \sign H + \frac{H}{2 k_B (T_c - T)} \\
+      \implies \chi_T = \frac{1}{2 k_B(T_c -T)}
+    \end{align*}
+    %
+    
+    
+    
+    
+    
+    
+
+    
+    
+  
+\end{description}
+
+

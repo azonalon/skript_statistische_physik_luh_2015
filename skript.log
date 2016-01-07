@@ -1,13 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.18)  22 DEC 2015 13:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.18)  7 JAN 2016 10:14
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
-**skript.tex
-(./skript.tex
-LaTeX2e <2015/10/01> patch level 2
-Babel <3.9m> and hyphenation patterns for 79 languages loaded.
-(/usr/share/texmf-dist/tex/latex/base/article.cls
+**\nonstopmode \input{skript.tex}
+(./skript.tex (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -1530,8 +1526,8 @@ Package epstopdf Info: Source file: <./figures/first.eps>
 (epstopdf)             Output file: <./figures/first-eps-converted-to.pdf>
 (epstopdf)                    date: 2015-11-03 10:21:27
 (epstopdf)                    size: 2457 bytes
-(epstopdf)             Command: <epstopdf --outfile=./figures/first-eps-convert
-ed-to.pdf ./figures/first.eps>
+(epstopdf)             Command: <repstopdf --outfile=./figures/first-eps-conver
+ted-to.pdf ./figures/first.eps>
 (epstopdf)             \includegraphics on input line 93.
 Package epstopdf Info: Output file is already uptodate.
  <./figures/first-eps-converted-to.pdf, id=24, 578.16pt x 433.62pt>
@@ -1697,33 +1693,43 @@ Overfull \hbox (96.8044pt too wide) in paragraph at lines 684--684
 [] 
  []
 
-[68] [69] [70]) [71] (./skript.aux) ) 
+[68] [69] [70] [71] [72] [73] [74]
+Overfull \hbox (7.3748pt too wide) in paragraph at lines 1137--1137
+[] 
+ []
+
+
+Overfull \hbox (139.72095pt too wide) in paragraph at lines 1159--1159
+[] 
+ []
+
+[75]) [76] (./skript.aux) ) 
 Here is how much of TeX's memory you used:
  27795 strings out of 493054
- 558618 string characters out of 6140585
- 615687 words of memory out of 5000000
+ 558602 string characters out of 6140585
+ 615736 words of memory out of 5000000
  30851 multiletter control sequences out of 15000+600000
  13375 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,24n,70p,10385b,923s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on ./skript.pdf (71 pages, 438717 bytes).
+ 56i,24n,70p,10406b,923s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on skript.pdf (76 pages, 453052 bytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
- 208 compressed objects within 3 object streams
+ 321 PDF objects out of 1000 (max. 8388607)
+ 220 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
