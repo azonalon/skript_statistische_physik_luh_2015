@@ -676,11 +676,11 @@ abhängt
     \begin{align*}
       Z & = \sum_{ \{s_i\} }^{} e^{-\beta E (\{s_i\})} = \sum_{\{s_i\}}^{}
       \left[ 1 - \beta E (\{s_i\}) + \frac{1}{2 \beta^2 E^2 (\{s_i\})} + \mathcal{O}(\beta^3) \right] \\
-       & = \sum_{\{s_i\}}^{} \left[ 1+ \beta J \sum_{\Braket{i,j}}^{}
+       & = \sum_{\{s_i\}}^{} \bigg[ 1+ \beta J \sum_{\Braket{i,j}}^{}
         s_i s_j + \beta H \sum_{i}^{} s_i + \frac{1}{2} \left( \beta J \right)^2
-         \sum_{\Braket{i,j}}^{} \sum_{\Braket{k, l}}^{} s_i s_j s_k s_l  + \frac{1}{2} (\beta H )^2 \sum_{i}^{} \sum_{j}^{} s_i s_j
+        \sum_{\Braket{i,j}}^{} \sum_{\Braket{k, l}}^{} s_i s_j s_k s_l \\ & \quad + \frac{1}{2} (\beta H )^2 \sum_{i}^{} \sum_{j}^{} s_i s_j
          + \beta J \beta H \sum_{\Braket{i,j}}^{} \sum_{k}^{} s_i s_j s_k
-       \right] + \mathcal{O}(\beta^3)
+       \bigg] + \mathcal{O}(\beta^3)
     \end{align*}
     %
     %
@@ -1007,14 +1007,14 @@ falsch.
     Wir müssen nun die Spur des Hamilton-Operators ausrechnen
     %
     \begin{align*}
-      \left[ \rho^\text{MF} \right] = \sum_{i \neq j =1}^{N} V_{ij} \Braket{\mathcal{O_i}_i} \Braket{\mathcal{O}_j}_j
+      \left[ \rho^\text{MF} \right] = \sum_{i \neq j =1}^{N} V_{ij} \Braket{\mathcal{O}_i}_i \Braket{\mathcal{O}_j}_j
       + k_B T \sum_{i=1}^{N} \trace_{\mathcal{H}_1} \left( \rho_i^\text{MF } \ln{\rho_i}^\text{MF} \right)
     \end{align*}
     %
     wobei
     %
     \begin{align*}
-      \Braket{\mathcal{O_i}}_i = \trace_{\mathcal{H}_i} \left( \mathcal{O}_i \rho_i^\text{MF} \right)
+      \Braket{\mathcal{O}_i}_i = \trace_{\mathcal{H}_i} \left( \mathcal{O}_i \rho_i^\text{MF} \right)
     \end{align*}
     %
     %
