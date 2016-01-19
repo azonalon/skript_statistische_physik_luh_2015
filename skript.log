@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.18)  14 JAN 2016 09:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.18)  19 JAN 2016 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1725,7 +1725,21 @@ Overfull \hbox (6.44449pt too wide) in paragraph at lines 456--462
 l-le be-stim-mung der Boltzmann-Konstante
  []
 
-[83]) [84] (./skript.aux) ) 
+[83]
+Overfull \hbox (12.96107pt too wide) in paragraph at lines 528--535
+\OT1/cmr/m/n/10.95 L[]osung mit der An-fangs-be-din-gung $\OML/cmm/m/it/10.95 P
+\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 v; t[]\OT1/cmr/m/n/10.95 )$ und Rand-be
+-din-gun-gen $[][] \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95
+ v; t\OT1/cmr/m/n/10.95 ) = [][] \OML/cmm/m/it/10.95 P[]\OT1/cmr/m/n/10.95 (\OM
+L/cmm/m/it/10.95 v; t\OT1/cmr/m/n/10.95 ) =
+ []
+
+[84] [85] [86]
+Overfull \hbox (94.7352pt too wide) in paragraph at lines 733--733
+[] 
+ []
+
+[87]) [88] (./skript.aux) ) 
 Here is how much of TeX's memory you used:
  27798 strings out of 493054
  558636 string characters out of 6140585
@@ -1748,10 +1762,10 @@ cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
 usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on skript.pdf (84 pages, 476940 bytes).
+Output written on skript.pdf (88 pages, 492032 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
+ 359 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
