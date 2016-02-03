@@ -1,0 +1,1534 @@
+\subsection*{Vorlesung 22 Phasenübergänge}
+\emph{Schwabl Kapitel 7.1, 7.2, 7.4} \\
+
+\begin{description}
+  \item[Phase] Beispiel: Schmelzen und Verdampfung
+  \item[Kritischer Bereich] Punkt an dem Phasenübergang stattfindet.
+  \item[Kritische Parameter] $T_c, P_c, H_c, \ldots $.
+  \item[Phasendiagramm] Beispiel: Van-der-Waals Isotherme
+
+\end{description}
+\subsubsection*{Beispiel II: Ising-Ferromagnet}
+\begin{description}
+  \item[Definition] Phasenübergang \\
+    Thermodynamisches Potential ist eine nicht analytische Funktion einer
+    thermodynamischen Variable. Das bedeutet auch, dass der kritische Bereich
+    der Punkt ist, an dem die Funktion nicht mehr analytisch ist. Es gibt eine
+    klassifizierung von Phasenübergangen:
+  \item[Ehrenfest-Klassifizierung] Es sei $\Phi(x)$ ein thermodynamisches Potential.
+    Ein Phasenübergang $n$-ter Ordnung bedeutet, dass %
+    \begin{align*}
+      \begin{cases}
+        \dd{^m \Phi}{x^m} & \text{ stetig ist für } m < n \\
+        \dd{^m \Phi}{x^m} & \text{ nicht stetig ist sonst } \\
+      \end{cases}
+    \end{align*}
+    %
+    Ein Phasenübergang erster Ordnung wird auch unstetig oder diskret oder nicht-kontinuerlich gennant.
+    Solche zweiter Ordnung werden kritische Phänomene oder kontiniuerliche Phasenübergänge
+    genannt. Eine unendliche Ordnung bedeutet ein unendlich oft differenzierbares
+    Potential. Im Ising-Modell beispielsweise divergiert die Suszeptibilität,
+    welche eine Antwortfunktion darstellt.
+  \item[Spontane Symmetriebrechung] $ $ \\
+    Beispiel:
+    \begin{itemize}
+      \item Paramagnet $T > T_c$: Spiegelsymmetrie $ z \to -z$
+      \item Ferromagnet $T < T_c$: bevorzugte Richtung
+    \end{itemize}
+  \item[Ordnungsparameter]
+    \begin{itemize}
+      \item Magnetisierung $M$
+      \item Van-der-Waals Theorie $\rho- \rho_c$
+      \item BEC, Suprafludität, Supraleitung $\Psi, N_0 = \abs{\psi}^2$
+    \end{itemize}
+  \item[Kritische Exponente] Potenzgesetze (Potenzen der Singularitäten) \\
+    \begin{enumerate}[Beispiel I)]
+      \item %
+      \begin{align*}
+        v - v_c ~ \rho- \rho_c ~ (T_c - T)^\beta && \quad\forall\, T_c > T
+      \end{align*}
+      %
+      \begin{align*}
+        \kappa_T ~ \abs{T - T_c}^{-\gamma}
+      \end{align*}
+      %
+    \item
+      %
+      \begin{align*}
+        M & ~ (T_c - T)^{\beta} && \quad\forall\, T < T_c \\
+        \chi_T &  \abs{ T - T_c}^{-\gamma} \\
+        M & ~ \abs{H}^{\frac{1}{\gamma}} && \quad\forall\, T = T_c
+      \end{align*}
+      %
+    \item[Universalität] Die Exponenten von vorhin sind nicht vom eigentlichen System
+      abhängig sonder nehmen immer nur bestimmte Werte an. Alle Modelle
+      die eine ähnliche Charakteristik haben ergeben die gleichen Exponenten.
+      Man kann also z.B. das Ising-Modell benutzen um einen realen Exponenten eines
+      anderen Systems zu berechnen. Deswegen ist es unter anderem so nützlich.
+
+      \begin{itemize}
+        \item Die Exponenten hängen nur von ``globalen'' Eigenschaften ab, sie sind
+        \item Dimension und Symmetre des Ordnungsparameters
+        \item Raumdimensionen
+        \item Reichweite der Wechselwirkung
+      \end{itemize}
+      Ein wichtiges Beispiel hier ist, dass die Magnetisierung in einem
+      Axialen Ferromagneten und Van-der-Waals Gas die gleichen kritischen
+      Exponenten haben. Dies ist eine wichtige Entdeckung der Physik in
+      der Zweiten hälfte des 20. Jahrhunderts. Die Erklärung dafür kommt
+      über den Begriff der Korellationslänge. Diesen führen wir jetzt ein.
+    \item[Korrelationslänge] Wenn man ein Subsystem betrachtet mit dem Volumen
+      $V = \xi^d$ dann verhält es sich wie eins mit nur einem einzelnen Freiheitsgrad.
+      Man kann sich das so vorstellen: Wenn man einen Ising Magnet hat bei hoher
+      Temperatur hat man viele spins die an alle Richtungen zeigen. Wenn man
+      das Sustem jetzt kühlt dann zeigen irgendwann alle Spins in diesselbe Richtung.
+    \item[Schalentheorie] kritische Phänomene.
+      %
+      \begin{align*}
+        \xi ~  \abs{ T - T_c}^{-V} \xrightarrow{T\to T_c} \infty
+      \end{align*}
+      %
+      Deswegen ist die Mikroskopische Struktur nicht wichtig. Es gibt also
+      eine gewisse Universalität und Skalengesetze. Z.B. $\gamma = \beta(\delta - 1)$.
+      In der Molekularfeldnäherung ist
+      %
+      \begin{align*}
+        \delta = 3, && \beta = \frac{1}{2} && \gamma = 1 \\
+      \end{align*}
+      %
+      Im 2D Ising Modell
+      %
+      \begin{align*}
+        \delta = 15, && \beta = \frac{1}{8} && \gamma = \frac{7}{4}
+      \end{align*}
+      %
+
+
+    \end{enumerate}
+\subsubsection*{Ginzburg-Landau-Theorie}
+Sie ist eine Phänomenologische Theorie für Phasenübergänge der 1. und 2. Ordnung
+mit Symmetriebrechung und Ordnungsparameter. Sie stellt eine Theorie für den kritischen Bereich dar.
+Sie ist äquivalent zur Molekularfeldnäherung (landau) mit Fluktuationen(Ginzburg-Landau).
+Beispiel Axiales Ferromagnet (Ising-Modell).
+\begin{enumerate}[A)]
+  \item Landau freie Energie
+    %
+    \begin{align*}
+      \mathcal{G}(T, B, m)
+    \end{align*}
+    %
+    Wir haben die thermodynamischen Variabeln $T$ und $B$. Der ordnungsparameter
+    $m$ ist die Magnetisierung. Im Thermodynamischen Gleichgewicht haben wir
+    ein Minimum, daraus bestimmen wir den noch freien Parameter. Im Gleichgewicht
+    haben wir
+    %
+    \begin{align*}
+      m(T, B) = m_\text{min} \\
+      G(T, B) = \mathcal{G}(T, B, m_\text{min}) \\
+    \end{align*}
+    %
+    Wir haben also ein System mit gegebener Temperatur, ein Magnetfeld $M$.
+    Das $\mathcal{G}$ haben wir bereits im Rahmen der Molekularfeldnäherung
+    bereits berechnet. Der Herr Landau war aber ein bisschen schlauer als das.
+    Anstatt das jetzt einfach zu berechnen, hat er das vereinfacht und in
+    der Nähe des Phasenüberganges betrachtet. Dann muss die Magnetisierung
+    sehr klein sein. Wir machen also eine Taylor-Entwicklung.
+
+    Der kritische Bereich
+    %
+    \begin{align*}
+      \mathcal{G}(T, B, m) = \mathcal{G}(T, B, 0) + m \mathcal{G}'(T, B, 0) +
+      \frac{1}{2} m^2 \mathcal{G}''(T, B, 0) + \frac{m^3}{6} \mathcal{G}'''(T, B, 0)
+      + \frac{m^4}{24} \mathcal{G}''''(T, B, 0) + \mathcal{O}(m^5)
+    \end{align*}
+    %
+    Für $B=0$ haben wir eine Symmetrie $z \leftrightarrow - z$ also
+    auch $m \leftrightarrow - m$. Für die Taylor-Entwicklung bedeutet dass,
+    wir wollen nicht dass vom Vorzeichen abhängt. Also müssen die Ungeraden Ordnungen verschwinden.
+    %
+    \begin{align*}
+      \mathcal{G}'(T, 0, 0) = \mathcal{G}'''(T, 0, 0) = \mathcal{G}^{(v)}(T, 0, 0) = 0
+    \end{align*}
+    %
+    Darum ist
+    %
+    \begin{align*}
+      \mathcal{G}(T, B, m) = \mathcal{G}_0(T) + a(T) m^2 + \frac{b(T)}{2}m^4 - B m + \mathcal{O}(m^6)
+    \end{align*}
+    %
+    Dies ist korrekt für ein schwaches Magnetfeld. Die Form der Landau-Freien Energie
+    die wir verwenden werden:
+    %
+    Wir minimieren $\mathcal{G}' = 0, \mathcal{G}''=0$
+    \begin{align*}
+      \begin{cases}
+        a(T)m + b(T)m^3 - \frac{B}{2} = 0 \\
+        a(T) + 3 b(T)m^2  > 0 \\
+      \end{cases}
+    \end{align*}
+    %
+    \begin{itemize}
+      \item $B=0$ \\
+        %
+        \begin{align*}
+          m = 0 \implies a(T) > 0
+        \end{align*}
+        %
+        %
+        \begin{align*}
+          m = \pm \sqrt{\frac{-a(T)}{b(T)}}
+        \end{align*}
+        %
+        Das gilt nur, falls $\frac{a(T)}{b(T)} < 0 $, darum
+        ist falls $- 2 a(T) > 0 \implies a(T) < 0 $  und
+        $b(T) > 0$.
+        %
+        \begin{align*}
+          \implies
+          \begin{cases}
+            a(T) > 0 & \implies m = 0 \text{ (Paramagnet)} \\
+            a(T) < 0 & \implies m = \pm \sqrt{\frac{-a(T)}{b(T)}} \text{ (Ferromagnet) } \\
+          \end{cases}
+        \end{align*}
+        %
+    \end{itemize}
+    Wir haben einen Phasenübergang bei $a(T_c) = 0$
+    %
+    \begin{align*}
+      a(T) = \alpha (T - T_c) + \mathcal{o}\left( (T - T_c)^2 \right)
+    \end{align*}
+    %
+    Also ist die Magnetisierung
+    %
+    \begin{align*}
+      m(T) = \sqrt{\frac{\alpha}{ b(0)}(T_c - T)}
+    \end{align*}
+    %
+    und
+    %
+    \begin{align*}
+      \beta = \frac{1}{2}
+    \end{align*}
+    %
+    der kritische Exponent.
+
+\end{enumerate}
+\subsubsection*{Wiederholung: Landau-Theorie}
+%
+\begin{align*}
+  \mathcal{G}(T, B, m) = \mathcal{G}_0(T) + a(T) m^2 + \frac{b(T)}{2}m^4 - B m
+\end{align*}
+%
+%
+\begin{align*}
+  a(T) \equiv \alpha(T - T_c), && b(T) = b > 0
+\end{align*}
+%
+\subsubsection*{Ginzburg-Landau-Theorie}
+Man hat ein Magnetfeld und zusätzlich auch Fluktuationen.
+%
+\begin{align*}
+  \mathcal{G}(T, B, m(\vec{r})) = \mathcal{G}_0(T) + \int_{L^d}^{} \d{^d r}
+\end{align*}
+%
+%
+\begin{align*}
+  \mathcal{G}(T, B, m(\vec{r})) = \mathcal{G}_0 (T) + [\int_{}^{} \d{^d r} a(T) m^2(\vec{r})
+    + \frac{b(T)}{2} m^4(\vec{r}) - B(\vec{r}) m(\vec{r}) + c(T) (\vec{\nabla} m(\vec{r}))^2
+]
+\end{align*}
+%
+Damit das funktioniert brauchen wir
+%
+\begin{align*}
+  a(T) = \begin{cases}
+    < 0 & T < T_c \\
+    > 0 & T > T_c, \quad b(T), C(T) > 0 \\
+  \end{cases}
+\end{align*}
+%
+Die Zustandsumme ist
+%
+\begin{align*}
+  Z  = \int_{}^{} D\left[ m(\vec{r}) \right] e^{-\beta \mathcal{G}(T, B, m(\vec{r}))}
+\end{align*}
+%
+Das Funktionalintegral ist eine Summe über alle möglichen Magnetisierungen.
+Wie kann man das genau definieren? Man diskretisiert dazu einfach diese Funktion
+$D$ und dann hat man ein Integral in einer höheren Dimension. Nachher nimmt
+man dann einfach den Limes der den Bastand der Punkte gegen null gehen lässt.
+Es ist immer problematisch zuzeigen, dass der LImes auch wirklich existiert.
+In der Physik nehmen wir das aber einfach an. Die berechnung dieses Ausdruckes ist allgemein
+kompliziert. Im Fall, dass der erste Term $a(T)$ positiv ist, bekommt man einfach
+ein Gauß Integral und das ganze ist einfach. Diese Näherung ist aber sehr schlecht.
+Für Temperaturen in der Nähe von $T_c$.
+
+Wir machen hier die einfachste Näherung, die immer noch interessante ERgebnisse
+liefert. Wir definieren dazu die Wahrscheinlichkeit einer Konfiguration
+%
+\begin{align*}
+  P\left[ m(\vec{r}) \right] = \frac{1}{Z} e^{-\beta \mathcal{G}(T, B, m(\vec{r}))}
+\end{align*}
+%
+Welche konfiguration hat die maximale Wahrscheinlichkeit? Der Ausdruck $P$
+ist maximal wenn $\vec{G}$ ein Minimum hat. Dies ist nebenbei bemerkt auch
+derselbe Trick den wir benutzt haben um unsere ganze Theorie zu begründen.
+
+\subsubsection*{Variationsrechnung}
+%
+\begin{align*}
+  \frac{\delta \mathcal{G}}{\delta m(\vec{r})} = 2 a(T) m(\vec{r}) +
+  2 b(T) m^3(\vec{r}) - B(\vec{r})
+\end{align*}
+%
+Die idee ist die gleiche wie das VAriationsprinzip in der Quantenmechanik.
+Um eine eindeutige Lösung zu bekommen muss man einige Sachen vorgeben, so wie
+das Magnetfeld und die Randbedingungen (z. B. periodische). Das ist die Differentialgleichung
+die man im Rahmen der Ginzburg-Landau Theorie Lösen muss.
+
+
+Diese Theorie ist eine wichtige Grundlage der modernen theoretischen Physik.
+Anwendungen sind
+\begin{itemize}
+  \item Supraleitung $m(\vec{r}) \to \Psi(\vec{r})$.
+  \item Suprafludität und Bose-Einstein Kondensation. Die Gleichungen dazu
+    sind unter dem Namen \emph{Gross-Pitaevskii-Gleichungen} bekannt.
+  \item Quasi eindimensionalität
+    \begin{itemize}
+      \item CDW (Ladungsdichtewelle)
+      \item SDW (Spindichtewelle)
+    \end{itemize}
+\end{itemize}
+\section*{Teil III Systeme außerhalb des Gleichgewichts}
+\emph{Schwabl Kapitel 8-10} \\
+Bisher untersuchten wir Systeme im Gleichgewicht oder sehr langsame Transformationen.
+Wir untersuchen nun die Frage, wie das System ins Gleichgewicht kommt.
+
+Es gibt Theorien, die auf der klassichen Physik basieren, oder auch auf der Quantenmechanik.
+Die Klassiche Theorie ist zwar nicht ausreichend, aber Trotzdem soll das der Beginn
+dieses Abschnittes sein.
+
+\subsection*{Vorlesung 23 Brownsche Bewegung}
+\emph{Schwabl Kapitel 8.1} \\
+Wir betrachten ein Makroskopisches System, dass mindestens Zwei arten von
+Freiheitsgraden besitzt. Die anderen Freiheitsgrade werden wir zuerst nicht
+nennen und bezeichnen sie als versteckt (Wärmebad). Wir haben sogennante \emph{Brownsche-Teilchen}.
+Die wichtige Entdeckung von Brown im 19. Jahrhundert stand in Beziehung
+zu einem schweren Staubkorn in Wasser.
+
+Wir haben also Wasser mit verunreinigungne wie zum Beispiel Staub. Der STaub im
+Wasser pulsiert und bewegt sich zufällig. Brown ging zuertst davon aus, der Pollen
+wäre lebendig und würde isch eigenständig bewegen.
+
+Die echte erklärung kam dann später von Einstein (1905). Die Bewegung ist durch elastische
+ Stöße mit dem umgebenden Wasser begründet. Damals stand in Frage ob die Materie
+ kontinuerlich ist oder aus Atomen besteht.
+
+ Die Theorie um diese Bewegung zu beschreiben ist die \emph{Langevin-Gleichung}.
+
+ \subsubsection*{Langevin-Gleichung}
+ Sie ist eine Stochastische Gleichung die die Newton-Gleichung für das Brownsche
+ Teilchen darstellt.
+
+ %
+ \begin{align*}
+   m \ddot{\vec{r}} = \underbrace{- m \gamma \vec{r} \dot{\vec{r}}}_{\text{Reibung}} + \underbrace{\vec{f}(t)}_{\text{Stochastische Kraft}}
+ \end{align*}
+ %
+ Zuerst untersuchen wir die Reibungskraft. Die Lösung ohne Zufallskraft also
+ $f(t) = 0$ ist
+ %
+ \begin{align*}
+   \vec{v}(t) = \dot{\vec{r}} = \vec{v}_0 e^{-\gamma t} \xrightarrow{t \gg \gamma_{-1}} 0
+ \end{align*}
+ %
+ $\gamma^{-1}$ ist die Relaxationszeit des Systems.
+
+ Jetzt definieren wir die stochastische Kraft genauer
+
+\subsubsection*{Stochastische Kraft}
+Die Ursache der Kraft sind Zusammenstöße mit den Wassermolekülen in den
+Zeiten $ 0 < t_1 < t_2 < \ldots < T$.
+Das bedeutet
+%
+\begin{align*}
+  \vec{f}(t) = \sum_{i}^{} \vec{f}_i \delta(t-t_i) \tau_c
+\end{align*}
+%
+Die Kraf ist dre Summe von diskreten Zusammenstößen (Delta-Distribution).
+Der Parameter $\tau_c \approx \SI{1e-11}{\second} \ll \gamma^{-1}$ ist die Stoßdauer.
+
+Wir haben Zufällige Kräfte $\vec{f}_i$ mit der Wahrscheinlichkeitsverteilung
+$P(\vec{f})$ wobei $\Braket{\vec{f}} = 0$ und der Schwankungsbreite
+$\Braket{\vec{f}^2} = \frac{d \lambda}{\tau_c^2} \Delta t$. Die Stoßzeit
+$\delta t \approx \SI{1e-21}{\second} \ll \tau_c$ ist die Zeit zwischen den
+zusammenstößen.
+
+Eine Folgerung davon ist, dass bei Summierung
+%
+\begin{align*}
+  \sum_{i, 0 < t_i < T}^{} \delta(t - t_1) \Delta t \approx \int_{0}^{T} \d{t'} \delta(t- t') = 1
+\end{align*}
+%
+Wir haben Molekulares Chaos. Wir gehen also davon aus, dass die Zusammenstöße unhabhängig sind.
+Mathematisch bedeutet das,
+%
+\begin{align*}
+  P(\vec{f}_i, \vec{f}_j) = P(\vec{f}_i) P(\vec{f}_j) \quad\forall\, i \neq j
+\end{align*}
+%
+Wir faktorisieren also die Wahrscheinlichkeiten.
+Das bedeutet für den Erwartungswert
+%
+\begin{align*}
+  \Braket{\vec{f}_i \vec{f}_j} = \frac{d \lambda}{\tau_c^2} \Delta t \delta_{ij}
+\end{align*}
+%
+Hierbei ist $\lambda$ ein Parameter.
+%
+\begin{align*}
+  \Braket{\vec{f}(t)\vec{f}(t')} = \lambda d \delta(t - t')
+\end{align*}
+%
+Wir werden diese mathematische Eigenschaft verwenden um die Physik dieser
+Gleichung zu untersuchen.
+
+\subsubsection*{Lösung der Langevin Gleichung}
+%
+\begin{align*}
+  \vec{v}(t) = \vec{v}_0 e^{- \gamma t} + \int_{0}^{t} \d{t'} e^{- \gamma(t - t')} f(t')
+\end{align*}
+%
+Dies ist eine Differentialgleichung die man lösen kann. Man kann formal die
+Position berechnen
+%
+\begin{align*}
+  \vec{r}(t) = \vec{r}_0 + \int_{0}^{t} \d{t'} \vec{v}(t')
+\end{align*}
+%
+Wir haben eine Zufallsvariable und wollen etwas über erwartungsert und
+Schwankungsquadrat rausfinden.
+%
+\begin{align*}
+  \Braket{\vec{v}(t)} = \vec{v}_0 e^{-\gamma t} + \frac{1}{m} \int_{0}^{t}
+  e^{-\gamma(t - t')} \Braket{\vec{f}(t')} \underbrace{\Braket{\vec{f}(t')}}_{=0} \xrightarrow{t \gg \gamma^{-1}} 0
+\end{align*}
+%
+%
+\begin{align*}
+  \Braket{\vec{v}^2(t)} = \vec{v}_0^2 e^{-2\gamma t} + 2 e^{-\gamma t} \vec{v}_0 \frac{1}{m}
+  \int_{0}^{t} \d{t'} e^{-\gamma(t- t')} \underbrace{\Braket{\vec{f}(t)}}_{=0} \\
+  + \int_{0}^{t} \d{t'} \int_{0}^{t} \d{t''} e^{-\gamma(2 t - t' - t'') }\frac{1}{m^2}
+  \underbrace{\Braket{\vec{f}(t') \vec{f}(t'')}}_{\lambda d \delta(t' - t'')}
+\end{align*}
+%
+\begin{align*}
+  \Braket{\vec{v}^2(t)} = \vec{v}_0^2 e^{-2\gamma t} + \frac{\lambda d}{m^2} e^{-\gamma t} \vec{v}_0 \frac{1}{m}
+  \int_{0}^{t} \d{t'} e^{- 2 \gamma(t- t')} = \vec{v}_0^2 e^{-2 \gamma t} + \frac{\lambda d}{ 2 \gamma m^2}
+  \left( 1- e^{-2 \gamma t} \right)
+\end{align*}
+Und nach langer zeit, wenn die Anfangbedingungen keine Rolle spielen.
+%
+\begin{align*}
+  \implies \Delta v^2(t) = \Braket{\vec{v}^2} - \Braket{\vec{v}(t)}^2
+  = \frac{\lambda d}{ 2 \gamma m^2} \left( 1 - e^{-2 \gamma t} \right)
+  \xrightarrow{t \gg \gamma^{-1}} \frac{ \lambda d }{ 2 \gamma m^2}
+\end{align*}
+%
+%
+\begin{align*}
+  \Braket{\vec{r}(t)} = 0 \\
+  \Braket{\vec{r}^2(t)} = \frac{ \lambda d }{\gamma^2 m^2} t
+\end{align*}
+%
+für $ t \gg \gamma^{-1}$.
+
+Wir haben also einen Zufallsweg gefunden. Dies entspricht einer Diffusion. Im
+thermischen Gleichgewicht gibt es ein \emph{Äquipartitionsgesetz}
+%
+\begin{align*}
+  \frac{1}{2} m \Delta \vec{v}^2(t) = \frac{d}{2} k_B T
+\end{align*}
+%
+%
+\begin{align*}
+  \lambda = 2 \gamma m k_B T && \text{Einstein Relation}
+\end{align*}
+%
+Diese Gleichung ermöglichte erstmals die experimentelle bestimmung
+der Boltzmann-Konstante $k_B$.  Ein paar Jahre später (1908) hat Perrin diese Gleichung
+auch experimentell bestätigen können. Dafür erhielt Perrin auch den
+Nobelpreis (1926).
+
+\subsubsection*{Moderne Anwendungen}
+\begin{itemize}
+  \item Thermische Fluktuationen
+  \item Rauschen in einem Elekrischen Schwingkreis
+  \item Simulation von Wertpapierkursen, Risikionalyse von Finanzinstituten
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\end{description}
+
+
+
+
+\subsection*{Fokker-Planck-Gleichung}
+\emph{Schwabl Kapitel 8.1.2-8.3.1}
+\subsubsection*{Langevin-Gleichungen in einer Dimension}
+%
+Langevin-Gleichung
+\begin{align*}
+  m \ddot{x} = - m \gamma \dot{x} + f(t)
+\end{align*}
+%
+Stochastische Kraft
+%
+\begin{align*}
+  \Braket{f(t)} = 0 , && \Braket{f(t) f'(t)} = \lambda \delta(t - t')
+\end{align*}
+%
+Lösung der Gleichung ist selbst eine Zufallsvariable
+%
+\begin{align*}
+  v(t) = \dot{x}(t) = v_0 e^{-\gamma t} + \int_{0}^{t} \d{t'}
+  e^{-\gamma(t-t') } f(t') \frac{1}{m}
+\end{align*}
+%
+mit
+%
+\begin{align*}
+  \Braket{v(t)} & = v_0 e^{-\gamma t} \xrightarrow{t \gg \gamma^{-1}} 0
+  \Braket{v^2(t)} & \underset{t \gg \gamma^{-1}}{=} \frac{\lambda}{2 \gamma m^2} = \frac{k_B T}{m}
+\end{align*}
+%
+Die Zweite Gleichung ist die Einstein-Relation für diesen Fall.
+
+Wir wollen mehr über die Lösung wissen als uns nur konkrete Lösungen anzuschauen.
+Wir berechnen nun also die Wahrscheinlichkeitsdichte $P(v,t) = \delta(\Braket{v - v(t)})$.
+Sie beschreibt die Wahrscheinlichkeit, das Teilchen mit Geschwindigkeit $v$
+zur Zeit $t$ zu finden. Man kann diese Wahrscheinlichkeit tatsächlich berechnen.
+Dies tut man , indem man eine Differentialgleichung für sie herleitet.
+Wir nehmen dazu an, dass die Funktion Normalverteilt (Gausskurve) ist.
+Man nennt diese Differentialgleichung dann \emph{Fokker-Planck-Gleichung}.
+
+%
+\begin{align*}
+  \pd{}{t}P(v,t) = \underbrace{\gamma \frac{}{v}(v P(v,t))}_{\text{Driftterm}}+ \underbrace{\gamma \frac{k_B T}{m}
+  \pd{^2}{v^2} P(v,t)
+}_{\text{Diffusionsterm}}\end{align*}
+%
+Sie ist eine partielle Differentialgleichung für die Wahrscheinlichkeitsdichte.
+Es gibt eine eindeutige Lösung mit der Anfangsbedingung $P(v, t_0)$ und Randbedingungen
+$ \lim_{v\to \infty} P(v,t) = \lim_{v\to \infty} P'(v,t) = 0$.
+Außerdem muss
+%
+\begin{align*}
+  P(v,t) \ge 0, && \int_{-\infty}^{\infty} \d{v} P(v,t) = 1
+\end{align*}
+%
+Da sie homogen und linear ist, gilt das Superpositionsprinzip. Für eine Familie
+von Lösungen
+%
+\begin{align*}
+  P_l(v,t), l = 1, \ldots , N \implies P(v,t) = \sum_{l=1}^{N} a_l P_l(v,t) &&
+  \text{ mit } a_l \ge 0 \text{ und } \sum_{i=1}^{N} a_l = 1
+\end{align*}
+%
+Die Gleichung ist wie eine Schrödinger Gleichung in imaginärer Zeit.
+Diffusion heißt, wenn etwas propagiert dann wird der Abstand größer proportional
+zur Zeit. Um eine echte Diffusionsgleichung zu haben, sollte da natürlich eigentlich
+der Ort stehen.
+
+\subsubsection*{Lösung der Fokker-Planck Gleichung}
+\begin{itemize}
+  \item Man kann sich zuerst fragen was die stationäre Lösung ist, also jene
+    unabhängig von der Zeit. Wir haben dann eine gewöhnliche Differentialgleichung.
+    Man erhält durch sie eine Maxwell Geschwindigkeitsverteilung.
+    %
+    \begin{align*}
+      P_n(v) = \frac{1}{\sqrt{2 \pi }} \sqrt{\frac{m}{k_B T}} \exp\left( -  \frac{m}{2 k_B T} v^2 \right)
+    \end{align*}
+    %
+  \item
+    Eine Fundamentale Lösung
+    %
+    \begin{align*}
+      P_{v_0}(v,t) & = \left[ \frac{m}{2 \pi k_B T\left( 1- e^{-2 \gamma t} \right)} \right]^{\frac{1}{2}}
+      \exp\left[ - \frac{m \left( v - v_0 e^{-\gamma t} \right)^2}{2 k_B T\left( 1 - e^{-2\gamma t} \right)} \right] \\
+      \lim_{t\to 0} P_{v_0} (v,t) & = \delta(v - v_0), \quad \lim_{t\to \infty} P_{v_0}(v,t) = P_n(v)
+    \end{align*}
+    %
+  \item Die Allgemeine Lösung ist
+    %
+    \begin{align*}
+      P(v,t) = \int_{-\infty}^{\infty} \d{v_0} P_0(v_0) P_{v_0}(v,t) \text{ mit }
+      P(v,t=0) = P_0(v)
+    \end{align*}
+    %
+    Für sehr große $t$ gilt
+    %
+    \begin{align*}
+      \lim_{t\to \infty} P(v, t) = P_n(v)
+    \end{align*}
+    %
+    Also konvergieren alle Lösungen  mit großer Zeit gegen die Maxwell-Verteilung.
+
+\end{itemize}
+
+\subsubsection*{Brownsches Teilchen im Potentialfeld $V(x)$}
+
+%
+\begin{align*}
+  m \ddot{x} = - m \gamma \dot{x} + f(t) + K(x) \text{ mit } K(x) = - \dd{V(x)}{x}
+\end{align*}
+%
+mit der Wahrscheinlichkeitsdichte
+%
+\begin{align*}
+  P(x,v,t) = \Braket{\delta\left( x - x(t) \right) \delta\left( v - \dot{x}(t) \right)}
+\end{align*}
+%
+Wie für die Fokker Planck Gleichung für das freie Teilchen kann man hier
+eine Fokker-Planck Gleichung Herleiten. Man nennt sie die \emph{Kramers-Gleichung}.
+Sie stellt eine Verallgmeinerte Fokker-Planck Gleichung dar.
+
+%
+\begin{align*}
+  \pd{P}{t} + v \pd{P}{x} + \frac{K(x)}{m} \pd{P}{v} = \gamma \pd{}{v} (v P)
+  + \frac{ \gamma k_B T}{m} \pd{^2}{v^2} P
+\end{align*}
+%
+Sie ist eine Partielle Differentialgleichung mit einer zusätzlichen Variable.
+Sie ist damit viel schwerer als die Fokker-Planck Gleichung zu lösen.
+
+\begin{itemize}
+  \item Es gibt eine eindeutige Lösung für die Anfangsbedingungen
+    %
+    \begin{align*}
+      P(x, v, t_0) = P(x, v)
+    \end{align*}
+    und der Randbedingung
+    %
+    \begin{align*}
+      \lim_{v\to \infty} P = \lim_{v\to  \infty} \pd{P}{v} = 0 \text{ und }
+      \lim_{ x \to \pm \infty} P = 0 \text{ oder } P(x) = 0 \quad\forall\, x \in \partial\text{Vol}
+    \end{align*}
+    %
+  \item Es gilt das Superpositionsprinzip
+    %
+  \item Die Funktion ist normiert und positiv
+    %
+    \begin{align*}
+      P \ge 0 && \int_{V}^{} \int_{- \infty}^{\infty} \d{v} P = 1
+    \end{align*}
+    %
+  \item Die allgemeine Lösung ist nicht bekannt, wir kennen aber eine
+    stationäre Lösung. Sie ist eine Maxwell-Boltzmann Verteilung.
+    Wir können nicht beweisen, dass dies alle Lösungen der stationären Gleichung
+    sind.
+    %
+    \begin{align*}
+      P_{\text{MB}} (x,v) = C \exp\left[ - \left( \frac{m}{2} v^2 + V(x) \right)/(k_B T) \right]
+    \end{align*}
+    %
+  \item Die Gleichung hat eine mathematische Ähnlichkeit mit der Schrödunger Gleichung
+    mit imaginärer Zeit $ t \to i t$.
+  \item Wir haben ein klassisches, deterministisches Teilchen und versteckte Variablen.
+    Deswegen suchen wir eine statistische Beschreibung der Bewegung.
+  \item Es gibt eine orthodoxe Quantenmechanische Interpretation. Man betrachtet
+    die Bewegung als rein Zufällig.
+    Eine alternative Interpretation ist eine deterministische Bewegung mit
+    versteckten Variablen.
+  \item Es gibt Lösungsverfahren der Quantentheorie die man verwenden kann
+    \begin{description}
+      \item[Beispiel]
+        %
+        \begin{align*}
+          V(x) = \frac{1}{2}m W_0^2 x^2
+        \end{align*}
+        %
+        %
+        \begin{align*}
+          P(x, v, t) = \exp\left[ - \frac{1}{2} \left( \frac{m}{2}x^2 + V(x) \right)/(k_B T) \right]
+          W(x, v, t)
+        \end{align*}
+        %
+        Man setzt diesen Ansatz in die Kramers Gleichung ein und erhält eine
+        Gleichung der Form
+        %
+        \begin{align*}
+          \pd{W}{t} = L W
+        \end{align*}
+        %
+        mit dem Linearen Differentialoperator
+        %
+        \begin{align*}
+          L = - \gamma b^+ b + w_0 \left( b a^+ - b^+ a\right)
+        \end{align*}
+        %
+        und den Leiteroperatoren
+        %
+        \begin{align*}
+          b = v_T \pd{}{v} + \frac{1}{2} \frac{v}{v_r}, && b^+ = - v_T \pd{}{v} + \frac{1}{2} \frac{v}{v_T} && v_T^2 = \frac{k_B T}{m}
+          a = \frac{v_T}{w_0} \pd{}{x} + \frac{1}{2} \frac{w_0}{v_T} x, && a^+ = - \frac{v_T}{w_0} \pd{}{x} + \frac{1}{2} \frac{w_0}{v_T} x
+        \end{align*}
+        %
+        %
+        \begin{align*}
+          C_+^{(+)} & = \left( \sqrt{\lambda_+} b^+ - \sqrt{\lambda_-} a^+ \right)/\sqrt{\delta} \\
+          C_+^{(-)} & = \left( \sqrt{\lambda_+} b   + \sqrt{\lambda_-} a   \right)/\sqrt{\delta} \\
+          C_-^{(+)} & = \left(-\sqrt{\lambda_-} b^+ + \sqrt{\lambda_+} a^+ \right)/\sqrt{\delta} \\
+          C_-^{(-)} & = \left( \sqrt{\lambda_-} b   + \sqrt{\lambda_+} a   \right)/\sqrt{\delta} \\
+        \end{align*}
+        %
+        %
+        \begin{align*}
+          \lambda_{ \pm } = \frac{1}{2} \left( \gamma \pm \sqrt{\gamma^2 - 4 m_0 ^2 } \right)
+          \delta = \lambda_+ - \lambda_- = \sqrt{\gamma^2 - 4 w_0^2}
+        \end{align*}
+        %
+        %
+        \begin{align*}
+          \left[ C_+^{ \pm }, C_-^{( \pm)} \right] = 0, \\
+          \left[ C_\pm^{ - }, C_\pm^{( + )} \right] = 1, \\
+          \left[ L , C_\pm^{( \pm)} \right] = \mp \lambda_{\pm} C_\pm^{( \pm )}, \\
+        \end{align*}
+        %
+        %
+        \begin{align*}
+          L = - \lambda_+ C_+^{(+)}C_+^{(-)} - \lambda_- C_-^{(+)} C_-^{(-)}
+        \end{align*}
+        %
+        Eigenwerte von $L$
+        %
+        \begin{align*}
+           - \lambda(n_+, n_-) = - \lambda_+ n_+ - \lambda_- n_-
+        \end{align*}
+        %
+        Quantenzahlen
+        %
+        \begin{align*}
+          n_\pm \in \N
+        \end{align*}
+        %
+        Eigenzustände
+        %
+        \begin{align*}
+          \Ket{n_+ n_-} = \frac{1}{\sqrt{n_+!}} \frac{1}{\sqrt{n_-!}}
+          \left( C_+^{(+)} \right)^{n_+}\left( C_-^{(+)} \right)^{n_-} \Ket{0 \, 0}
+          W_{0 \, 0}(x, v) = \Braket{ x v | 0 \, 0} = \sqrt{\frac{w_0}{2 \pi v_T^2}}
+          \exp\left[
+            - \frac{1}{2} \left( \frac{m}{2} v^2 + \frac{1}{2} m w_0^2 x^2 \right)/(k_B T)
+          \right]
+        \end{align*}
+        %
+        Die Lösungen sind
+        %
+        \begin{align*}
+          W_{n_+ n_-} (x, v, t) = e^{-\lambda(n_+, n_-) \cdot t} \underbrace{W_{n_+ n_-}(x, v)}_{\Braket{x v | n_+ n_-}}
+        \end{align*}
+        %
+        Die Allgemeine Lösung lässt sich nun mit dem Superpositionsprinzip schreiben
+        %
+        \begin{align*}
+          W(x, v, t) = \sum_{n_+ = 0}^{\infty} \sum_{n_- = 0}^{\infty}
+          Z(n_+ n_-) e^{-\lambda(n_+, n_-) t} W_{n_+ n_-}(x, v)
+        \end{align*}
+        %
+        Es ist interessant zu bemerken, dass
+        %
+        \begin{align*}
+          \Re \lambda (0, 0) = 0, \Re \lambda(n_+, n_-) > 0 \quad\forall\, n_+ + n_- > 0
+        \end{align*}
+        %
+        Damit folgt
+        %
+        \begin{align*}
+          \lim_{t\to \infty} W(x, v, t) = Z(0,0) W_{00}(x,v) =
+          \lim_{t\to \infty} P(x, v, t) = P_\text{MB}(x, v)
+        \end{align*}
+        %
+        Wir sehen hier also, dass für einen harmonischen Oszillator alle Lösungen
+        gegen eine Maxwell-Boltzmann verteilung konvergieren. Für alle Bekannten Lösungen
+        ist dies So. Auch bei numerischen Berechnungen.
+        \begin{enumerate}[A)]
+          \item Überkritische Dämpfung $\gamma \ge 2 w_0$. Die $\lambda$ sind
+            also Reell und positiv: $\lambda(n_+, n_-) \ge 0$.
+        \item Unterkritische Dämpfung $\gamma 2 < w_0$, dann ist
+          %
+          \begin{align*}
+            \lambda_{ \pm } = \frac{1}{2} \gamma \pm i W \text{ mit } W = \frac{1}{2}
+            \sqrt{4 W_0^2 - \gamma^2}
+          \end{align*}
+          %
+        \end{enumerate}
+
+
+
+    \end{description}
+\end{itemize}
+
+
+
+
+
+\subsection*{Vorlesung 25, Kinetische Gastheorie und Boltzmann-Gleichung}
+\emph{Schwabl Kapitel 9.1, 9.2}
+Wir betrachten ein Gas mit den Eigenschaften:
+\begin{itemize}
+  \item Monoartiges Gas
+  \item Hohe Temperaturen, wegen klassischer Betrachtung
+  \item Niedrige Dichte, also einem Großen Abstand im vergleich
+    zum Durchmesser der Punkte. Wir betrachten also defakto Punktteilchen.
+  \item Neutrale Moleküle, folglich kurzreichweitiger Wechselwirkung. Dadurch
+    können wir Wechselwirkung als einfache Stöße betrachten, unter denen
+    Energie- und Impulserhaltung gilt.
+  \item Es gibt äußere Kräfte, wie zum Beispiel das Gravitationsfeld.
+    Die äußeren Kräfte sollen jedoch konservativ sein.
+\end{itemize}
+\subsubsection*{Makroskopische Eigenschaften}
+Die Energie pro Teilchen ist
+%
+\begin{align*}
+  E_i = \frac{1}{2} m \vec{v}_i^2 + v(\vec{r}_i, t)
+\end{align*}
+%
+Die Gesamtenergie
+%
+\begin{align*}
+  U = \sum_{i=1}^{N} E_i ~ N
+\end{align*}
+%
+Der Druck gegen die Wand des Behältnises. Es ist nicht so einfach dies
+zu definieren, zum Beispiel für den Fall, dass es keine Wand gibt.
+Man muss für die Berechnung einfach nur verstehen was der Druck gegen die Wand
+einfach ist. Die Teilchen stoßen elastisch gegen die Wand und verlieren dabei keine Energie.
+Es gibt einen Anteil der Geschwindigkeit senkrecht, und eine parallel zur Wand.
+Die parallele Komponenete ändert sich nach dem Stoß nicht.
+%
+\begin{align*}
+  \vec{v}_\perp = - \vec{v}_\perp' \implies v_\perp = v_\perp '
+  \vec{v}_\parallel = - \vec{v}_\parallel' \implies v_\parallel = v_\parallel'
+\end{align*}
+%
+Wir berechnen jetzt die Impulsänderung
+%
+\begin{align*}
+  \Delta P = 2 m v_\perp \\
+  P = \frac{\sum_{i}^{} 2 m v_{i \perp}}{\Delta F \Delta t}
+\end{align*}
+%
+Die Summer geht dabei über alle Stöße gegen die Fläche $\Delta F$ im Intevall
+$\Delta t$. Die Fluktuation dieses Wertes wird wie $\frac{1}{\sqrt{N}}$ verschwinden.
+Wir haben hier also eine vollständige mikroskopische Theorie. Sie ist dynamisch und deterministisch.
+Man kann das Ganze nicht wirklich berechnen, aber heutzutage macht man
+oft Simulation.
+
+\subsubsection*{Statistische Beschreibung}
+Wir benutzen eine einteilchen-Verteilungfunktion.
+%
+\begin{align*}
+  f(\vec{r},\vec{v},t) = \sum_{i=1}^{N} \delta(\vec{r} - \vec{r}_i(t))\delta(\vec{v}-\vec{v}_i(t))
+\end{align*}
+%
+
+%
+\begin{align*}
+  f(\vec{r}, \vec{v}, t) \d{^3 r} \d{^3 v}
+\end{align*}
+%
+ist Die Anzahl der Teilchen im Volumen $ \d{^3 r} \d{^3 v}$ um
+$(\vec{r}, \vec{v})$ zum Zeitpunkt $t$.
+Wir machen die Annahmen, dass
+%
+\begin{align*}
+  \d{^3 r} \d{^3 v} \ll 1 \\
+   f \d{^3 r} \d{^3 v} \gg 1 \\
+\end{align*}
+%
+\begin{description}
+  \item[Beispiel] Wir betrachten ein Gas unter normalen Bedingungen.
+    Wir können dann eine Dichte finden
+    %
+    \begin{align*}
+      n = \SI{3e25}{\per\cubic\metre}
+    \end{align*}
+    %
+    Das Volumenelement ist $( \SI{1e-5}{\metre})^{-3}$, also gibt es
+    \SI{3e10}{} Teilchen in einem Volumenelement.
+
+    %
+    \begin{align*}
+      U = \int_{V}^{} \d{^3 r} \int_{\R^3}^{} \d{^3 v} f(\vec{r}, \vec{v}, t)
+      (\frac{1}{2} m \vec{v}^2 + V (\vec{r}))
+    \end{align*}
+    %
+    Wir können dieses Integral über Deltafunktionen leicht ausführen.
+
+    %
+    \begin{align*}
+      P = \frac{2 m}{ \Delta F \Delta t} \int_{V}^{} \d{^3 r} \int_{\R^3}^{} \d{^3 v}
+      f(\vec{r}, \vec{v}, t) v_x \Theta(x - x_N + v_x \Delta t)
+    \end{align*}
+    Die bedingung ist, dass
+    %
+    \begin{align*}
+      X_w - X < v_x \delta t
+    \end{align*}
+    %
+    Man benutzt diese Gleichungen tatsächlich um Simulationen zu machen.
+    Wir haben jetzt eine statistische beschreibung, wie aber berechnet
+    man $f$? Wir müssen jetzt eine Gleichung für $f$ herleiten.
+    Wir betrachten in Zwei-Dimensionen einen Schnitt des Phasenraumes,
+    und dort zur Zeitp $t$ einen Punkt. Wir wissen, dass der Punkt eine
+    Bahn machen wird. $x(t) \to x(t')$. Wir definieren ein kleines Volumen
+    $ \d{^3 r} \d{^3 v}$ um den Punkt. Die Punkte in dem volumen geben uns
+    eine Menge von bahnen. Wir fragen uns dabei, was die änderung
+    der Teilchenzahl ist.
+    %
+    \begin{align*}
+      \d{N} = f(\vec{r}', \vec{v}', t') \d{^3 r ' \d{^3 v'}} -
+      f(\vec{r}, \vec{v}, t) \d{^3 r} \d{^3 v}
+    \end{align*}
+
+    Ohne Zusammenstöße können keine Teilchen vernichtet oder erzeugt werden.
+    Wir werden dann in einem Moment auch diskutieren, was passiert wenn wir
+    Ströme haben, aber zunächst erstmal ohne Zusammenstöße.
+    Man kann jetzt einen Satz erkennen, den
+  \item[Liouville-Satz]
+    %
+    \begin{align*}
+      \d{^3 v} \d{^3 r} = \d{^3 r'} \d{^3 v'}
+    \end{align*}
+    %
+    Nach der Analytischen Mechanik ist
+    %
+    \begin{align*}
+      \dd{}{t} f(\vec{r}(t), \vec{v}(t), t) = 0
+    \end{align*}
+    %
+    eine Erhaltungsgröße. Wenn $\vec{r}$ und $\vec{v}$ physikalische
+    Bahnen sind und nicht beliebig.  Man erhält dann
+    %
+    \begin{align*}
+      \pd{f}{t} + \vec{\nabla}_r f \vec{v} + \vec{\nabla}_v f \frac{\vec{K}}{m} = 0
+    \end{align*}
+    %
+    Wir diskutieren jetzt, was mit dem zweiten Term passiert.
+  \item[Streuung]
+    Es kann passieren ,das ein Teilchen in diesem Volumen mit anderen Teilchen
+    wechselwirkt und aus dem Volumen heraugestreut wird. Die Änderung
+    der Teilchenzahlen sind die Differenz der Gewinn- mit den Verlustprozessen.
+    %
+    \begin{align*}
+      \d{ N_\text{stoß}} = G - V
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \left( \pd{f}{t} \right)_\text{Stoß}
+    \end{align*}
+    %
+    Ist keine Parielle Ableitung, sondern eine historische Notation.
+    Modern schreibt man dafür
+    %
+    \begin{align*}
+      F_\text{Stoß} [f]
+    \end{align*}
+    %
+  \item[Boltzmann-Gleichung]
+    %
+    \begin{align*}
+      \underbrace{\pd{f}{t} + \vec{v} \vec{\nabla}_r f + \frac{\vec{K}}{m}
+      \vec{\nabla}_v f }_{\text{Strömungsterm}}
+      = \underbrace{\left( \pd{f}{t} \right)_\text{Stoß}
+    }_{\text{Stoßterm}}
+  \end{align*}
+    %
+\end{description}
+\subsubsection*{Boltzmann-Stoßanzahl}
+Wir diskutieren direkt das Ergebnis von Boltzmann.
+%
+\begin{align*}
+  \left( \pd{f}{t} \right)_\text{Stoß} = \int_{\R^9}^{} \d{^3 v_2}
+  \d{^3 v_3} \d{^3 v_4} W(\vec{v}, \vec{v}_2; \vec{v}_3, \vec{v}_4)
+\end{align*}
+%
+%
+\begin{align*}
+  \left[ f(\vec{r}, \vec{v}_3, t) f(\vec{r}, \vec{v}_4, t) -
+  f(\vec{r}, \vec{v}, t) f(\vec{r}, \vec{v}_2, t) \right]
+\end{align*}
+%
+%
+\begin{align*}
+  W(\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4)
+\end{align*}
+%
+ist die Übergangswahrscheinlichkeit
+%
+\begin{align*}
+  f(\vec{v}_1, \vec{v}_2) \xrightarrow{} (\vec{v}_3, \vec{v}_4)
+\end{align*}
+%
+Allgemeine Eigenschaften
+%
+\begin{align*}
+  W(\vec{v}_2, \vec{v}_1, \vec{v}_4, \vec{v}_3) = W(\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4) \\
+  W(- \vec{v}_1, - \vec{v}_2, - \vec{v}_3, - \vec{v}_4) = W(\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4) \\
+  W( - \vec{v}_3, - \vec{v}_4, - \vec{v}_1, - \vec{v}_2) = W(\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4) \\
+  W(\vec{v}_2, \vec{v}_1, \vec{v}_4, \vec{v}_3)  ~
+  \delta(\vec{v}_1 + \vec{v}_2 - \vec{v}_3 - \vec{v}_4) \delta
+  \delta(\vec{v}_1^2 + \vec{v}_2^2 - \vec{v}_3^2 - \vec{v}_4^2).
+\end{align*}
+%
+%
+\begin{description}
+  \item[Verlustprozesse]
+    \begin{align*}
+      V \approx - \int_{\R^9}^{} \d{^3 v_2} \d{^3 v_3} \d{^3 v_4}
+      W(\vec{v}, \vec{v}_2, \vec{v}_3, \vec{v}_4) P(\vec{r}, \vec{v}, \vec{v}_2, t)
+    \end{align*}
+    %
+  \item[Gewinnprozesse]
+    %
+    \begin{align*}
+      G \approx \int_{\R^9}^{} \d{^3 v_2} \d{^3 v_3} \d{^3 v_4} W(\vec{v}_3, \vec{v}_4, \vec{v},
+      \vec{v}_2) P(\vec{r}, \vec{v}_3, \vec{v}_4, t)
+    \end{align*}
+    %
+    Wir führen nun die Hypothese des molekularen Chaos ein
+    %
+    \begin{align*}
+      P(\vec{r}, \vec{v}_1, \vec{v}_2, t) \alpha f(\vec{r}, \vec{v}_1, t)
+      f(\vec{r}, \vec{v}_2, t)
+    \end{align*}
+    %
+  \item[Boltzmann Gleichung]
+    Sie ist eine Nichtlineare partielle Integrodifferentialgleichung.
+\end{description}
+Aus den Newton-Gleichungen (Mikroskopisch, dynamisch, deterministisch)
+haben wir die Boltzmann-Gleichung (Mikroskopisch, dynamisch, statistische Theorie)
+abgeleitet. Daraus folgte dann die Maxwell-Boltzmann-Verteilung
+(mikroskopisch statisch, statistisch). Aus dieser können wir wieder die thermodynamik
+des idealen Gases herleiten (makroskopisch). An einer Stelle haben wir die Zeitumkehrinvarianz
+gebrochen, denn das ideale Gas vergrößert seine Entropie mit der Zeit.
+Dies ist schon bei der Boltzmann Gleichung geschehen.
+
+\subsection*{Vorlesung 26: H-Theorem und lokale Maxwell-Boltzmann-Verteilung}
+%
+\begin{align*}
+  f(\vec{r},\vec{v},t) , && \pd{f}{t} + \vec{v} \vec{\nabla}_r f + 
+  \frac{\vec{K}(\vec{r}, t)}{m} \vec{\nabla}_v f = \left( \pd{f}{t} \right)_\text{Stoß}
+\end{align*}
+%
+%
+\begin{align*}
+  \left( \pd{f}{t} \right)_\text{Stoß} (\vec{r}, \vec{v}, t) = 
+  \int_{\R^3}^{} \d{^3 v_2} \d{^3 v_3} \d{^3 v_4} W(\vec{v}_1,\vec{v}_2; \vec{v}_3, \vec{v}_4)
+  \left[ f(\vec{r}, \vec{v}_3, t) f(\vec{r}, \vec{v}_1, t) - f(\vec{r}, \vec{v}, t) f(\vec{r}, \vec{v}, t) f(\vec{r}, \vec{v}_2, t) \right]
+\end{align*}
+%
+\subsubsection*{H-Theorem}
+Es besagt, dass %
+\begin{align*}
+  \dd{}{t} H(t) \le 0
+\end{align*}
+%
+\begin{description}
+  \item[Definition] 
+    %
+    \begin{align*}
+      H(\vec{r}, t) = \int_{\R^3}^{} \d{^3 v} f(\vec{r}, \vec{v}, t) \log{} f(\vec{r}, \vec{v}, t)
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      H(t) = \int_{V}^{} \d{^3 r} H(\vec{r}, t)
+    \end{align*}
+    %
+  \item[Beweis]
+    %
+    \begin{align*}
+      \dd{}{t} H(t) & = \int_{V}^{} \d{^3 r} \int_{\R^3}^{} \d{^3 v}
+      \pd{f}{t} (\log{f} + 1)\\  & = \int_{V}^{} \d{^3 r }\int_{\R^3}^{} \d{^3 v}
+      \left[ -\vec{v} \vec{\nabla}_r f - \frac{\vec{K}}{m} \vec{\nabla}_v f +
+      \left( \pd{f}{t} \right)_\text{Stoß}\right] \left(  1 + \log{f} \right) \\
+      & = \int_{V}^{} \d{^3 r} \int_{\R^3}^{} \d{^3 v_1} \d{^3 v_2} \d{^3 v_3} \d{^3 v_4}
+      W(f_3 f_4 - f_1 f_2)(1 + \log{f_1}) \\
+      & = \frac{1}{4} \int_{V}^{} \d{^3 r} \int_{\R^{12}}^{} \d{^3 v_1} \d{^3 v_2}
+      \d{^3 v_3} \d{^3 v_4} W(f_1 f_2 - f_3 f_4) \log{\left( \frac{f_1 f_2}{f_3 f_4} \right)}
+    \end{align*}
+    %
+    Wir benutzen dabei $f(\vec{r}, \vec{v}_i, t) = f_i$, und im letzten Schritt
+    die Symmetrieeigenschaften von $W$. Da die Logarithmus funktion monoton
+    Steigend ist, bleibt der letzte term immer positiv. Die übergangswahrscheinlichkeit
+    ist immer positiv und $\dd{H}{t} \le 0$. Die Idee ist nicht so kompliziert, 
+    das unangenehme ist das Rechnen mit den Indizes. Wir folgern daraus
+    \begin{itemize}
+      \item Die Boltzmann-Gleichung ist nicht Zeitumkehrinvariant.
+        Wir beschreiben ein Gas, das nur durch die Newton-Gleichungen beschrieben
+        wird, welche Zeitumkehrinvariant sind. Sie geht jedoch bei unserere Rechnung
+        verloren. Dies geschah wegen der \emph{Hypothese des Molekularen Chaos}.
+      \item %
+        \begin{align*}
+          S = - k_B H + N + C \implies \dd{S}{t} \ge 0
+        \end{align*}
+        %
+        mit einer Konstante $C$.
+    \end{itemize}
+  \item[Minimum von ] $H(f)$ \\
+    Wir erhalten es durch VAriationsrechung mit Nebenbedingungen. Die Nebenbedingung
+    ist die Konstante Teilchenzahl und Energie.
+    %
+    \begin{align*}
+      N = \int_{V}^{} \d{^3 r} \int_{\R^3}^{} \d{^3 v} f, &&
+      E = \int_{V}^{} \d{^3 r} \int_{\R^3}^{} \d{^3 v} \underbrace{\left[ \frac{m}{2}\vec{v}^2 + V(\vec{r}) \right]}_{\epsilon(\vec{r}, \vec{v})} f
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      0 & = \delta H - \mu \delta N - \lambda \delta E \\
+      0 & = (1 + \log{f}  - \mu - \lambda \epsilon) \delta f
+    \end{align*}
+    %
+    Das ist äquivalent zu
+    %
+    \begin{align*}
+      f = \begin{cases}
+        e^{ M - 1 + \lambda \epsilon} & \text{ für } \vec{r} \in V  \\
+        0                             & \text{ für } \vec{r} \not\in V
+      \end{cases} 
+    \end{align*}
+    %
+    Außerdem folgt
+    %
+    \begin{align*}
+      f(\vec{r}, \vec{v}) = C e^{-\beta \epsilon(\vec{r}, \vec{v})} \\
+      H_\text{min} = H[f_\text{min}] = (\mu - 1)N + \lambda \epsilon \implies
+      \frac{H_\text{min}}{N} \text{ ist endlich }
+    \end{align*}
+    %
+    %
+    \begin{align*}
+      \dd{H}{t} \le 0 && H(t) \ge H_\text{min} \implies \lim_{t\to \infty}
+      H(t) \text{ existiert }
+    \end{align*}
+    %
+    Man erhält am Ende eine Gleichgewichstverteilung
+    %
+    \begin{align*}
+      f_0(\vec{r}, \vec{v}) = \lim_{t\to \infty} f(\vec{r}, \vec{v}, t)
+    \end{align*}
+    %
+  
+\end{description}
+
+\subsubsection*{Stationäre Lösungen der Boltzmann-Gleichung}
+\begin{itemize}
+  \item Maxwell-Boltzmann-Verteilung
+    %
+    \begin{align*}
+      f_\text{MB}(\vec{r}, \vec{v}) = C e^{-\beta \epsilon(\vec{r},\vec{v})}
+    \end{align*}
+    Ist das die einzige Stationäre Lösung? Wenn man eine stationäre Lösung
+    findet, dann muss sie den Strömungs und den Stoßterm lösen.
+    %
+  \item
+    Bei einer stationären Lösung sind der Strömungsterm und
+    der Stoßterm Null.
+    %
+    \begin{align*}
+      N = \int_{}^{} f && f\to \lambda f \implies N \to \lambda N
+    \end{align*}
+    %
+    
+\end{itemize}
+Wir werden zuerst den Stoßterm diskutieren. und Lösungen suchen mit
+%
+\begin{align*}
+  \left( \pd{f}{t} \right)_\text{Stoß} = 0 \quad\forall\,\vec{r}, \vec{v}_i
+\end{align*}
+%
+Eine hinreichende Bedingung ist
+%
+\begin{align*}
+  f_1 f_2 = f_3 f_4 \implies \log{f1} + \log{f_2} = \log{f_3} + \log{f_4}
+\end{align*}
+%
+Diese Gleichung sagt uns, dass %
+\begin{align*}
+  \log{f(\vec{r},\vec{v})}
+\end{align*}
+%
+eine Erhaltungsgröße ist und wir einen Stoß zwischen Teilchen haben.
+
+Bei einem Elastischen Zusammenstoß gibt es 5 Erhaltungsgrößen.
+%
+\begin{align*}
+  \text{Energie } ~ \vec{v}^2 \\
+  \text{Impuls } ~ \vec{v}^2 \\
+  \text{Skalar } ~ 1 \\
+\end{align*}
+%
+Daraus folgt 
+%
+\begin{align*}
+  \log{f} = \alpha + \beta \vec{v}^2 + \vec{\gamma} \vec{v}
+\end{align*}
+%
+%
+\begin{align*}
+  \implies f(\vec{r}, \vec{v}, t) = \exp \left[ \alpha(\vec{r}, t) + \beta(\vec{r} t) \vec{v}^2 + \vec{\gamma}(\vec{r}, t) \vec{v} \right]
+\end{align*}
+%
+Lokale Maxwell-Boltzmann-Verteilung
+%
+\begin{align*}
+  f_\text{MB}(\vec{r}, \vec{v}, t) C(t) \exp \left[ \frac{-1}{k_B T(\vec{r}, t)}
+  \left\{ m \frac{(\vec{v} - \vec{\mu}(\vec{r}, t))^2}{2} + V(\vec{r}, t) \right\} \right]
+\end{align*}
+%
+%
+\begin{align*}
+  \left( \pd{f}{t} \right)_\text{Stoß} = F[f], && F[f_\text{MB}] = 0
+\end{align*}
+%
+Lineare Boltzmann-Gleichung
+%
+\begin{align*}
+  f = f_{i \text{MB}} + g \implies F[f] = F[f_{i \text{MB}}]
+  + \frac{\delta F}{\delta f} [f _{i \text{MB}}] g + \mathcal{O}(g^2)
+\end{align*}
+%
+Wir können eine \emph{Relaxationszeit-Näherung} machen.
+%
+\begin{align*}
+  F[f] \simeq - \frac{1}{\tau} (f - f_{i \text{MB}})
+\end{align*}
+%
+\subsubsection*{Hydrodynamische Gleichungen}
+Wir definieren Zuerst einige Größen
+\begin{description}
+  \item[Dichte] 
+    %
+    \begin{align*}
+      n(\vec{r}, t) = \int_{\R^3}^{} \d{^3 v} f (\vec{r}, \vec{v}, t)
+    \end{align*}
+    %
+    Wir können auch die Stromdichte definieren.
+  \item[Stromdichte]
+    %
+    \begin{align*}
+      \vec{j}(\vec{r}, t) = \int_{\R^3}^{} \d{^3 v} \vec{v} f(\vec{r}, \vec{v}, t)
+    \end{align*}
+    %
+  \item[Lokale Stromdgeschwindigkeit]
+    %
+    \begin{align*}
+      \vec{U}(\vec{r}, t) = \frac{\vec{j}(\vec{r}, t)}{n (\vec{r}, t)}
+    \end{align*}
+    %
+    Wenn man die lokale Boltzmann VErteilung benutzt bekommt man tatsächlich
+    die Funktion $U$.
+  \item[Innere Energiedichte]
+    Sie ist sowas wie eine innere Energie pro Voumeneinheit.
+    %
+    \begin{align*}
+      u(\vec{r}, t) = \frac{m}{2} \int_{\R^3}^{} \d{^3 v}
+      \left( \vec{v} - \vec{u}(\vec{r}, t) \right)^2 f(\vec{r}, \vec{v}, t)
+    \end{align*}
+    %
+  \item[Lokale mittlere Energie]
+    %
+    \begin{align*}
+      \epsilon(\vec{r}, t) = \frac{U(\vec{r}, t)}{n(\vec{r},t)}
+    \end{align*}
+    %
+    Sie ist sowas wie eine Innere Energie pro Teilchen. 
+  \item[Drucktensor]
+    %
+    \begin{align*}
+      P_{ij}(\vec{r}, t) = m \int_{\R^3}^{} \d{^3 v} (v_i - U_i (\vec{r}, t))
+      (\vec{v}_j - u_j(\vec{r}, t)) f(\vec{r}, \vec{v}, t) && i, j = x, y , z
+    \end{align*}
+    %
+    Wir können die Boltzmann Gleichung benutzen um eine Beziehung zwischen den
+    Sachen herzustellen
+  
+\end{description}
+\begin{enumerate}[1)]
+  \item %
+    \begin{align*}
+      \text{Kontinuitätsgleichung} && \pd{n(\vec{r}, t)}{t} + \div \vec{j}(\vec{r}, t) = 0 \\
+    \end{align*}
+  \item Als nächstes kommt die Zeitliche Ableitung der Stromdichte
+    %
+    \begin{align*}
+      \text{Impulserhaltung } && m \pd{}{t} j_i + 
+      1\sum_{l=1}^{3} \pd{}{x_l} \left( m n(\vec{r}, t) u_i(\vec{r}, t) M_l(\vec{r}, t)
+      + P_{ij}(\vec{r}, t) \right) = m(\vec{r}, t) K_i(\vec{r}, t)
+    \end{align*}
+    %
+  \item[Energieerhaltung] 
+    %
+    \begin{align*}
+      \pd{u}{t} = \ldots
+    \end{align*}
+    %
+    Aus der lokalen Maxwell-Boltzmann Verteilung lässt sich daraus ableiten.
+  \item %
+    \begin{align*}
+      P_{ij}(\vec{r}, t) = \delta_{ij} P(\vec{r}, t) \text{ mit } P(\vec{r}, t)
+      = k_B T n(\vec{r}, t)
+    \end{align*}
+    %
+    Diese Verteilung ist Isotrop.
+    %
+  \item
+    %
+    \begin{align*}
+      \epsilon(\vec{r}, t) = \frac{3}{2} k_B T(\vec{r}, t)
+    \end{align*}
+    %
+    Wir können damit die zweite Gleichung anders formulieren
+    %
+    \begin{align*}
+      m n(\vec{r}, t) \left( \pd{}{t} + \vec{U} (\vec{r}, t) \vec{\nabla}_r \right)
+      \vec{U} (\vec{r}, t) = - \vec{\nabla}_r P(\vec{r}, t) + n (\vec{r}, t)
+      \vec{K}(\vec{r}, t)
+    \end{align*}
+    %
+    Dies ist die \emph{Euler-Gleichung der Hydrodynamik}. Sie beschreibt nicht-dissipative
+    Strömung von Fluiden.
+
+    Auch die Dritte Gleichung lässt sich damit kompakter schreiben
+    %
+    \begin{align*}
+      n(\vec{r}, t) \left( \pd{}{t}  + \vec{U}(\vec{r}, t) \vec{\nabla}_r \right)
+      \epsilon (\vec{r}, t) = - P(\vec{r}, t) \vec{\nabla}_r \vec{U}(\vec{r}, t)
+    \end{align*}
+    %
+    
+  
+
+\end{enumerate} 
+
+\subsection*{Vorlesung 27 Wiederkehrzeit und Dissipation}
+\emph{Schwabl 10.1 - 10.3 und 10.7} \\
+Wir besprechen das Konzept von \emph{More is different}. Man erhält für makroskopisches
+Systeme auch
+\begin{itemize}
+  \item Phasenübergänge
+  \item Irreversibilität
+\end{itemize}
+\subsubsection*{Poincaré Wiederkehrzeit Theorem}
+Wir betrachten ein klassisches, isoliertes, konservatives und endliches
+System. Wir haben also eine Bahn gegeben durch die generalisierten Koordinaten
+%
+\begin{align*}
+  \left( q(t), p(t) \right) \in \text{ Phasenraum } \subset \R^{3N}
+\end{align*}
+%
+Für alle Bahnen gibt es eine Endliche Wiederkehrzeit bei welcher der Abstand
+der Bahn
+%
+\begin{align*}
+  \quad\forall\, \epsilon > 0 \exists \tau_\epsilon < \infty: &&
+  \operatorname{Abstand}((q(t), p(t)), (q(t+ \tau_\epsilon), p(t + \tau_\epsilon)) < \epsilon
+\end{align*}
+%
+und
+%
+\begin{align*}
+  \exists t' \text{ mit } t < t' < t+ \tau_\epsilon, \text{ so dass Abstand } > \epsilon
+\end{align*}
+%
+Wir untersuchen ein
+\subsubsection*{Qualitatives Beispiel: Gasexpansion}
+Wir haben einen Behälter mit zwei Teilen. Danach öffnen wir die Wand.
+Das Gas fließt von einem Behälter in den nächsten. Nach einer gewissen Zeit
+erreicht das System einen Gleichgewichtszustand, der die Entropie maximiert.
+Das Poincaré-Theorem sagt uns nun, dass wenn wir lang genug warten, wir den
+Ausgangszustand wieder erreichen. Alle Moleküle des Gases sind Plötzlich
+wieder auf der linken Seite des Behälters und wir haben Druck Null.
+
+Das kann man in der Natur nicht beobachten. Wir fragen uns also wie groß diese
+Wiederkehrzeit ist. Aus numerischen Simulationen findet man, dass die Wiederkehrzeit
+divergiert. 
+
+\subsubsection*{Quantitatives Beispiel: Kette harmonischer Oszillatoren}
+%
+\begin{align*}
+  \mathcal{H} = \sum_{n=1}^{N} \frac{1}{2m} P_n^2 + \frac{m}{2} \omega^2
+  \sum_{n=1}^{N-1} \left( q_{n+1} - q_n \right)^2
+\end{align*}
+%
+Man erhält die Bewegungsgleichungen aus der kanonischen Gleichung. 
+%
+\begin{align*}
+  \dot{p}_n = m \ddot{q}_n = m \omega^2 (q_{n+1} + q_{n-1} - 2 q_n) \text{ mit }
+  q_0 = q_{N+1} = 0 \quad n = 1, \ldots , N
+\end{align*}
+%
+\begin{description}
+  \item[Normalkoordinaten] %
+  \begin{align*}
+    Q_s = \sum_{n=1}^{N} \sqrt{\frac{\pi}{N+1}} \sin{\left( \frac{\pi}{N+1} s n \right)} q_n
+    P_s = \sum_{n=1}^{N} \sqrt{\frac{\pi}{N+1}} \sin{\left( \frac{\pi}{N+1} s n \right)} p_n
+  \end{align*}
+  %
+  %
+  \begin{align*}
+    \implies \mathcal{H} = \sum_{s=1}^{N} \left( \frac{1}{2m} P_s^2 + \frac{m}{2} \omega_s^2 Q_s^2 \right)
+  \end{align*}
+  %
+  mit
+  %
+  \begin{align*}
+    \omega_s^2 = 4 \omega^2 \sin{^2 \left( \frac{\pi s}{2(N+1)} \right)}
+  \end{align*}
+  %
+  %
+  \begin{align*}
+    \implies m \ddot{Q}_s = - m \omega_s^2 Q_s
+  \end{align*}
+  %
+  %
+  \begin{align*}
+    Q_s(t) = Q_s(0) \cos{\omega_s t} + \frac{P_s(0)}{m \omega_s} \sin{(\omega_s t)}
+  \end{align*}
+  %
+  Was ist die Wiederkehrzeit des Oszillators $s$?
+  \begin{itemize}
+    \item Wahrscheinlichkeit dafür, dass die Phase des Oszillators $s$ in einem 
+      bestimmten Intervall $\Delta \Phi$ liegt.
+      %
+      \begin{align*}
+        P_s = \frac{\Delta \Phi}{2 \pi}
+      \end{align*}
+      %
+    \item Wir haben aber unabhängige Oszillatoren, wie sieht hier die Wahrscheinlichkeit aus?
+      %
+      \begin{align*}
+        P = P_1 P_2 P_N = \left( \frac{\Delta \Phi}{2 \pi} \right)^{N}
+      \end{align*}
+      %
+    \item
+      %
+      \begin{align*}
+        \tau_N = \frac{2 \pi - \Delta \Phi}{\omega_1} \left( \frac{2 \pi}{\Delta \Phi} \right)^{N-1}
+        \underset{N \gg 1}{\simeq} \left( \frac{2 \pi}{\delta \Phi} \right)^{N} \frac{ 2  - \Delta \Phi / \pi}{ \omega } N
+      \end{align*}
+      %
+  \end{itemize}
+\end{description}
+
+\subsubsection*{Dissipation (irreversibler Energieverlust)}
+%
+\begin{align*}
+  \mathcal{H} = \frac{1}{2m} p^2 + \frac{K}{2}q ^2 + \frac{1}{2m} \sum_{{\vec{n}}}^{}
+  p^2_{\vec{n}} + \frac{1}{2} \sum_{{\vec{n}}}^{} \sum_{{\vec{n}}}^{} \Phi ({\vec{n}} - {\vec{n}}')
+  q_{\vec{n}} q_{{\vec{n}}'} + q \sum_{{\vec{n}}}^{} C_{\vec{n}} q_{\vec{n}}
+\end{align*}
+%
+Wir führen Normalkoordinaten ein
+%
+\begin{align*}
+  q_{\vec{k}}(t) = \frac{1}{\sqrt{N}} \sum_{{\vec{n}}}^{} e^{- i {\vec{k}} {\vec{n}}}
+  q_{{\vec{n}}}(t)
+\end{align*}
+%
+%
+\begin{align*}
+  \ddot{q}(t) & = - \omega_0^2 q(t) - \frac{1}{n} \sum_{{\vec{w}}}^{}
+  C_{{\vec{w}}}^{\ast} q_{{\vec{w}}}(t) && \omega_0^2 = \frac{K}{M} \\
+  \ddot{q}_{\vec{w}}(t) = - \omega_{\vec{w}}^2 q_{\vec{w}}(t) - \frac{C_{\vec{w}}}{m} q(t)
+  && \quad\forall\, {\vec{w}} \in \text{ 1. Brillouin-Zone}
+\end{align*}
+%
+Wir haben das Problem durch ein \emph{Mapping} gelöst. Mit den Anfangsbedingungen
+%
+\begin{align*}
+  q_{\vec{w}}(0) = \dot{q}_{\vec{w}}(0) = 0
+\end{align*}
+%
+folgt
+%
+\begin{align*}
+  q_{\vec{w}}(t) = \int_{0}^{t} \d{t'} \frac{\sin{(\omega_{\vec{w}}(t-t'))}}{\omega_{\vec{w}}}
+  q(t') \frac{- c_{\vec{w}}}{m}
+\end{align*}
+%
+und außerdem folgt
+%
+\begin{align*}
+  \ddot{q}(t) = - \omega_0^2 q(t) + \frac{1}{m M} \int_{0}^{t} \d{t'} q(t')
+  \underbrace{\sum_{{\vec{w}}}^{} \frac{\sin{\omega_{\vec{w}}(t - t')}}{\omega_{\vec{w}}} \abs{C_{\vec{w}}}^2}_{f(t-t')}
+\end{align*}
+%
+Wir haben hier eine \emph{Memory-Funktion}. Die Kraft hängt von der Vorgeschichte 
+des Systems ab.
+
+\subsubsection*{Debye-Näherung}
+%
+\begin{align*}
+  \omega_{\vec{w}} = C_s \abs{{\vec{w}}} < \omega_0
+\end{align*}
+%
+Damit kann man eine Zustandsdichte berechnen
+%
+\begin{align*}
+  D(\omega) = \frac{N}{2 \pi^2} \frac{\omega^2}{C_s^2} && 0 < \omega < \omega_0
+\end{align*}
+%
+%
+\begin{align*}
+  C_{\vec{w}} = g \delta({\vec{w}}) \implies \abs{C_{\vec{w}}}^2 = \frac{q^2}{N}
+\end{align*}
+%
+Mit der Debye-Näherung erhalten wir dann das Ergebnis
+%
+\begin{align*}
+  f(t-t') & = \frac{q^2}{N}\int_{0}^{\omega_0} \d{W} D(\omega) \frac{\sin{(\omega(t-t'))}}{\omega} \\
+          & = \frac{q^2}{2 \pi^2 C_s^3} \left( - \dd{}{t} \right) \frac{\sin{(\omega_0(t-t'))}}{ t- t'}
+\end{align*}
+%
+%
+% \begin{align*}
+%   \implies \ddot{q}(t) & = \underbrace{- \left(  \omega_0^2 - \frac{q^2 \omega_0}{m M 2 \pi^2 C^3_s}}_{\tilde{\omega_0}^2} q(t)
+%   - \frac{q^2}{m M^2 \pi^2 C_s^3}\right) \dd{}{t} \int_{0}^{t} \d{t'} q(t') \frac{ \sin{(\omega_0 (t-t'))}}{ t- t'}  \\
+%   & = - \tilde{\omega_0}^2 q(t) - \underbrace{\frac{q^2}{m M 4 \pi C_s^3}}_{= \Gamma} \dd{t}{} q(t)
+% \end{align*}
+%
+Anmerkung:
+%
+\begin{align*}
+  \delta(t) = \lim_{a\to 0} \frac{\sin{(a t)}}{\pi t}
+  \int_{0}^{\infty} \d{x} \delta(x) = \frac{1}{2}
+\end{align*}
+%
+Die Näherungen sind $\omega_D t \ll 1$ und $\omega_D \to \infty$
+$\implies t \to 0$
+%
+
+
+
+
+
+
+
+
+
+
+

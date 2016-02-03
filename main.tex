@@ -1,0 +1,81 @@
+\documentclass[11pt]{scrbook}
+\usepackage[utf8]{inputenc}
+\usepackage[english, german]{babel}
+\usepackage{mhchem}
+\renewcommand{\baselinestretch}{1.05}
+\usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
+\usepackage[]{mathtools}
+% \topmargin0.0cm
+% \headheight0.0cm
+% \headsep0.0cm
+% \oddsidemargin0.0cm
+% \textheight23.0cm
+% \textwidth16.5cm
+% \footskip1.0cm
+% \setlength\parindent{0pt}
+\theoremstyle{plain}
+\newtheorem*{beispiel}{Beispiel}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{postulat}{Postulat}
+\newtheorem*{satz}{Satz}
+\newtheorem*{definition}{Definition}
+
+\newtheoremstyle{mytheoremstyle} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {\itshape}                   % Body font
+    {}                           % Indent amount
+    {\bfseries}                   % Theorem head font
+    {}                          % Punctuation after theorem head
+    {.0em}                       % Space after theorem head
+    {\thmnote{#3}#1 \\}  % Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{mytheoremstyle}
+\newtheorem*{theorem*}{}
+
+\renewcommand*{\proofname}{Beweis}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\dd}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\trace}{\operatorname{tr}}
+\newcommand{\oo}{\infty}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\Forall}{\quad\forall\,}
+\newcommand{\GK}{\text{GK}}
+\renewcommand{\d}[1]{\,d#1\,}
+\usepackage{braket}
+\usepackage{centernot}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+% \renewcommand{\labelitemi}{$\blacktriangleright$}
+% \renewcommand{\labelitemii}{$\vartriangleright$}
+% \renewcommand{\labelitemiii}{$\bowtie$}
+% \renewcommand{\labelitemiv}{$\star$}
+\newcommand{\sumint}{\ooalign{$\textstyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+
+\usepackage{enumerate}
+\usepackage[pdf]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{siunitx}
+\usepackage{varwidth}
+\newenvironment{centerall}
+{\begin{center}\begin{varwidth}{\textwidth}}
+{\end{varwidth}\end{center}}
+
+% \usepackage{MnSymbol}
+\begin{document}
+\input{skript_0.tex}
+\input{skript_2.tex}
+\input{skript_3.tex}
+\input{skript_4.tex}
+\end{document}
